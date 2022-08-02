@@ -52,13 +52,17 @@ function parse_gaslib(zip_path::Union{IO,String})
 
     # Create a dictionary for all components.
     junctions = _read_gaslib_junctions(topology_xml)
-    return junctions
     pipes = _read_gaslib_pipes(topology_xml, junctions, density)
-    regulators = _read_gaslib_regulators(topology_xml, density)
-    resistors = _read_gaslib_resistors(topology_xml, density)
     short_pipes = _read_gaslib_short_pipes(topology_xml, density)
     valves = _read_gaslib_valves(topology_xml, density)
+    resistors = _read_gaslib_resistors(topology_xml, density)
     loss_resistors = _read_gaslib_loss_resistors(topology_xml, density)
+
+    regulators = _read_gaslib_regulators(topology_xml, density)
+    return (junctions = junctions, pipes = pipes, short_pipes=short_pipes, valves=valves, 
+        resistors = resistors, loss_resistors = loss_resistors, regulators = regulators)
+    
+    
     compressors = _read_gaslib_compressors(
         topology_xml,
         compressor_xml,
@@ -354,12 +358,13 @@ function _get_junction_entry(junction)
     lon = parse(Float64, junction[lon_sym])
 
     elevation = parse(Float64, junction["height"][:value])
-    # default pressure units in barg; 1 barg = 1e5 Pa
-    p_min = parse(Float64, junction["pressureMin"][:value]) * 1.0e5 
-    p_max = parse(Float64, junction["pressureMax"][:value]) * 1.0e5
+    # default pressure units in barg (gauge pressure); 1 barg = (1 + 1.01325) * 1e5 Pa
+    p_min = _parse_gaslib_pressure(junction["pressureMin"]) 
+    p_max = _parse_gaslib_pressure(junction["pressureMax"]) 
 
     return Dict{String,Any}(
         "node_id" => junction[:id], 
+        "node_name" => junction[:id],
         "x_coord" => lat,
         "y_coord" => lon,
         "min_pressure" => p_min,
@@ -380,31 +385,50 @@ function _parse_gaslib_length(entry)
     end
 end
 
+function _parse_gaslib_pressure(entry)
+    if entry[:unit] == "bar" 
+        return parse(Float64, entry[:value]) * 1e5
+    elseif entry[:unit] == "barg"
+        return (parse(Float64, entry[:value]) + 1.01325) * 1e5
+    elseif entry[:unit] == "Pa"
+        return parse(Float64, entry[:value])
+    end
+end
+
+function _parse_gaslib_flow(entry)
+    if entry[:unit] == "m_cube_per_s" 
+        return parse(Float64, entry[:value])
+    elseif entry[:unit] == "m_cube_per_hour"
+        return parse(Float64, entry[:value]) * inv(3600.0)
+    elseif entry[:unit] == "1000m_cube_per_hour"
+        return parse(Float64, entry[:value]) * inv(3.6)
+    end
+end
+
 
 function _get_pipe_entry(pipe, junctions, density::Float64)
     fr_junction, to_junction = pipe[:from], pipe[:to]
-    p_min = min(junctions[fr_junction]["p_min"], junctions[to_junction]["p_min"])
-    p_max = max(junctions[fr_junction]["p_max"], junctions[to_junction]["p_max"])
+    p_min = min(junctions[fr_junction]["min_pressure"], junctions[to_junction]["min_pressure"])
+    p_max = max(junctions[fr_junction]["max_pressure"], junctions[to_junction]["max_pressure"])
 
     if "pressureMin" in keys(pipe)
-        p_min = max(p_min, parse(Float64, pipe["pressureMin"][:value]) * 1.0e5)
+        p_min = max(p_min, _parse_gaslib_pressure(pipe["pressureMin"])) 
     end
 
     if "pressureMax" in keys(pipe)
-        p_max = min(p_max, parse(Float64, pipe["pressureMax"][:value]) * 1.0e5)
+        p_max = min(p_max, _parse_gaslib_pressure(pipe["pressureMax"]))
     end
 
     diameter = _parse_gaslib_length(pipe["diameter"])
     length = _parse_gaslib_length(pipe["length"])
     roughness = _parse_gaslib_length(pipe["roughness"])
 
-    # Compute the friction factor as per ``The Gas Transmission Problem Solved by an
-    # Extension of the Simplex Algorithm'' by De Wolf and Smeers (2000).
-    friction_factor = (2.0 * log(3.7 * diameter * inv(roughness)))^(-2)
+    # Compute the friction factor as per ``Evaluating Gas Network Capacities'' Eq (2.19).
+    friction_factor = (2.0 * log10(diameter * inv(roughness)) + 1.138)^(-2)
 
     # Determine bidirectionality.
-    flow_min = density * parse(Float64, pipe["flowMin"][:value]) * inv(3.6)
-    flow_max = density * parse(Float64, pipe["flowMax"][:value]) * inv(3.6)
+    flow_min = density * _parse_gaslib_flow(pipe["flowMin"])
+    flow_max = density * _parse_gaslib_flow(pipe["flowMax"])
 
     if flow_max <= 0.0
         flow_min, flow_max = -flow_max, -flow_min
@@ -414,54 +438,50 @@ function _get_pipe_entry(pipe, junctions, density::Float64)
     is_bidirectional = flow_min > 0.0 ? 0 : 1
 
     return Dict{String,Any}(
-        "fr_junction" => fr_junction,
-        "to_junction" => to_junction,
+        "fr_node" => fr_junction,
+        "to_node" => to_junction,
         "diameter" => diameter,
         "length" => length,
-        "p_min" => p_min,
-        "p_max" => p_max,
+        "min_pressure" => p_min,
+        "max_pressure" => p_max,
         "friction_factor" => friction_factor,
         "is_bidirectional" => is_bidirectional,
-        "status" => 1,
-        "is_per_unit" => 0,
-        "is_si_units" => 1,
-        "is_english_units" => 0,
+        "min_flow" => flow_min, 
+        "max_flow" => flow_max,
+        "name" => pipe[:id]
     )
 end
 
 
 function _get_loss_resistor_entry(loss_resistor, density::Float64)
     fr_junction, to_junction = loss_resistor[:from], loss_resistor[:to]
-    flow_min = density * parse(Float64, loss_resistor["flowMin"][:value]) * inv(3.6)
-    flow_max = density * parse(Float64, loss_resistor["flowMax"][:value]) * inv(3.6)
+    flow_min = density * _parse_gaslib_flow(loss_resistor["flowMin"])
+    flow_max = density * _parse_gaslib_flow(loss_resistor["flowMin"])
 
     if flow_max <= 0.0
         flow_min, flow_max = -flow_max, -flow_min
         fr_junction, to_junction = to_junction, fr_junction
     end
 
-    p_loss = parse(Float64, loss_resistor["pressureLoss"][:value]) * 1.0e5
+    p_loss = _parse_gaslib_pressure(loss_resistor["pressureLoss"])
     is_bidirectional = flow_min > 0.0 ? 0 : 1
 
     return Dict{String,Any}(
-        "fr_junction" => fr_junction,
-        "to_junction" => to_junction,
-        "flow_min" => flow_min,
-        "flow_max" => flow_max,
-        "p_loss" => p_loss,
-        "is_per_unit" => 0,
-        "status" => 1,
-        "is_si_units" => 1,
-        "is_english_units" => 0,
-        "is_bidirectional" => is_bidirectional,
+        "fr_node" => fr_junction,
+        "to_node" => to_junction,
+        "min_flow" => flow_min,
+        "max_flow" => flow_max,
+        "pressure_loss" => p_loss,
+        "is_bidirectional" => is_bidirectional, 
+        "name" => loss_resistor[:id]
     )
 end
 
 
 function _get_short_pipe_entry(short_pipe, density::Float64)
     fr_junction, to_junction = short_pipe[:from], short_pipe[:to]
-    flow_min = density * parse(Float64, short_pipe["flowMin"][:value]) * inv(3.6)
-    flow_max = density * parse(Float64, short_pipe["flowMax"][:value]) * inv(3.6)
+    flow_min = density * _parse_gaslib_flow(short_pipe["flowMin"])
+    flow_max = density * _parse_gaslib_flow(short_pipe["flowMax"])
 
     if flow_max <= 0.0
         flow_min, flow_max = -flow_max, -flow_min
@@ -471,13 +491,13 @@ function _get_short_pipe_entry(short_pipe, density::Float64)
     is_bidirectional = flow_min > 0.0 ? 0 : 1
 
     return Dict{String,Any}(
-        "fr_junction" => fr_junction,
-        "to_junction" => to_junction,
+        "fr_node" => fr_junction,
+        "to_node" => to_junction,
         "is_bidirectional" => is_bidirectional,
-        "is_per_unit" => 0,
-        "status" => 1,
-        "is_si_units" => 1,
-        "is_english_units" => 0,
+        "name" => short_pipe[:id], 
+        "min_flow" => flow_min, 
+        "max_flow" => flow_max, 
+        "name" => short_pipe[:id]
     )
 end
 
@@ -511,8 +531,8 @@ end
 
 function _get_resistor_entry(resistor, density::Float64)
     fr_junction, to_junction = resistor[:from], resistor[:to]
-    flow_min = density * parse(Float64, resistor["flowMin"][:value]) * inv(3.6)
-    flow_max = density * parse(Float64, resistor["flowMax"][:value]) * inv(3.6)
+    flow_min = density * _parse_gaslib_flow(resistor["flowMin"])
+    flow_max = density * _parse_gaslib_flow(resistor["flowMax"])
 
     if flow_max <= 0.0
         flow_min, flow_max = -flow_max, -flow_min
@@ -524,25 +544,24 @@ function _get_resistor_entry(resistor, density::Float64)
     is_bidirectional = flow_min > 0.0 ? 0 : 1
 
     return Dict{String,Any}(
-        "fr_junction" => fr_junction,
-        "to_junction" => to_junction,
-        "flow_min" => flow_min,
-        "flow_max" => flow_max,
+        "fr_node" => fr_junction,
+        "to_node" => to_junction,
+        "min_flow" => flow_min,
+        "max_flow" => flow_max,
         "drag" => drag,
         "diameter" => diameter,
         "is_per_unit" => 0,
-        "status" => 1,
-        "is_si_units" => 1,
-        "is_english_units" => 0,
         "is_bidirectional" => is_bidirectional,
+        "name" => resistor[:id]
     )
 end
 
 
 function _get_valve_entry(valve, density::Float64)
     fr_junction, to_junction = valve[:from], valve[:to]
-    flow_min = density * parse(Float64, valve["flowMin"][:value]) * inv(3.6)
-    flow_max = density * parse(Float64, valve["flowMax"][:value]) * inv(3.6)
+    flow_min = density * _parse_gaslib_flow(valve["flowMin"])
+    flow_max = density * _parse_gaslib_flow(valve["flowMax"])
+    pressure_differential_max = _parse_gaslib_pressure(valve["pressureDifferentialMax"])
 
     if flow_max <= 0.0
         flow_min, flow_max = -flow_max, -flow_min
@@ -552,23 +571,21 @@ function _get_valve_entry(valve, density::Float64)
     is_bidirectional = flow_min > 0.0 ? 0 : 1
 
     return Dict{String,Any}(
-        "fr_junction" => fr_junction,
-        "is_english_units" => 0,
-        "to_junction" => to_junction,
-        "flow_min" => flow_min,
-        "flow_max" => flow_max,
-        "status" => 1,
-        "is_per_unit" => 0,
-        "is_si_units" => 1,
+        "fr_node" => fr_junction,
+        "to_node" => to_junction,
+        "min_flow" => flow_min,
+        "max_flow" => flow_max,
+        "max_pressure_differential" => pressure_differential_max,
         "is_bidirectional" => is_bidirectional,
+        "name" => valve[:id]
     )
 end
 
 
 function _get_regulator_entry(regulator, density::Float64)
     fr_junction, to_junction = regulator[:from], regulator[:to]
-    flow_min = density * parse(Float64, regulator["flowMin"][:value]) * inv(3.6)
-    flow_max = density * parse(Float64, regulator["flowMax"][:value]) * inv(3.6)
+    flow_min = density * _parse_gaslib_flow(regulator["flowMin"])
+    flow_max = density * _parse_gaslib_flow(regulator["flowMax"])
 
     if flow_max <= 0.0
         flow_min, flow_max = -flow_max, -flow_min
@@ -653,7 +670,7 @@ end
 
 
 function _read_gaslib_junctions(topology::XMLDict.XMLDictElement)
-    node_types = ["innode", "sink", "source", "boundaryNode"]
+    node_types = ["innode", "sink", "source"]
     node_xml = vcat([get(topology["nodes"], x, []) for x in node_types]...)
     return Dict{String,Any}(x[:id] => _get_junction_entry(x) for x in node_xml)
 end
@@ -736,7 +753,7 @@ function _read_gaslib_short_pipes(topology::XMLDict.XMLDictElement, density::Flo
     # Resistors with drag equal to zero should also be considered short pipes.
     resistor_xml = _get_component_dict(get(topology["connections"], "resistor", []))
     resistor_xml = filter(x -> "dragFactor" in collect(keys(x.second)), resistor_xml)
-    resistor_xml = filter(x -> parse(Float64, x.second["dragFactor"][:value]) <= 0.0, resistor_xml)
+    resistor_xml = filter(x -> isapprox(parse(Float64, x.second["dragFactor"][:value]), 0.0, atol=0.001), resistor_xml)
     resistors = Dict{String,Any}(i => _get_short_pipe_entry(x, density) for (i, x) in resistor_xml)
 
     # Return the merged dictionary of short pipes and resistors.
