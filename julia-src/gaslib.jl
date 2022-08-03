@@ -259,22 +259,20 @@ function _get_compressor_entry(
     density::Float64,
 )
     fr_junction, to_junction = compressor[:from], compressor[:to]
-    inlet_p_min = parse(Float64, compressor["pressureInMin"][:value]) * 1.0e5
-    inlet_p_max = parse(Float64, compressor["pressureOutMax"][:value]) * 1.0e5
-    outlet_p_min = parse(Float64, compressor["pressureInMin"][:value]) * 1.0e5
-    outlet_p_max = parse(Float64, compressor["pressureOutMax"][:value]) * 1.0e5
-    flow_min = density * parse(Float64, compressor["flowMin"][:value]) * inv(3.6)
-    flow_max = density * parse(Float64, compressor["flowMax"][:value]) * inv(3.6)
+    inlet_p_min = _parse_gaslib_pressure(compressor["pressureInMin"]) 
+    outlet_p_max = _parse_gaslib_pressure(compressor["pressureOutMax"])
+    flow_min = density * _parse_gaslib_flow(compressor["flowMin"])
+    flow_max = density * _parse_gaslib_flow(compressor["flowMax"])
     bypass_required = :internalBypassRequired in keys(compressor) ?
-        parse(Int, compressor[:internalBypassRequired]) : 1
+        parse(Int, compressor[:internalBypassRequired]) : 0
 
     if flow_max <= 0.0
         flow_min, flow_max = -flow_max, -flow_min
         fr_junction, to_junction = to_junction, fr_junction
     end
 
-    flow_min = bypass_required == 1 ? -flow_max : flow_min
-
+    flow_min = bypass_required == 1 ? -flow_max : max(flow_min, 0.0)
+    
     if flow_min >= 0.0
         directionality = 1
     elseif bypass_required == 1 && sign(flow_min) == -sign(flow_max)
@@ -435,7 +433,7 @@ function _get_pipe_entry(pipe, junctions, density::Float64)
         fr_junction, to_junction = to_junction, fr_junction
     end
 
-    is_bidirectional = flow_min > 0.0 ? 0 : 1
+    is_bidirectional = flow_min >= 0.0 ? 0 : 1
 
     return Dict{String,Any}(
         "fr_node" => fr_junction,
@@ -464,7 +462,7 @@ function _get_loss_resistor_entry(loss_resistor, density::Float64)
     end
 
     p_loss = _parse_gaslib_pressure(loss_resistor["pressureLoss"])
-    is_bidirectional = flow_min > 0.0 ? 0 : 1
+    is_bidirectional = flow_min >= 0.0 ? 0 : 1
 
     return Dict{String,Any}(
         "fr_node" => fr_junction,
@@ -488,7 +486,7 @@ function _get_short_pipe_entry(short_pipe, density::Float64)
         fr_junction, to_junction = to_junction, fr_junction
     end
 
-    is_bidirectional = flow_min > 0.0 ? 0 : 1
+    is_bidirectional = flow_min >= 0.0 ? 0 : 1
 
     return Dict{String,Any}(
         "fr_node" => fr_junction,
@@ -541,7 +539,7 @@ function _get_resistor_entry(resistor, density::Float64)
 
     diameter = _parse_gaslib_length(resistor["diameter"])
     drag = parse(Float64, resistor["dragFactor"][:value])
-    is_bidirectional = flow_min > 0.0 ? 0 : 1
+    is_bidirectional = flow_min >= 0.0 ? 0 : 1
 
     return Dict{String,Any}(
         "fr_node" => fr_junction,
@@ -568,7 +566,7 @@ function _get_valve_entry(valve, density::Float64)
         fr_junction, to_junction = to_junction, fr_junction
     end
 
-    is_bidirectional = flow_min > 0.0 ? 0 : 1
+    is_bidirectional = flow_min >= 0.0 ? 0 : 1
 
     return Dict{String,Any}(
         "fr_node" => fr_junction,
@@ -592,30 +590,62 @@ function _get_regulator_entry(regulator, density::Float64)
         fr_junction, to_junction = to_junction, fr_junction
     end
 
-    bypass_required = :internalBypassRequired in keys(regulator) ?
-        parse(Int, regulator[:internalBypassRequired]) : 1
+    pressure_differential_min = "pressureDifferentialMin" in keys(regulator) ?
+        _parse_gaslib_pressure(regulator["pressureDifferentialMin"]) : NaN
+    pressure_differential_max = "pressureDifferentialMax" in keys(regulator) ?
+        _parse_gaslib_pressure(regulator["pressureDifferentialMax"]) : NaN
+    pressure_set = "pressureSet" in keys(regulator) ? 
+        _parse_gaslib_pressure(regulator["pressureSet"]) : NaN 
+    
+    pressure_in_min = _parse_gaslib_pressure(regulator["pressureInMin"])
+    pressure_out_max = _parse_gaslib_pressure(regulator["pressureOutMax"])
 
-    flow_min = bypass_required == 1 ? -flow_max : flow_min
-    reduction_factor_min, reduction_factor_max = 0.0, 1.0
-    is_bidirectional = flow_min > 0.0 ? 0 : 1
+    drag_in = "dragFactorIn" in keys(regulator) ? 
+        parse(Float64, regulator["dragFactorIn"][:value]) : NaN 
+    diameter_in = "diameterIn" in keys(regulator) ?
+        _parse_gaslib_length(regulator["diameterIn"]) : NaN 
+    pressure_loss_in = "pressureLossIn" in keys(regulator) ? 
+        _parse_gaslib_pressure(regulator["pressureLossIn"]) : NaN 
+    
+    drag_out = "dragFactorOut" in keys(regulator) ? 
+        parse(Float64, regulator["dragFactorOut"][:value]) : NaN 
+    diameter_out = "diameterOut" in keys(regulator) ?
+        _parse_gaslib_length(regulator["diameterOut"]) : NaN 
+    pressure_loss_out = "pressureLossOut" in keys(regulator) ? 
+        _parse_gaslib_pressure(regulator["pressureLossOut"]) : NaN 
+
+
+    bypass_required = :internalBypassRequired in keys(regulator) ?
+        parse(Int, regulator[:internalBypassRequired]) : 0
+
+    flow_min = bypass_required == 1 ? -flow_max : max(flow_min, 0.0)
+    reduction_factor_min, reduction_factor_max = 0.25, 1.0
+    is_bidirectional = flow_min >= 0.0 ? 0 : 1
     bypass_required = bypass_required
 
     return Dict{String,Any}(
-        "fr_junction" => fr_junction,
-        "is_english_units" => 0,
-        "to_junction" => to_junction,
-        "flow_min" => flow_min,
-        "is_si_units" => 1,
-        "flow_max" => flow_max,
-        "reduction_factor_min" => reduction_factor_min,
-        "reduction_factor_max" => reduction_factor_max,
-        "status" => 1,
-        "is_bidirectional" => is_bidirectional,
-        "is_per_unit" => 0,
+        "fr_node" => fr_junction,
+        "to_node" => to_junction,
+        "name" => regulator[:id],
+        "min_flow" => flow_min,
+        "max_flow" => flow_max,
+        "min_reduction_factor" => reduction_factor_min,
+        "max_reduction_factor" => reduction_factor_max,
         "bypass_required" => bypass_required,
+        "is_bidirectional" => is_bidirectional,
+        "min_pressure_differential" => pressure_differential_min, 
+        "max_pressure_differential" => pressure_differential_max,
+        "pressure_set" => pressure_set, 
+        "min_pressure_in" => pressure_in_min, 
+        "max_pressure_out" => pressure_out_max, 
+        "drag_in" => drag_in, 
+        "drag_out" => drag_out, 
+        "diameter_in" => diameter_in, 
+        "diameter_out" => diameter_out, 
+        "pressure_loss_in" => pressure_loss_in, 
+        "pressure_loss_out" => pressure_loss_out
     )
 end
-
 
 function _read_gaslib_compressors(
     topology,
