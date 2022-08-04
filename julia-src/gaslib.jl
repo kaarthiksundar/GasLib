@@ -16,6 +16,10 @@ function parse_gaslib(zip_path::Union{IO,String})
     fid = findfirst(x -> occursin(".cs", x), file_paths)
     compressor_xml = fid !== nothing ? _parse_xml_file(zip_reader, fid) : Dict()
 
+    # Parse the combined decisions XML file.
+    fid = findfirst(x -> occursin(".cdf", x), file_paths)
+    cd_xml = fid !== nothing ? _parse_xml_file(zip_reader, fid) : Dict()
+
     # Parse the nomination XML file(s).
     fids = findall(x -> occursin(".scn", x), file_paths)
 
@@ -70,17 +74,19 @@ function parse_gaslib(zip_path::Union{IO,String})
     )
     deliveries = _read_gaslib_deliveries(topology_xml, nomination_xml, density)
     receipts = _read_gaslib_receipts(topology_xml, nomination_xml, density)
+
+    combined_decisions = _read_gaslib_cd(cd_xml)
     
     return (junctions = junctions, pipes = pipes, short_pipes=short_pipes, 
         valves = valves, resistors = resistors, loss_resistors = loss_resistors, 
         manual_control_valves = manual_control_valves, 
         automated_control_valves = automated_control_valves, 
         compressors = compressors, deliveries = deliveries, 
-        receipts = receipts)
+        receipts = receipts, combined_decisions = cd_xml)
 
 
     # Add auxiliary nodes for bidirectional control_valves.
-    _add_auxiliary_junctions!(junctions, control_valves)
+    # _add_auxiliary_junctions!(junctions, control_valves)
 
     # Get additional metadata.
     name = topology_xml["information"]["title"]
@@ -144,7 +150,7 @@ function _correct_ids(data::Dict{String,<:Any})
         node_names = sort(collect(keys(data[node_type])))
         node_mapping = Dict(k => i for (i, k) in enumerate(node_names))
 
-        for (node_name, node) in data[node_type]
+        for (node_name, _) in data[node_type]
             i = node_mapping[node_name]
             new_data[node_type][string(i)] = data[node_type][node_name]
             new_data[node_type][string(i)]["id"] = i
@@ -662,6 +668,13 @@ function _get_automated_control_valve_entry(control_valve, density::Float64)
     )
 end
 
+function _get_decision_group_entry(dg)
+    components = Vector{Tuple{Any,Any}}()
+    on_off_status = Dict{String,Any}()
+    flow_direction = Dict{String,Any}()
+    mode = Dict{String,Any}()
+end 
+
 function _read_gaslib_compressors(
     topology,
     compressor_stations,
@@ -820,3 +833,8 @@ function _read_gaslib_valves(topology::XMLDict.XMLDictElement, density::Float64)
     valve_xml = _get_component_dict(get(topology["connections"], "valve", []))
     return Dict{String,Any}(i => _get_valve_entry(x, density) for (i, x) in valve_xml)
 end
+
+function _read_gaslib_cd(cd::XMLDict.XMLDictElement)
+    cd_xml = _get_component_dict(get(cd, "decisionGroup", []))
+    return Dict{String,Any}(i => _get_decision_group_entry(x) for (i, x) in cd_xml)
+end 
