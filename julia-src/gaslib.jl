@@ -68,15 +68,16 @@ function parse_gaslib(zip_path::Union{IO,String})
         isentropic_exponent,
         density,
     )
+    deliveries = _read_gaslib_deliveries(topology_xml, nomination_xml, density)
+    receipts = _read_gaslib_receipts(topology_xml, nomination_xml, density)
+    
     return (junctions = junctions, pipes = pipes, short_pipes=short_pipes, 
         valves = valves, resistors = resistors, loss_resistors = loss_resistors, 
         manual_control_valves = manual_control_valves, 
         automated_control_valves = automated_control_valves, 
-        compressors = compressors)
-    
-    
-    deliveries = _read_gaslib_deliveries(topology_xml, nomination_xml, density)
-    receipts = _read_gaslib_receipts(topology_xml, nomination_xml, density)
+        compressors = compressors, deliveries = deliveries, 
+        receipts = receipts)
+
 
     # Add auxiliary nodes for bidirectional control_valves.
     _add_auxiliary_junctions!(junctions, control_valves)
@@ -320,26 +321,38 @@ end
 function _get_delivery_entry(delivery, density::Float64)
     if delivery["flow"] isa Array
         min_id = findfirst(x -> x[:bound] == "lower", delivery["flow"])
-        withdrawal_min = density * parse(Float64, delivery["flow"][min_id][:value]) * inv(3.6)
+        withdrawal_min = density * _parse_gaslib_flow(delivery["flow"][min_id])
         max_id = findfirst(x -> x[:bound] == "upper", delivery["flow"])
-        withdrawal_max = density * parse(Float64, delivery["flow"][max_id][:value]) * inv(3.6)
+        withdrawal_max = density * _parse_gaslib_flow(delivery["flow"][max_id])
     else
-        withdrawal_min = density * parse(Float64, delivery["flow"][:value]) * inv(3.6)
-        withdrawal_max = density * parse(Float64, delivery["flow"][:value]) * inv(3.6)
+        withdrawal_min = density * _parse_gaslib_flow(delivery["flow"])
+        withdrawal_max = density *_parse_gaslib_flow(delivery["flow"])
     end
+
+    if haskey(delivery, "pressure")
+        if delivery["pressure"] isa Array 
+            min_id = findfirst(x -> x[:bound] == "lower", delivery["pressure"])
+            pressure_min = _parse_gaslib_pressure(delivery["pressure"][min_id])
+            max_id = findfirst(x -> x[:bound] == "upper", delivery["pressure"])
+            pressure_max = _parse_gaslib_pressure(delivery["pressure"][max_id])
+        else 
+            pressure_min = _parse_gaslib_pressure(delivery["pressure"])
+            pressure_max = _parse_gaslib_pressure(delivery["pressure"])
+        end 
+    else 
+        pressure_min, pressure_max = NaN, NaN
+    end 
 
     is_dispatchable = withdrawal_min != withdrawal_max ? 1 : 0
 
     return Dict{String,Any}(
-        "withdrawal_min" => withdrawal_min,
-        "withdrawal_max" => withdrawal_max,
-        "withdrawal_nominal" => withdrawal_max,
-        "is_dispatchable" => is_dispatchable,
-        "is_per_unit" => 0,
-        "status" => 1,
-        "is_si_units" => 1,
-        "is_english_units" => 0,
-        "junction_id" => delivery[:id],
+        "node_id" => delivery[:id],
+        "min_withdrawal" => withdrawal_min,
+        "max_withdrawal" => withdrawal_max,
+        "nominal_withdrawal" => withdrawal_max,
+        "min_pressure" => pressure_min, 
+        "max_pressure" => pressure_max,
+        "is_dispatchable" => is_dispatchable
     )
 end
 
@@ -481,26 +494,38 @@ end
 function _get_receipt_entry(receipt, density::Float64)
     if receipt["flow"] isa Array
         min_id = findfirst(x -> x[:bound] == "lower", receipt["flow"])
-        injection_min = density * parse(Float64, receipt["flow"][min_id][:value]) * inv(3.6)
+        injection_min = density * _parse_gaslib_flow(receipt["flow"][min_id]) 
         max_id = findfirst(x -> x[:bound] == "upper", receipt["flow"])
-        injection_max = density * parse(Float64, receipt["flow"][max_id][:value]) * inv(3.6)
+        injection_max = density * density * _parse_gaslib_flow(receipt["flow"][max_id]) 
     else
-        injection_min = density * parse(Float64, receipt["flow"][:value]) * inv(3.6)
-        injection_max = density * parse(Float64, receipt["flow"][:value]) * inv(3.6)
+        injection_min = density * _parse_gaslib_flow(receipt["flow"]) 
+        injection_max = density * _parse_gaslib_flow(receipt["flow"]) 
     end
+
+    if haskey(receipt, "pressure")
+        if receipt["pressure"] isa Array 
+            min_id = findfirst(x -> x[:bound] == "lower", receipt["pressure"])
+            pressure_min = _parse_gaslib_pressure(receipt["pressure"][min_id])
+            max_id = findfirst(x -> x[:bound] == "upper", receipt["pressure"])
+            pressure_max = _parse_gaslib_pressure(receipt["pressure"][max_id])
+        else 
+            pressure_min = _parse_gaslib_pressure(receipt["pressure"])
+            pressure_max = _parse_gaslib_pressure(receipt["pressure"])
+        end
+    else 
+        pressure_min, pressure_max = NaN, NaN 
+    end  
 
     is_dispatchable = injection_min != injection_max ? 1 : 0
 
     return Dict{String,Any}(
-        "injection_min" => injection_min,
-        "injection_max" => injection_max,
-        "injection_nominal" => injection_max,
-        "is_dispatchable" => is_dispatchable,
-        "is_per_unit" => 0,
-        "status" => 1,
-        "is_si_units" => 1,
-        "is_english_units" => 0,
-        "junction_id" => receipt[:id],
+        "node_id" => receipt[:id],
+        "min_injection" => injection_min,
+        "max_injection" => injection_max,
+        "nominal_injection" => injection_max,
+        "min_pressure" => pressure_min, 
+        "max_pressure" => pressure_max,
+        "is_dispatchable" => is_dispatchable
     )
 end
 
@@ -670,19 +695,19 @@ function _read_gaslib_deliveries(
     source_ids = [x[:id] for x in get(topology["nodes"], "source", [])]
     source_xml = filter(x -> x.second[:id] in source_ids, node_xml)
     source_data = Dict{String,Any}(i => _get_delivery_entry(x, density) for (i, x) in source_xml)
-    source_data = filter(x -> x.second["withdrawal_max"] < 0.0, source_data)
+    source_data = filter(x -> x.second["max_withdrawal"] < 0.0, source_data)
 
     # Collect sink nodes with positive withdrawals.
     sink_ids = [x[:id] for x in get(topology["nodes"], "sink", [])]
     sink_xml = filter(x -> x.second[:id] in sink_ids, node_xml)
     sink_data = Dict{String,Any}(i => _get_delivery_entry(x, density) for (i, x) in sink_xml)
-    sink_data = filter(x -> x.second["withdrawal_min"] > 0.0, sink_data)
+    sink_data = filter(x -> x.second["min_withdrawal"] > 0.0, sink_data)
 
     # For sink nodes with negative injections, negate the values.
     for (i, source) in source_data
-        source["withdrawal_min"] *= -1.0
-        source["withdrawal_max"] *= -1.0
-        source["withdrawal_nominal"] *= -1.0
+        source["max_withdrawal"] *= -1.0
+        source["max_withdrawal"] *= -1.0
+        source["nominal_withdrawal"] *= -1.0
     end
 
     return merge(source_data, sink_data)
@@ -728,19 +753,19 @@ function _read_gaslib_receipts(
     source_ids = [x[:id] for x in get(topology["nodes"], "source", [])]
     source_xml = filter(x -> x.second[:id] in source_ids, node_xml)
     source_data = Dict{String,Any}(i => _get_receipt_entry(x, density) for (i, x) in source_xml)
-    source_data = filter(x -> x.second["injection_min"] > 0.0, source_data)
+    source_data = filter(x -> x.second["min_injection"] > 0.0, source_data)
 
     # Collect sink nodes with negative withdrawals.
     sink_ids = [x[:id] for x in get(topology["nodes"], "sink", [])]
     sink_xml = filter(x -> x.second[:id] in sink_ids, node_xml)
     sink_data = Dict{String,Any}(i => _get_receipt_entry(x, density) for (i, x) in sink_xml)
-    sink_data = filter(x -> x.second["injection_max"] < 0.0, sink_data)
+    sink_data = filter(x -> x.second["max_injection"] < 0.0, sink_data)
 
     # For sink nodes with negative withdrawals, negate the values.
-    for (i, sink) in sink_data
-        sink["injection_min"] *= -1.0
-        sink["injection_max"] *= -1.0
-        sink["injection_nominal"] *= -1.0
+    for (_, sink) in sink_data
+        sink["min_injection"] *= -1.0
+        sink["max_injection"] *= -1.0
+        sink["nominal_injection"] *= -1.0
     end
 
     return merge(source_data, sink_data)
@@ -781,7 +806,9 @@ function _read_gaslib_short_pipes(topology::XMLDict.XMLDictElement, density::Flo
     # Resistors with drag equal to zero should also be considered short pipes.
     resistor_xml = _get_component_dict(get(topology["connections"], "resistor", []))
     resistor_xml = filter(x -> "dragFactor" in collect(keys(x.second)), resistor_xml)
-    resistor_xml = filter(x -> isapprox(parse(Float64, x.second["dragFactor"][:value]), 0.0, atol=0.001), resistor_xml)
+    resistor_xml = filter(x -> 
+        isapprox(parse(Float64, x.second["dragFactor"][:value]), 0.0, atol=0.001), 
+        resistor_xml)
     resistors = Dict{String,Any}(i => _get_short_pipe_entry(x, density) for (i, x) in resistor_xml)
 
     # Return the merged dictionary of short pipes and resistors.
