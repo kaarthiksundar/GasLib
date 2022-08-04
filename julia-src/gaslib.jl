@@ -60,12 +60,6 @@ function parse_gaslib(zip_path::Union{IO,String})
 
     manual_control_valves = _read_gaslib_manual_control_valves(topology_xml, density)
     automated_control_valves = _read_gaslib_automated_control_valves(topology_xml, density)
-    return (junctions = junctions, pipes = pipes, short_pipes=short_pipes, 
-        valves = valves, resistors = resistors, loss_resistors = loss_resistors, 
-        manual_control_valves = manual_control_valves, 
-        automated_control_valves = automated_control_valves)
-    
-    
     compressors = _read_gaslib_compressors(
         topology_xml,
         compressor_xml,
@@ -74,6 +68,13 @@ function parse_gaslib(zip_path::Union{IO,String})
         isentropic_exponent,
         density,
     )
+    return (junctions = junctions, pipes = pipes, short_pipes=short_pipes, 
+        valves = valves, resistors = resistors, loss_resistors = loss_resistors, 
+        manual_control_valves = manual_control_valves, 
+        automated_control_valves = automated_control_valves, 
+        compressors = compressors)
+    
+    
     deliveries = _read_gaslib_deliveries(topology_xml, nomination_xml, density)
     receipts = _read_gaslib_receipts(topology_xml, nomination_xml, density)
 
@@ -262,39 +263,32 @@ function _get_compressor_entry(
     density::Float64,
 )
     fr_junction, to_junction = compressor[:from], compressor[:to]
+    fuel_gas_node = compressor[:fuelGasVertex]
     inlet_p_min = _parse_gaslib_pressure(compressor["pressureInMin"]) 
     outlet_p_max = _parse_gaslib_pressure(compressor["pressureOutMax"])
     flow_min = density * _parse_gaslib_flow(compressor["flowMin"])
     flow_max = density * _parse_gaslib_flow(compressor["flowMax"])
     bypass_required = :internalBypassRequired in keys(compressor) ?
-        parse(Int, compressor[:internalBypassRequired]) : 0
+        parse(Int, compressor[:internalBypassRequired]) : 1
 
-    if flow_max <= 0.0
-        flow_min, flow_max = -flow_max, -flow_min
-        fr_junction, to_junction = to_junction, fr_junction
-    end
-
-    flow_min = bypass_required == 1 ? -flow_max : max(flow_min, 0.0)
+    drag_in = "dragFactorIn" in keys(compressor) ? 
+        parse(Float64, compressor["dragFactorIn"][:value]) : NaN 
+    diameter_in = "diameterIn" in keys(compressor) ?
+        _parse_gaslib_length(compressor["diameterIn"]) : NaN 
+    pressure_loss_in = "pressureLossIn" in keys(compressor) ? 
+        _parse_gaslib_pressure(compressor["pressureLossIn"]) : NaN 
     
-    if flow_min >= 0.0
-        directionality = 1
-    elseif bypass_required == 1 && sign(flow_min) == -sign(flow_max)
-        directionality = 2
-    else
-        directionality = 0
-    end
+    
+    drag_out = "dragFactorOut" in keys(compressor) ? 
+        parse(Float64, compressor["dragFactorOut"][:value]) : NaN 
+    diameter_out = "diameterOut" in keys(compressor) ?
+        _parse_gaslib_length(compressor["diameterOut"]) : NaN 
+    pressure_loss_out = "pressureLossOut" in keys(compressor) ? 
+        _parse_gaslib_pressure(compressor["pressureLossOut"]) : NaN 
+    
 
-    if "diameterIn" in keys(compressor) && "diameterOut" in keys(compressor)
-        diameter_in = _parse_gaslib_length(compressor["diameterIn"])
-        diameter_out = _parse_gaslib_length(compressor["diameterOut"])
-        diameter = max(diameter_in, diameter_out)
-    else
-        diameter = nothing
-    end
-
-    c_ratio_min, c_ratio_max = 0.0, outlet_p_max * inv(inlet_p_min)
-    operating_cost = 10.0 # GasLib files don't contain cost data.
-
+    c_ratio_min, c_ratio_max = 1.0, outlet_p_max * inv(inlet_p_min)
+    
     # Calculate the maximum power.
     exp = kappa * inv(kappa - 1.0)
     H_max = R * T * 1.0 * exp * (c_ratio_max^inv(exp) - 1.0)
@@ -303,24 +297,22 @@ function _get_compressor_entry(
     power_max = H_max * abs(flow_max) * inv(0.1)
 
     return Dict{String,Any}(
-        "is_per_unit" => 0,
-        "fr_junction" => fr_junction,
-        "to_junction" => to_junction,
-        "inlet_p_min" => inlet_p_min,
-        "inlet_p_max" => inlet_p_max,
-        "outlet_p_min" => outlet_p_min,
-        "outlet_p_max" => outlet_p_max,
-        "flow_min" => flow_min,
-        "flow_max" => flow_max,
-        "diameter" => diameter,
-        "directionality" => directionality,
-        "status" => 1,
-        "is_si_units" => 1,
-        "is_english_units" => 0,
+        "fr_node" => fr_junction,
+        "to_node" => to_junction,
+        "name" => compressor[:id],
+        "min_inlet_pressure" => inlet_p_min,
+        "max_outlet_pressure" => outlet_p_max,
+        "min_flow" => flow_min,
+        "max_flow" => flow_max,
+        "drag_in" => drag_in, 
+        "drag_out" => drag_out, 
+        "diameter_in" => diameter_in, 
+        "diameter_out" => diameter_out, 
+        "pressure_loss_in" => pressure_loss_in, 
+        "pressure_loss_out" => pressure_loss_out,
         "c_ratio_min" => c_ratio_min,
         "c_ratio_max" => c_ratio_max,
-        "power_max" => power_max,
-        "operating_cost" => operating_cost,
+        "power_max" => power_max
     )
 end
 
@@ -623,7 +615,7 @@ function _get_automated_control_valve_entry(control_valve, density::Float64)
         _parse_gaslib_pressure(control_valve["pressureLossOut"]) : NaN 
 
     bypass_required = :internalBypassRequired in keys(control_valve) ?
-        parse(Int, control_valve[:internalBypassRequired]) : 0
+        parse(Int, control_valve[:internalBypassRequired]) : 1
 
     return Dict{String,Any}(
         "fr_node" => fr_junction,
