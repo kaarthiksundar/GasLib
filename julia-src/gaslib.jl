@@ -62,8 +62,7 @@ function parse_gaslib(zip_path::Union{IO,String})
     resistors = _read_gaslib_resistors(topology_xml, density)
     loss_resistors = _read_gaslib_loss_resistors(topology_xml, density)
 
-    manual_control_valves = _read_gaslib_manual_control_valves(topology_xml, density)
-    automated_control_valves = _read_gaslib_automated_control_valves(topology_xml, density)
+    control_valves = _read_gaslib_control_valves(topology_xml, density)
     compressors = _read_gaslib_compressors(
         topology_xml,
         compressor_xml,
@@ -79,14 +78,9 @@ function parse_gaslib(zip_path::Union{IO,String})
     
     return (junctions = junctions, pipes = pipes, short_pipes=short_pipes, 
         valves = valves, resistors = resistors, loss_resistors = loss_resistors, 
-        manual_control_valves = manual_control_valves, 
-        automated_control_valves = automated_control_valves, 
-        compressors = compressors, deliveries = deliveries, 
-        receipts = receipts, combined_decisions = cd_xml)
+        control_valves = control_valves, compressors = compressors, 
+        deliveries = deliveries, receipts = receipts, combined_decisions = cd_xml)
 
-
-    # Add auxiliary nodes for bidirectional control_valves.
-    # _add_auxiliary_junctions!(junctions, control_valves)
 
     # Get additional metadata.
     name = topology_xml["information"]["title"]
@@ -572,53 +566,7 @@ function _get_valve_entry(valve, density::Float64)
     )
 end
 
-
-function _get_manual_control_valve_entry(control_valve, density::Float64)
-    fr_junction, to_junction = control_valve[:from], control_valve[:to]
-    flow_min = density * _parse_gaslib_flow(control_valve["flowMin"])
-    flow_max = density * _parse_gaslib_flow(control_valve["flowMax"])
-
-    pressure_set = "pressureSet" in keys(control_valve) ? 
-        _parse_gaslib_pressure(control_valve["pressureSet"]) : NaN 
-    
-    pressure_in_min = _parse_gaslib_pressure(control_valve["pressureInMin"])
-    pressure_out_max = _parse_gaslib_pressure(control_valve["pressureOutMax"])
-
-    drag_in = "dragFactorIn" in keys(control_valve) ? 
-        parse(Float64, control_valve["dragFactorIn"][:value]) : NaN 
-    diameter_in = "diameterIn" in keys(control_valve) ?
-        _parse_gaslib_length(control_valve["diameterIn"]) : NaN 
-    pressure_loss_in = "pressureLossIn" in keys(control_valve) ? 
-        _parse_gaslib_pressure(control_valve["pressureLossIn"]) : NaN 
-    
-    
-    drag_out = "dragFactorOut" in keys(control_valve) ? 
-        parse(Float64, control_valve["dragFactorOut"][:value]) : NaN 
-    diameter_out = "diameterOut" in keys(control_valve) ?
-        _parse_gaslib_length(control_valve["diameterOut"]) : NaN 
-    pressure_loss_out = "pressureLossOut" in keys(control_valve) ? 
-        _parse_gaslib_pressure(control_valve["pressureLossOut"]) : NaN 
-
-
-    return Dict{String,Any}(
-        "fr_node" => fr_junction,
-        "to_node" => to_junction,
-        "name" => control_valve[:id],
-        "min_flow" => flow_min,
-        "max_flow" => flow_max,
-        "pressure_set" => pressure_set, 
-        "min_pressure_in" => pressure_in_min, 
-        "max_pressure_out" => pressure_out_max, 
-        "drag_in" => drag_in, 
-        "drag_out" => drag_out, 
-        "diameter_in" => diameter_in, 
-        "diameter_out" => diameter_out, 
-        "pressure_loss_in" => pressure_loss_in, 
-        "pressure_loss_out" => pressure_loss_out
-    )
-end
-
-function _get_automated_control_valve_entry(control_valve, density::Float64)
+function _get_control_valve_entry(control_valve, density::Float64)
     fr_junction, to_junction = control_valve[:from], control_valve[:to]
     flow_min = density * _parse_gaslib_flow(control_valve["flowMin"])
     flow_max = density * _parse_gaslib_flow(control_valve["flowMax"])
@@ -654,7 +602,7 @@ function _get_automated_control_valve_entry(control_valve, density::Float64)
         "name" => control_valve[:id],
         "min_flow" => flow_min,
         "max_flow" => flow_max,
-        "bypass_required" => bypass_required,
+        "internal_bypass_required" => bypass_required,
         "min_pressure_differential" => pressure_differential_min, 
         "max_pressure_differential" => pressure_differential_max,
         "min_pressure_in" => pressure_in_min, 
@@ -784,22 +732,12 @@ function _read_gaslib_receipts(
     return merge(source_data, sink_data)
 end
 
-function _read_gaslib_manual_control_valves(topology::XMLDict.XMLDictElement, density::Float64)
+function _read_gaslib_control_valves(topology::XMLDict.XMLDictElement, density::Float64)
     control_valve_xml = _get_component_dict(get(topology["connections"], "controlValve", []))
-    control_valve_xml = filter(x -> "pressureSet" in keys(x.second), control_valve_xml)
     return Dict{String,Any}(
-        i => _get_manual_control_valve_entry(x, density) for (i, x) in control_valve_xml
+        i => _get_control_valve_entry(x, density) for (i, x) in control_valve_xml
     )
 end
-
-function _read_gaslib_automated_control_valves(topology::XMLDict.XMLDictElement, density::Float64)
-    control_valve_xml = _get_component_dict(get(topology["connections"], "controlValve", []))
-    control_valve_xml = filter(x -> !("pressureSet" in keys(x.second)), control_valve_xml)
-    return Dict{String,Any}(
-        i => _get_automated_control_valve_entry(x, density) for (i, x) in control_valve_xml
-    )
-end
-
 
 function _read_gaslib_resistors(topology::XMLDict.XMLDictElement, density::Float64)
     resistor_xml = _get_component_dict(get(topology["connections"], "resistor", []))
