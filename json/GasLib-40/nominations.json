@@ -1,0 +1,134 @@
+{
+  "receipts": {
+    "1": {
+      "max_injection": 158.09027777777777,
+      "min_injection": 158.09027777777777
+    },
+    "2": {
+      "max_injection": 158.09027777777777,
+      "min_injection": 158.09027777777777
+    },
+    "3": {
+      "max_injection": 158.09027777777777,
+      "min_injection": 158.09027777777777
+    }
+  },
+  "deliveries": {
+    "24": {
+      "max_withdrawal": 16.354166666666668,
+      "min_withdrawal": 16.354166666666668
+    },
+    "4": {
+      "max_withdrawal": 16.354166666666668,
+      "min_withdrawal": 16.354166666666668
+    },
+    "1": {
+      "max_withdrawal": 16.354166666666668,
+      "min_withdrawal": 16.354166666666668
+    },
+    "12": {
+      "max_withdrawal": 16.354166666666668,
+      "min_withdrawal": 16.354166666666668
+    },
+    "29": {
+      "max_withdrawal": 16.354166666666668,
+      "min_withdrawal": 16.354166666666668
+    },
+    "20": {
+      "max_withdrawal": 16.354166666666668,
+      "min_withdrawal": 16.354166666666668
+    },
+    "2": {
+      "max_withdrawal": 16.354166666666668,
+      "min_withdrawal": 16.354166666666668
+    },
+    "25": {
+      "max_withdrawal": 16.354166666666668,
+      "min_withdrawal": 16.354166666666668
+    },
+    "6": {
+      "max_withdrawal": 16.354166666666668,
+      "min_withdrawal": 16.354166666666668
+    },
+    "23": {
+      "max_withdrawal": 16.354166666666668,
+      "min_withdrawal": 16.354166666666668
+    },
+    "22": {
+      "max_withdrawal": 16.354166666666668,
+      "min_withdrawal": 16.354166666666668
+    },
+    "11": {
+      "max_withdrawal": 16.354166666666668,
+      "min_withdrawal": 16.354166666666668
+    },
+    "13": {
+      "max_withdrawal": 16.354166666666668,
+      "min_withdrawal": 16.354166666666668
+    },
+    "5": {
+      "max_withdrawal": 16.354166666666668,
+      "min_withdrawal": 16.354166666666668
+    },
+    "15": {
+      "max_withdrawal": 16.354166666666668,
+      "min_withdrawal": 16.354166666666668
+    },
+    "27": {
+      "max_withdrawal": 16.354166666666668,
+      "min_withdrawal": 16.354166666666668
+    },
+    "28": {
+      "max_withdrawal": 16.354166666666668,
+      "min_withdrawal": 16.354166666666668
+    },
+    "16": {
+      "max_withdrawal": 16.354166666666668,
+      "min_withdrawal": 16.354166666666668
+    },
+    "14": {
+      "max_withdrawal": 16.354166666666668,
+      "min_withdrawal": 16.354166666666668
+    },
+    "21": {
+      "max_withdrawal": 16.354166666666668,
+      "min_withdrawal": 16.354166666666668
+    },
+    "7": {
+      "max_withdrawal": 16.354166666666668,
+      "min_withdrawal": 16.354166666666668
+    },
+    "8": {
+      "max_withdrawal": 16.354166666666668,
+      "min_withdrawal": 16.354166666666668
+    },
+    "26": {
+      "max_withdrawal": 16.354166666666668,
+      "min_withdrawal": 16.354166666666668
+    },
+    "17": {
+      "max_withdrawal": 16.354166666666668,
+      "min_withdrawal": 16.354166666666668
+    },
+    "19": {
+      "max_withdrawal": 16.354166666666668,
+      "min_withdrawal": 16.354166666666668
+    },
+    "10": {
+      "max_withdrawal": 16.354166666666668,
+      "min_withdrawal": 16.354166666666668
+    },
+    "9": {
+      "max_withdrawal": 16.354166666666668,
+      "min_withdrawal": 16.354166666666668
+    },
+    "18": {
+      "max_withdrawal": 16.354166666666668,
+      "min_withdrawal": 16.354166666666668
+    },
+    "3": {
+      "max_withdrawal": 16.354166666666668,
+      "min_withdrawal": 16.354166666666668
+    }
+  }
+}

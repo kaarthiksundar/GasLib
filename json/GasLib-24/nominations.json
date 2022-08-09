@@ -1,0 +1,38 @@
+{
+  "receipts": {
+    "1": {
+      "max_injection": 38.790336708333335,
+      "min_injection": 49.41444166666667
+    },
+    "2": {
+      "max_injection": 23.476460763888895,
+      "min_injection": 29.90631944444445
+    },
+    "3": {
+      "max_injection": 30.907107222222226,
+      "min_injection": 39.37211111111112
+    }
+  },
+  "deliveries": {
+    "4": {
+      "max_withdrawal": 26.63810277777778,
+      "min_withdrawal": 26.63810277777778
+    },
+    "1": {
+      "max_withdrawal": 21.805555555555557,
+      "min_withdrawal": 21.805555555555557
+    },
+    "5": {
+      "max_withdrawal": 21.805555555555557,
+      "min_withdrawal": 21.805555555555557
+    },
+    "2": {
+      "max_withdrawal": 21.805555555555557,
+      "min_withdrawal": 21.805555555555557
+    },
+    "3": {
+      "max_withdrawal": 26.63810277777778,
+      "min_withdrawal": 26.63810277777778
+    }
+  }
+}

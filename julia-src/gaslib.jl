@@ -74,7 +74,7 @@ function parse_gaslib(zip_path::Union{IO,String})
     deliveries = _read_gaslib_deliveries(topology_xml, nomination_xml, density)
     receipts = _read_gaslib_receipts(topology_xml, nomination_xml, density)
 
-    decision_groups = _read_gaslib_cd(cd_xml)
+    decision_groups = !isempty(cd_xml) ? _read_gaslib_cd(cd_xml) : Dict{String,Any}()
 
     # Get additional metadata.
     name = topology_xml["information"]["title"]
@@ -139,9 +139,14 @@ function _correct_ids(data::Dict{String,<:Any})
             new_data[node_type][string(i)] = data[node_type][node_name]
             new_data[node_type][string(i)]["id"] = i
             new_data[node_type][string(i)]["node_id"] = junction_mapping[node_name]
+            new_data[node_type][string(i)]["name"] = node_name
             delete!(new_data[node_type], node_name)
         end
     end
+
+    compressor_mapping = Dict()
+    control_valve_mapping = Dict() 
+    valve_mapping = Dict()
 
     for edge_type in [
         "compressors",
@@ -154,24 +159,46 @@ function _correct_ids(data::Dict{String,<:Any})
     ]
         edge_names = sort(collect(keys(data[edge_type])))
         edge_mapping = Dict(k => a for (a, k) in enumerate(edge_names))
+        (edge_type == "compressors") && (compressor_mapping = edge_mapping)
+        (edge_type == "control_valves") && (control_valve_mapping = edge_mapping)
+        (edge_type == "valves") && (valve_mapping = edge_mapping)
 
         for (edge_name, edge) in data[edge_type]
             edge_id = edge_mapping[edge_name]
             fr_junction, to_junction = edge["fr_node"], edge["to_node"]
             edge["fr_node"] = junction_mapping[fr_junction]
             edge["to_node"] = junction_mapping[to_junction]
+            if (edge_type == "compressors") 
+                edge["fuel_node"] = junction_mapping[edge["fuel_node"]]
+            end 
             edge["id"] = edge_id
             new_data[edge_type][string(edge_id)] = edge
             delete!(new_data[edge_type], edge_name)
         end
     end
 
-    for (_, dg_val) in data["decision_groups"]
+    
+    for (dg_key, dg_val) in new_data["decision_groups"]
         for (_, d_val) in dg_val 
             for (_, decision) in d_val 
                 for component in decision
-                    @show component
-                    # TODO: correct component ids for compressors, valves and control valves
+                    if (component["component_type"] == "compressor") 
+                        old_id = component["id"]
+                        component["id"] = compressor_mapping[old_id]
+                    end 
+                    if (component["component_type"] == "valve") 
+                        old_id = component["id"]
+                        if !haskey(valve_mapping, old_id)
+                            # this is to accomodate bug in GasLib 4197 - valve_22
+                            delete!(new_data["decision_groups"], dg_key)
+                        else 
+                            component["id"] = valve_mapping[old_id]
+                        end
+                    end 
+                    if (component["component_type"] == "control_valve") 
+                        old_id = component["id"]
+                        component["id"] = control_valve_mapping[old_id]
+                    end 
                 end 
             end 
         end 
@@ -343,7 +370,7 @@ function _get_junction_entry(junction)
 
     return Dict{String,Any}(
         "node_id" => junction[:id], 
-        "node_name" => junction[:id],
+        "name" => junction[:id],
         "x_coord" => lat,
         "y_coord" => lon,
         "min_pressure" => p_min,
@@ -458,8 +485,7 @@ function _get_short_pipe_entry(short_pipe, density::Float64)
         "to_node" => to_junction,
         "name" => short_pipe[:id], 
         "min_flow" => flow_min, 
-        "max_flow" => flow_max, 
-        "name" => short_pipe[:id]
+        "max_flow" => flow_max
     )
 end
 

@@ -1,0 +1,166 @@
+{
+  "receipts": {
+    "1": {
+      "max_injection": 3.857159201388889,
+      "min_injection": 3.857159201388889
+    },
+    "2": {
+      "max_injection": 25.856932651341953,
+      "min_injection": 25.856932651341953
+    },
+    "3": {
+      "max_injection": 54.525863189613716,
+      "min_injection": 54.525863189613716
+    }
+  },
+  "deliveries": {
+    "32": {
+      "max_withdrawal": 0.13885773124999998,
+      "min_withdrawal": 0.13885773124999998
+    },
+    "29": {
+      "max_withdrawal": 0.1834758060279861,
+      "min_withdrawal": 0.1834758060279861
+    },
+    "1": {
+      "max_withdrawal": 0.08485750243055556,
+      "min_withdrawal": 0.08485750243055556
+    },
+    "24": {
+      "max_withdrawal": 0.1566006635763889,
+      "min_withdrawal": 0.1566006635763889
+    },
+    "12": {
+      "max_withdrawal": 0.15505779989583335,
+      "min_withdrawal": 0.15505779989583335
+    },
+    "20": {
+      "max_withdrawal": 0.10307486533871528,
+      "min_withdrawal": 0.10307486533871528
+    },
+    "4": {
+      "max_withdrawal": 5.566821874449306,
+      "min_withdrawal": 5.566821874449306
+    },
+    "2": {
+      "max_withdrawal": 1.3820830135526216,
+      "min_withdrawal": 1.3820830135526216
+    },
+    "25": {
+      "max_withdrawal": 4.739395422615412,
+      "min_withdrawal": 4.739395422615412
+    },
+    "6": {
+      "max_withdrawal": 0.23142955208333335,
+      "min_withdrawal": 0.23142955208333335
+    },
+    "23": {
+      "max_withdrawal": 13.654343572916666,
+      "min_withdrawal": 13.654343572916666
+    },
+    "22": {
+      "max_withdrawal": 1.2342909444444445,
+      "min_withdrawal": 1.2342909444444445
+    },
+    "11": {
+      "max_withdrawal": 0.14348632229166666,
+      "min_withdrawal": 0.14348632229166666
+    },
+    "35": {
+      "max_withdrawal": 0.6557170642361111,
+      "min_withdrawal": 0.6557170642361111
+    },
+    "13": {
+      "max_withdrawal": 0.09334325267361113,
+      "min_withdrawal": 0.09334325267361113
+    },
+    "27": {
+      "max_withdrawal": 0.22849965395395835,
+      "min_withdrawal": 0.22849965395395835
+    },
+    "5": {
+      "max_withdrawal": 4.146249040657865,
+      "min_withdrawal": 4.146249040657865
+    },
+    "31": {
+      "max_withdrawal": 0.10414329843750002,
+      "min_withdrawal": 0.10414329843750002
+    },
+    "15": {
+      "max_withdrawal": 0.18109671023256943,
+      "min_withdrawal": 0.18109671023256943
+    },
+    "33": {
+      "max_withdrawal": 14.228288862083334,
+      "min_withdrawal": 14.228288862083334
+    },
+    "28": {
+      "max_withdrawal": 0.20171245473215277,
+      "min_withdrawal": 0.20171245473215277
+    },
+    "16": {
+      "max_withdrawal": 8.02289113888889,
+      "min_withdrawal": 8.02289113888889
+    },
+    "14": {
+      "max_withdrawal": 1.3551187707234722,
+      "min_withdrawal": 1.3551187707234722
+    },
+    "21": {
+      "max_withdrawal": 1.9611201385810422,
+      "min_withdrawal": 1.9611201385810422
+    },
+    "7": {
+      "max_withdrawal": 0.2337438476041667,
+      "min_withdrawal": 0.2337438476041667
+    },
+    "34": {
+      "max_withdrawal": 3.480700463333333,
+      "min_withdrawal": 3.480700463333333
+    },
+    "8": {
+      "max_withdrawal": 0.12342909444444444,
+      "min_withdrawal": 0.12342909444444444
+    },
+    "36": {
+      "max_withdrawal": 0.5577452205208334,
+      "min_withdrawal": 0.5577452205208334
+    },
+    "26": {
+      "max_withdrawal": 1.0155847334175883,
+      "min_withdrawal": 1.0155847334175883
+    },
+    "17": {
+      "max_withdrawal": 9.874327555555556,
+      "min_withdrawal": 9.874327555555556
+    },
+    "10": {
+      "max_withdrawal": 0.5407737200347222,
+      "min_withdrawal": 0.5407737200347222
+    },
+    "19": {
+      "max_withdrawal": 5.467137452048611,
+      "min_withdrawal": 5.467137452048611
+    },
+    "37": {
+      "max_withdrawal": 0.5852197655123264,
+      "min_withdrawal": 0.5852197655123264
+    },
+    "9": {
+      "max_withdrawal": 0.5407737200347222,
+      "min_withdrawal": 0.5407737200347222
+    },
+    "18": {
+      "max_withdrawal": 1.7742932326388887,
+      "min_withdrawal": 1.7742932326388887
+    },
+    "30": {
+      "max_withdrawal": 1.0155847334175883,
+      "min_withdrawal": 1.0155847334175883
+    },
+    "3": {
+      "max_withdrawal": 0.07714318402777778,
+      "min_withdrawal": 0.07714318402777778
+    }
+  }
+}
