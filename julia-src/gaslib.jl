@@ -74,13 +74,7 @@ function parse_gaslib(zip_path::Union{IO,String})
     deliveries = _read_gaslib_deliveries(topology_xml, nomination_xml, density)
     receipts = _read_gaslib_receipts(topology_xml, nomination_xml, density)
 
-    combined_decisions = _read_gaslib_cd(cd_xml)
-    
-    return (junctions = junctions, pipes = pipes, short_pipes=short_pipes, 
-        valves = valves, resistors = resistors, loss_resistors = loss_resistors, 
-        control_valves = control_valves, compressors = compressors, 
-        deliveries = deliveries, receipts = receipts, combined_decisions = cd_xml)
-
+    decision_groups = _read_gaslib_cd(cd_xml)
 
     # Get additional metadata.
     name = topology_xml["information"]["title"]
@@ -89,30 +83,27 @@ function parse_gaslib(zip_path::Union{IO,String})
 
     # Build the master data dictionary.
     data = Dict{String,Any}(
-        "compressor" => compressors,
-        "delivery" => deliveries,
-        "junction" => junctions,
-        "receipt" => receipts,
-        "pipe" => pipes,
-        "control_valve" => control_valves,
-        "resistor" => resistors,
-        "loss_resistor" => loss_resistors,
-        "short_pipe" => short_pipes,
-        "valve" => valves,
+        "compressors" => compressors,
+        "deliveries" => deliveries,
+        "nodes" => junctions,
+        "receipts" => receipts,
+        "pipes" => pipes,
+        "control_valves" => control_valves,
+        "resistors" => resistors,
+        "loss_resistors" => loss_resistors,
+        "short_pipes" => short_pipes,
+        "valves" => valves,
         "is_si_units" => 1,
-        "is_english_units" => 0,
-        "is_per_unit" => 0,
-        "sound_speed" => sound_speed,
         "temperature" => temperature,
         "name" => name,
         "R" => 8.314,
-        "compressibility_factor" => compressibility_factor,
         "gas_specific_gravity" => gas_specific_gravity,
-        "standard_density" => density,
         "specific_heat_capacity_ratio" => isentropic_exponent,
         "gas_molar_mass" => molar_mass,
+        "decision_groups" => decision_groups
     )
-
+    
+    
     # Assign nodal IDs in place of string IDs.
     data = _correct_ids(data)
 
@@ -129,18 +120,17 @@ end
 
 function _correct_ids(data::Dict{String,<:Any})
     new_data = deepcopy(data)
-    junction_names = sort(collect(keys(data["junction"])))
+    junction_names = sort(collect(keys(data["nodes"])))
     junction_mapping = Dict(k => i for (i, k) in enumerate(junction_names))
 
-    for (junction_name, junction) in data["junction"]
+    for (junction_name, junction) in data["nodes"]
         i = junction_mapping[junction_name]
-        new_data["junction"][string(i)] = junction
-        new_data["junction"][string(i)]["id"] = i
-        new_data["junction"][string(i)]["index"] = i
-        delete!(new_data["junction"], junction_name)
+        new_data["nodes"][string(i)] = junction
+        new_data["nodes"][string(i)]["id"] = i
+        delete!(new_data["nodes"], junction_name)
     end
 
-    for node_type in ["delivery", "receipt"]
+    for node_type in ["deliveries", "receipts"]
         node_names = sort(collect(keys(data[node_type])))
         node_mapping = Dict(k => i for (i, k) in enumerate(node_names))
 
@@ -148,65 +138,46 @@ function _correct_ids(data::Dict{String,<:Any})
             i = node_mapping[node_name]
             new_data[node_type][string(i)] = data[node_type][node_name]
             new_data[node_type][string(i)]["id"] = i
-            new_data[node_type][string(i)]["index"] = i
-            new_data[node_type][string(i)]["junction_id"] = junction_mapping[node_name]
+            new_data[node_type][string(i)]["node_id"] = junction_mapping[node_name]
             delete!(new_data[node_type], node_name)
         end
     end
 
     for edge_type in [
-        "compressor",
-        "pipe",
-        "resistor",
-        "control_valve",
-        "short_pipe",
-        "valve",
-        "loss_resistor",
+        "compressors",
+        "pipes",
+        "resistors",
+        "control_valves",
+        "short_pipes",
+        "valves",
+        "loss_resistors",
     ]
         edge_names = sort(collect(keys(data[edge_type])))
         edge_mapping = Dict(k => a for (a, k) in enumerate(edge_names))
 
         for (edge_name, edge) in data[edge_type]
             edge_id = edge_mapping[edge_name]
-            fr_junction, to_junction = edge["fr_junction"], edge["to_junction"]
-            edge["fr_junction"] = junction_mapping[fr_junction]
-            edge["to_junction"] = junction_mapping[to_junction]
-            edge["id"] = edge["index"] = edge_id
+            fr_junction, to_junction = edge["fr_node"], edge["to_node"]
+            edge["fr_node"] = junction_mapping[fr_junction]
+            edge["to_node"] = junction_mapping[to_junction]
+            edge["id"] = edge_id
             new_data[edge_type][string(edge_id)] = edge
             delete!(new_data[edge_type], edge_name)
         end
     end
 
+    for (_, dg_val) in data["decision_groups"]
+        for (_, d_val) in dg_val 
+            for (_, decision) in d_val 
+                for component in decision
+                    @show component
+                    # TODO: correct component ids for compressors, valves and control valves
+                end 
+            end 
+        end 
+    end 
+
     return new_data
-end
-
-
-function _add_auxiliary_junctions!(junctions, control_valves)
-    new_junctions = Dict{String,Any}()
-    new_control_valves = Dict{String,Any}()
-
-    for (a, control_valve) in control_valves
-        if control_valve["bypass_required"] == 1
-            fr_junction = junctions[control_valve["fr_junction"]]
-            to_junction = junctions[control_valve["to_junction"]]
-
-            junction_aux_name = a * "_aux_junction"
-            junction_aux = deepcopy(fr_junction)
-
-            control_valve_reverse_name = a * "_reverse"
-            control_valve_reverse = deepcopy(control_valve)
-            control_valve_reverse["fr_junction"] = junction_aux_name
-            control_valve_reverse["flow_min"] = -control_valve["flow_max"]
-            control_valve_reverse["flow_max"] = -control_valve["flow_min"]
-            control_valve["to_junction"] = junction_aux_name
-
-            push!(new_junctions, junction_aux_name => junction_aux)
-            push!(new_control_valves, control_valve_reverse_name => control_valve_reverse)
-        end
-    end
-
-    # junctions = _IM.update_data!(junctions, new_junctions)
-    # control_valves = _IM.update_data!(control_valves, new_control_valves)
 end
 
 
@@ -300,7 +271,9 @@ function _get_compressor_entry(
     return Dict{String,Any}(
         "fr_node" => fr_junction,
         "to_node" => to_junction,
+        "fuel_node" => fuel_gas_node,
         "name" => compressor[:id],
+        "internal_bypass_required" => bypass_required,
         "min_inlet_pressure" => inlet_p_min,
         "max_outlet_pressure" => outlet_p_max,
         "min_flow" => flow_min,
@@ -616,11 +589,57 @@ function _get_control_valve_entry(control_valve, density::Float64)
     )
 end
 
+function _get_decision_component_entry(comp, id)
+    components_in_decision = []
+    component_name = Dict{String,String}(
+        "valve" => "valve", 
+        "controlValve" => "control_valve", 
+        "compressorStation" => "compressor"
+    )
+    for (component_type, decisions) in comp
+        if isa(decisions, Vector) 
+            for decision in decisions 
+                component = Dict{String,Any}(
+                    "component_type" => component_name[component_type], 
+                    "id" => decision[:id], 
+                )
+                (haskey(decision, :value)) && (component["value"] = decision[:value])
+                (haskey(decision, :flowDirection)) && (component["flow_direction"] = decision[:flowDirection])
+                (haskey(decision, :mode)) && (component["mode"] = decision[:mode])
+                push!(components_in_decision, component)
+            end 
+        else     
+            component = Dict{String,Any}(
+                    "component_type" => component_name[component_type], 
+                    "id" => decisions[:id], 
+                )
+                (haskey(decisions, :value)) && (component["value"] = decisions[:value])
+                (haskey(decisions, :flowDirection)) && (component["flow_direction"] = decisions[:flowDirection])
+                (haskey(decisions, :mode)) && (component["mode"] = decisions[:mode])
+                push!(components_in_decision, component)
+        end 
+    end 
+    return components_in_decision
+end 
+
 function _get_decision_group_entry(dg)
-    components = Vector{Tuple{Any,Any}}()
-    on_off_status = Dict{String,Any}()
-    flow_direction = Dict{String,Any}()
-    mode = Dict{String,Any}()
+    # this can be a vector of decisions or just one decision 
+    components = Dict{String,Any}()
+    
+    if ~isa(dg["decision"], Vector)
+        id = dg["decision"][:id]
+        comp = [(x, val) for (x, val) in dg["decision"] if x != :id]
+        components[id] = _get_decision_component_entry(comp, id)
+    else 
+        for decision in dg["decision"]
+            id = decision[:id]
+            comp = [(x, val) for (x, val) in decision if x != :id]
+            components[id] = _get_decision_component_entry(comp, id)
+        end 
+    end 
+    components_with_new_ids = Dict{String,Any}(
+        string(i) => components[k] for (i, k) in enumerate(keys(components)))
+    return Dict{String,Any}("decisions" => components_with_new_ids)
 end 
 
 function _read_gaslib_compressors(
@@ -774,5 +793,6 @@ end
 
 function _read_gaslib_cd(cd::XMLDict.XMLDictElement)
     cd_xml = _get_component_dict(get(cd, "decisionGroup", []))
-    return Dict{String,Any}(i => _get_decision_group_entry(x) for (i, x) in cd_xml)
+    decision_groups = Dict{String,Any}(i => _get_decision_group_entry(x) for (i, x) in cd_xml)
+    return Dict{String,Any}(string(i) => decision_groups[k] for (i, k) in enumerate(keys(decision_groups)))
 end 
