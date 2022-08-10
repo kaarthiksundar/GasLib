@@ -17,9 +17,10 @@ function write_params_data(data, outputfolder, zip_file)
     end
 end 
 
-function write_network_data(data, outputfolder, zip_file) 
+function write_network_data(data, outputfolder, zip_file; bc=false) 
     output_folder = outputfolder * split(zip_file, ".")[1]
     (!isdir(output_folder)) && (mkdir(output_folder)) 
+
 
     network_data = Dict{String,Any}(
         "nodes" => Dict{String,Any}(), 
@@ -36,6 +37,13 @@ function write_network_data(data, outputfolder, zip_file)
 
     slack_pressure_data = Dict{String,Any}(
         "slack_pressures" => Dict{String,Any}()
+    )
+
+    bc = Dict{String,Any}(
+        "boundary_compressor" => Dict{String,Any}(),
+        "boundary_nonslack_flow" => Dict{String,Any}(),
+        "boundary_pslack" => Dict{String,Any}()
+
     )
 
     withdrawal = Dict{String,Any}()
@@ -73,8 +81,12 @@ function write_network_data(data, outputfolder, zip_file)
         if i == string(slack_node)
             network_data["nodes"][i]["slack_bool"] = 1
             slack_pressure_data["slack_pressures"][i] = 5000000
+            bc["boundary_pslack"][i] = 5000000
         else 
             network_data["nodes"][i]["slack_bool"] = 0
+            if !(withdrawal[i] == 0)
+                bc["boundary_nonslack_flow"][i] = withdrawal[i]
+            end
         end
     end
 
@@ -108,6 +120,9 @@ function write_network_data(data, outputfolder, zip_file)
             "max_c_ratio" => compressor["c_ratio_max"],
             "max_power" => compressor["power_max"]
         )
+        bc["boundary_compressor"][i] = Dict{String,Any}(
+            "control_type" => 0, "value" => compressor_ratio
+        )
     end
 
     for (i, short_pipe) in get(data, "short_pipes", [])
@@ -121,6 +136,7 @@ function write_network_data(data, outputfolder, zip_file)
         )
     end 
 
+    bc["boundary_valve"] = Dict{String,Any}("on" => [], "off" => [])
     for (i, valve) in get(data, "valves", []) 
         network_data["valves"][i] = Dict{String,Any}(
             "id" => parse(Int, i),
@@ -131,8 +147,10 @@ function write_network_data(data, outputfolder, zip_file)
             "max_flow" => round(valve["max_flow"], digits=4), 
             "max_pressure_differential" => valve["max_pressure_differential"]
         )
+        push!(bc["boundary_valve"]["on"], parse(Int, i))
     end 
 
+    bc["boundary_control_valve"] = Dict{String,Any}("on" => [], "off" => [])
     for (i, control_valve) in get(data, "control_valves", []) 
         network_data["control_valves"][i] = Dict{String,Any}(
             "id" => parse(Int, i),
@@ -144,6 +162,10 @@ function write_network_data(data, outputfolder, zip_file)
             "internal_bypass_required" => control_valve["internal_bypass_required"],
             "min_pressure_differential" => control_valve["min_pressure_differential"],
             "max_pressure_differential" => control_valve["max_pressure_differential"]
+        )
+        push!(bc["boundary_control_valve"]["on"], parse(Int, i))
+        bc["boundary_control_valve"][i] = Dict{String,Any}(
+            "control_type" => 0, "value" => control_valve_ratio
         )
     end 
 
@@ -192,8 +214,14 @@ function write_network_data(data, outputfolder, zip_file)
         JSON.print(f, network_data, 2)
     end
 
+
     open(output_folder * "/slack_pressures.json", "w") do f 
         JSON.print(f, slack_pressure_data, 2)
+
+    if (bc == true)
+        open(output_folder * "/bc.json", "w") do f 
+            JSON.print(f, bc, 2)
+        end
     end
 end 
 
