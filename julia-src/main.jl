@@ -12,7 +12,7 @@ function parse_cli_args(args)
         "--file"
             help="GasLib zipped directory" 
             arg_type = String
-            default="GasLib-4197.zip"
+            default="GasLib-582.zip"
         "--outputfolder"
             arg_type = String
             default = "./json/"
@@ -24,7 +24,7 @@ end
 function main(ARGS)
     args = parse_cli_args(ARGS)
     data = parse_gaslib(args["datafolder"] * args["file"])
-    write_network_data(data, args["outputfolder"], args["file"])
+    write_network_data(data, args["outputfolder"], args["file"]; bc_flag=true)
     write_params_data(data, args["outputfolder"], args["file"])
     write_decision_group_data(data, args["outputfolder"], args["file"])
     write_nomination_data(data, args["outputfolder"], args["file"])

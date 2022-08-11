@@ -17,7 +17,7 @@ function write_params_data(data, outputfolder, zip_file)
     end
 end 
 
-function write_network_data(data, outputfolder, zip_file; bc=false) 
+function write_network_data(data, outputfolder, zip_file; bc_flag::Bool=false) 
     output_folder = outputfolder * split(zip_file, ".")[1]
     (!isdir(output_folder)) && (mkdir(output_folder)) 
 
@@ -121,7 +121,7 @@ function write_network_data(data, outputfolder, zip_file; bc=false)
             "max_power" => compressor["power_max"]
         )
         bc["boundary_compressor"][i] = Dict{String,Any}(
-            "control_type" => 0, "value" => compressor_ratio
+            "control_type" => 0, "value" => 1.5
         )
     end
 
@@ -165,7 +165,7 @@ function write_network_data(data, outputfolder, zip_file; bc=false)
         )
         push!(bc["boundary_control_valve"]["on"], parse(Int, i))
         bc["boundary_control_valve"][i] = Dict{String,Any}(
-            "control_type" => 0, "value" => control_valve_ratio
+            "control_type" => 0, "value" => 1.0
         )
     end 
 
@@ -217,8 +217,9 @@ function write_network_data(data, outputfolder, zip_file; bc=false)
 
     open(output_folder * "/slack_pressures.json", "w") do f 
         JSON.print(f, slack_pressure_data, 2)
+    end
 
-    if (bc == true)
+    if bc_flag
         open(output_folder * "/bc.json", "w") do f 
             JSON.print(f, bc, 2)
         end
