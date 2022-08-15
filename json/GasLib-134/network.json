@@ -704,7 +704,6 @@
       "name": "node_80",
       "x_coord": 9358.1332,
       "min_pressure": 3.84e6,
-      "slack_pressure": 5000000,
       "id": 79,
       "max_pressure": 6.640000000000001e6,
       "elevation": 0.0,
@@ -1346,7 +1345,7 @@
     "32": {
       "name": "node_69_ld40",
       "to_node": 124,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 32,
       "fr_node": 66,
       "min_flow": 0.0
@@ -1354,7 +1353,7 @@
     "29": {
       "name": "node_65_ld37",
       "to_node": 120,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 29,
       "fr_node": 62,
       "min_flow": 0.0
@@ -1362,7 +1361,7 @@
     "1": {
       "name": "node_11_ld5",
       "to_node": 130,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 1,
       "fr_node": 3,
       "min_flow": 0.0
@@ -1370,7 +1369,7 @@
     "2": {
       "name": "node_13_ld6",
       "to_node": 131,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 2,
       "fr_node": 5,
       "min_flow": 0.0
@@ -1378,7 +1377,7 @@
     "41": {
       "name": "node_81_ld44",
       "to_node": 128,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 41,
       "fr_node": 80,
       "min_flow": 0.0
@@ -1386,7 +1385,7 @@
     "27": {
       "name": "node_61_ld30",
       "to_node": 113,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 27,
       "fr_node": 58,
       "min_flow": 0.0
@@ -1394,7 +1393,7 @@
     "42": {
       "name": "node_82_ld31",
       "to_node": 114,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 42,
       "fr_node": 81,
       "min_flow": 0.0
@@ -1402,7 +1401,7 @@
     "33": {
       "name": "node_6_ld2",
       "to_node": 101,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 33,
       "fr_node": 56,
       "min_flow": 0.0
@@ -1410,7 +1409,7 @@
     "28": {
       "name": "node_63_ld43",
       "to_node": 127,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 28,
       "fr_node": 60,
       "min_flow": 0.0
@@ -1418,7 +1417,7 @@
     "26": {
       "name": "node_59_ld29",
       "to_node": 111,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 26,
       "fr_node": 55,
       "min_flow": 0.0
@@ -1426,7 +1425,7 @@
     "10": {
       "name": "node_31_ld14",
       "to_node": 95,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 10,
       "fr_node": 25,
       "min_flow": 0.0
@@ -1434,7 +1433,7 @@
     "24": {
       "name": "node_56_ld27",
       "to_node": 109,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 24,
       "fr_node": 52,
       "min_flow": 0.0
@@ -1442,7 +1441,7 @@
     "25": {
       "name": "node_58_ld28",
       "to_node": 110,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 25,
       "fr_node": 54,
       "min_flow": 0.0
@@ -1450,7 +1449,7 @@
     "23": {
       "name": "node_53_ld26",
       "to_node": 108,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 23,
       "fr_node": 49,
       "min_flow": 0.0
@@ -1458,7 +1457,7 @@
     "5": {
       "name": "node_22_ld9",
       "to_node": 134,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 5,
       "fr_node": 15,
       "min_flow": 0.0
@@ -1466,7 +1465,7 @@
     "31": {
       "name": "node_69_ld39",
       "to_node": 122,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 31,
       "fr_node": 66,
       "min_flow": 0.0
@@ -1474,7 +1473,7 @@
     "43": {
       "name": "node_82_ld32",
       "to_node": 115,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 43,
       "fr_node": 81,
       "min_flow": 0.0
@@ -1482,7 +1481,7 @@
     "39": {
       "name": "node_76_ld35",
       "to_node": 118,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 39,
       "fr_node": 74,
       "min_flow": 0.0
@@ -1490,7 +1489,7 @@
     "44": {
       "name": "node_89_ld45",
       "to_node": 129,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 44,
       "fr_node": 88,
       "min_flow": 0.0
@@ -1498,7 +1497,7 @@
     "34": {
       "name": "node_6_ld3",
       "to_node": 112,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 34,
       "fr_node": 56,
       "min_flow": 0.0
@@ -1506,7 +1505,7 @@
     "17": {
       "name": "node_46_ld21",
       "to_node": 103,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 17,
       "fr_node": 41,
       "min_flow": 0.0
@@ -1514,7 +1513,7 @@
     "37": {
       "name": "node_73_ld33",
       "to_node": 116,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 37,
       "fr_node": 71,
       "min_flow": 0.0
@@ -1522,7 +1521,7 @@
     "9": {
       "name": "node_28_ld13",
       "to_node": 94,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 9,
       "fr_node": 21,
       "min_flow": 0.0
@@ -1530,7 +1529,7 @@
     "12": {
       "name": "node_37_ld16",
       "to_node": 97,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 12,
       "fr_node": 31,
       "min_flow": 0.0
@@ -1538,7 +1537,7 @@
     "20": {
       "name": "node_4_ld1",
       "to_node": 90,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 20,
       "fr_node": 34,
       "min_flow": 0.0
@@ -1546,7 +1545,7 @@
     "6": {
       "name": "node_24_ld10",
       "to_node": 91,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 6,
       "fr_node": 17,
       "min_flow": 0.0
@@ -1554,7 +1553,7 @@
     "14": {
       "name": "node_39_ld18",
       "to_node": 99,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 14,
       "fr_node": 33,
       "min_flow": 0.0
@@ -1562,7 +1561,7 @@
     "7": {
       "name": "node_26_ld11",
       "to_node": 92,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 7,
       "fr_node": 19,
       "min_flow": 0.0
@@ -1570,7 +1569,7 @@
     "8": {
       "name": "node_27_ld12",
       "to_node": 93,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 8,
       "fr_node": 20,
       "min_flow": 0.0
@@ -1578,7 +1577,7 @@
     "19": {
       "name": "node_49_ld23",
       "to_node": 105,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 19,
       "fr_node": 44,
       "min_flow": 0.0
@@ -1586,7 +1585,7 @@
     "4": {
       "name": "node_18_ld8",
       "to_node": 133,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 4,
       "fr_node": 10,
       "min_flow": 0.0
@@ -1594,7 +1593,7 @@
     "22": {
       "name": "node_53_ld25",
       "to_node": 107,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 22,
       "fr_node": 49,
       "min_flow": 0.0
@@ -1602,7 +1601,7 @@
     "11": {
       "name": "node_33_ld15",
       "to_node": 96,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 11,
       "fr_node": 27,
       "min_flow": 0.0
@@ -1610,7 +1609,7 @@
     "35": {
       "name": "node_70_ld41",
       "to_node": 125,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 35,
       "fr_node": 68,
       "min_flow": 0.0
@@ -1618,7 +1617,7 @@
     "13": {
       "name": "node_38_ld17",
       "to_node": 98,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 13,
       "fr_node": 32,
       "min_flow": 0.0
@@ -1626,7 +1625,7 @@
     "15": {
       "name": "node_44_ld19",
       "to_node": 100,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 15,
       "fr_node": 39,
       "min_flow": 0.0
@@ -1634,7 +1633,7 @@
     "16": {
       "name": "node_45_ld20",
       "to_node": 102,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 16,
       "fr_node": 40,
       "min_flow": 0.0
@@ -1642,7 +1641,7 @@
     "40": {
       "name": "node_77_ld34",
       "to_node": 117,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 40,
       "fr_node": 75,
       "min_flow": 0.0
@@ -1650,7 +1649,7 @@
     "38": {
       "name": "node_75_ld36",
       "to_node": 119,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 38,
       "fr_node": 73,
       "min_flow": 0.0
@@ -1658,7 +1657,7 @@
     "21": {
       "name": "node_53_ld24",
       "to_node": 106,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 21,
       "fr_node": 49,
       "min_flow": 0.0
@@ -1666,7 +1665,7 @@
     "45": {
       "name": "node_9_ld4",
       "to_node": 123,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 45,
       "fr_node": 89,
       "min_flow": 0.0
@@ -1674,7 +1673,7 @@
     "36": {
       "name": "node_72_ld42",
       "to_node": 126,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 36,
       "fr_node": 70,
       "min_flow": 0.0
@@ -1682,7 +1681,7 @@
     "18": {
       "name": "node_47_ld22",
       "to_node": 104,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 18,
       "fr_node": 42,
       "min_flow": 0.0
@@ -1690,7 +1689,7 @@
     "30": {
       "name": "node_65_ld38",
       "to_node": 121,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 30,
       "fr_node": 62,
       "min_flow": 0.0
@@ -1698,7 +1697,7 @@
     "3": {
       "name": "node_16_ld7",
       "to_node": 132,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 3,
       "fr_node": 8,
       "min_flow": 0.0
@@ -1726,12 +1725,12 @@
     "32": {
       "friction_factor": 0.0,
       "diameter": 0.762,
-      "min_flow": -2064.722222222222,
+      "min_flow": -2064.7222,
       "length": 17565.3,
       "name": "p_br39",
       "min_pressure": 4.54e6,
       "to_node": 35,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 32,
       "max_pressure": 6.640000000000001e6,
       "fr_node": 33
@@ -1739,12 +1738,12 @@
     "29": {
       "friction_factor": 0.0,
       "diameter": 0.762,
-      "min_flow": -2064.722222222222,
+      "min_flow": -2064.7222,
       "length": 15639.0,
       "name": "p_br36",
       "min_pressure": 3.5e6,
       "to_node": 31,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 29,
       "max_pressure": 6.640000000000001e6,
       "fr_node": 30
@@ -1752,12 +1751,12 @@
     "81": {
       "friction_factor": 0.0,
       "diameter": 0.6096,
-      "min_flow": -2064.722222222222,
+      "min_flow": -2064.7222,
       "length": 22837.0,
       "name": "p_br84",
       "min_pressure": 2.5e6,
       "to_node": 84,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 81,
       "max_pressure": 6.640000000000001e6,
       "fr_node": 83
@@ -1765,12 +1764,12 @@
     "54": {
       "friction_factor": 0.0,
       "diameter": 0.762,
-      "min_flow": -2064.722222222222,
+      "min_flow": -2064.7222,
       "length": 10100.0,
       "name": "p_br59",
       "min_pressure": 3.5e6,
       "to_node": 57,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 54,
       "max_pressure": 6.640000000000001e6,
       "fr_node": 53
@@ -1778,12 +1777,12 @@
     "1": {
       "friction_factor": 0.0,
       "diameter": 0.9144,
-      "min_flow": -2064.722222222222,
+      "min_flow": -2064.7222,
       "length": 14560.0,
       "name": "p_br1",
       "min_pressure": 3.5e6,
       "to_node": 12,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 1,
       "max_pressure": 6.640000000000001e6,
       "fr_node": 1
@@ -1791,12 +1790,12 @@
     "78": {
       "friction_factor": 0.0,
       "diameter": 0.508,
-      "min_flow": -2064.722222222222,
+      "min_flow": -2064.7222,
       "length": 1500.0,
       "name": "p_br81",
       "min_pressure": 3.5e6,
       "to_node": 81,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 78,
       "max_pressure": 6.640000000000001e6,
       "fr_node": 80
@@ -1804,12 +1803,12 @@
     "2": {
       "friction_factor": 0.0,
       "diameter": 0.6095999999999999,
-      "min_flow": -2064.722222222222,
+      "min_flow": -2064.7222,
       "length": 16355.0,
       "name": "p_br10",
       "min_pressure": 3.5e6,
       "to_node": 3,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 2,
       "max_pressure": 6.640000000000001e6,
       "fr_node": 2
@@ -1817,12 +1816,12 @@
     "74": {
       "friction_factor": 0.0,
       "diameter": 0.762,
-      "min_flow": -2064.722222222222,
+      "min_flow": -2064.7222,
       "length": 8605.5,
       "name": "p_br78",
       "min_pressure": 3.65e6,
       "to_node": 77,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 74,
       "max_pressure": 6.640000000000001e6,
       "fr_node": 76
@@ -1830,12 +1829,12 @@
     "41": {
       "friction_factor": 0.0,
       "diameter": 0.762,
-      "min_flow": -2064.722222222222,
+      "min_flow": -2064.7222,
       "length": 26734.8,
       "name": "p_br47",
       "min_pressure": 3.5e6,
       "to_node": 43,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 41,
       "max_pressure": 6.640000000000001e6,
       "fr_node": 36
@@ -1843,12 +1842,12 @@
     "65": {
       "friction_factor": 0.0,
       "diameter": 0.6095999999999999,
-      "min_flow": -2064.722222222222,
+      "min_flow": -2064.7222,
       "length": 28112.0,
       "name": "p_br7",
       "min_pressure": 3.5e6,
       "to_node": 78,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 65,
       "max_pressure": 6.640000000000001e6,
       "fr_node": 67
@@ -1856,12 +1855,12 @@
     "53": {
       "friction_factor": 0.0,
       "diameter": 0.3556,
-      "min_flow": -2064.722222222222,
+      "min_flow": -2064.7222,
       "length": 651.34,
       "name": "p_br58",
       "min_pressure": 3.05e6,
       "to_node": 55,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 53,
       "max_pressure": 6.640000000000001e6,
       "fr_node": 53
@@ -1869,12 +1868,12 @@
     "51": {
       "friction_factor": 0.0,
       "diameter": 0.762,
-      "min_flow": -2064.722222222222,
+      "min_flow": -2064.7222,
       "length": 10100.0,
       "name": "p_br56",
       "min_pressure": 3.5e6,
       "to_node": 53,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 51,
       "max_pressure": 6.640000000000001e6,
       "fr_node": 51
@@ -1882,12 +1881,12 @@
     "27": {
       "friction_factor": 0.0,
       "diameter": 0.762,
-      "min_flow": -2064.722222222222,
+      "min_flow": -2064.7222,
       "length": 12918.8,
       "name": "p_br34",
       "min_pressure": 3.5e6,
       "to_node": 29,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 27,
       "max_pressure": 6.640000000000001e6,
       "fr_node": 28
@@ -1895,12 +1894,12 @@
     "75": {
       "friction_factor": 0.0,
       "diameter": 0.762,
-      "min_flow": -2064.722222222222,
+      "min_flow": -2064.7222,
       "length": 5900.0,
       "name": "p_br79",
       "min_pressure": 3.84e6,
       "to_node": 79,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 75,
       "max_pressure": 6.640000000000001e6,
       "fr_node": 77
@@ -1908,12 +1907,12 @@
     "42": {
       "friction_factor": 0.0,
       "diameter": 0.762,
-      "min_flow": -2064.722222222222,
+      "min_flow": -2064.7222,
       "length": 26944.4,
       "name": "p_br48",
       "min_pressure": 3.5e6,
       "to_node": 44,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 42,
       "max_pressure": 6.640000000000001e6,
       "fr_node": 43
@@ -1921,12 +1920,12 @@
     "33": {
       "friction_factor": 0.0,
       "diameter": 0.9144,
-      "min_flow": -2064.722222222222,
+      "min_flow": -2064.7222,
       "length": 28150.0,
       "name": "p_br4",
       "min_pressure": 3.5e6,
       "to_node": 45,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 33,
       "max_pressure": 6.640000000000001e6,
       "fr_node": 34
@@ -1934,12 +1933,12 @@
     "28": {
       "friction_factor": 0.0,
       "diameter": 0.762,
-      "min_flow": -2064.722222222222,
+      "min_flow": -2064.7222,
       "length": 19251.0,
       "name": "p_br35",
       "min_pressure": 3.5e6,
       "to_node": 30,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 28,
       "max_pressure": 6.640000000000001e6,
       "fr_node": 29
@@ -1947,12 +1946,12 @@
     "50": {
       "friction_factor": 0.0,
       "diameter": 0.508,
-      "min_flow": -2064.722222222222,
+      "min_flow": -2064.7222,
       "length": 28130.0,
       "name": "p_br55",
       "min_pressure": 2.5e6,
       "to_node": 52,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 50,
       "max_pressure": 6.640000000000001e6,
       "fr_node": 51
@@ -1960,12 +1959,12 @@
     "52": {
       "friction_factor": 0.0,
       "diameter": 0.3556,
-      "min_flow": -2064.722222222222,
+      "min_flow": -2064.7222,
       "length": 651.34,
       "name": "p_br57",
       "min_pressure": 2.55e6,
       "to_node": 54,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 52,
       "max_pressure": 6.640000000000001e6,
       "fr_node": 53
@@ -1973,12 +1972,12 @@
     "63": {
       "friction_factor": 0.0,
       "diameter": 0.762,
-      "min_flow": -2064.722222222222,
+      "min_flow": -2064.7222,
       "length": 6806.0,
       "name": "p_br68",
       "min_pressure": 2.76e6,
       "to_node": 66,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 63,
       "max_pressure": 3.7700000000000005e6,
       "fr_node": 65
@@ -1986,12 +1985,12 @@
     "26": {
       "friction_factor": 0.0,
       "diameter": 0.762,
-      "min_flow": -2064.722222222222,
+      "min_flow": -2064.7222,
       "length": 15550.800000000001,
       "name": "p_br33",
       "min_pressure": 3.5e6,
       "to_node": 28,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 26,
       "max_pressure": 6.640000000000001e6,
       "fr_node": 27
@@ -1999,12 +1998,12 @@
     "10": {
       "friction_factor": 0.0,
       "diameter": 0.6095999999999999,
-      "min_flow": -2064.722222222222,
+      "min_flow": -2064.7222,
       "length": 22764.0,
       "name": "p_br18",
       "min_pressure": 3.5e6,
       "to_node": 11,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 10,
       "max_pressure": 6.640000000000001e6,
       "fr_node": 10
@@ -2012,12 +2011,12 @@
     "77": {
       "friction_factor": 0.0,
       "diameter": 0.762,
-      "min_flow": -2064.722222222222,
+      "min_flow": -2064.7222,
       "length": 40500.0,
       "name": "p_br80",
       "min_pressure": 3.5e6,
       "to_node": 80,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 77,
       "max_pressure": 6.640000000000001e6,
       "fr_node": 77
@@ -2025,12 +2024,12 @@
     "24": {
       "friction_factor": 0.0,
       "diameter": 0.762,
-      "min_flow": -2064.722222222222,
+      "min_flow": -2064.7222,
       "length": 43176.7,
       "name": "p_br31",
       "min_pressure": 3.5e6,
       "to_node": 26,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 24,
       "max_pressure": 6.640000000000001e6,
       "fr_node": 24
@@ -2038,12 +2037,12 @@
     "58": {
       "friction_factor": 0.0,
       "diameter": 0.508,
-      "min_flow": -2064.722222222222,
+      "min_flow": -2064.7222,
       "length": 73190.0,
       "name": "p_br62",
       "min_pressure": 3.05e6,
       "to_node": 60,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 58,
       "max_pressure": 6.640000000000001e6,
       "fr_node": 59
@@ -2051,12 +2050,12 @@
     "25": {
       "friction_factor": 0.0,
       "diameter": 0.762,
-      "min_flow": -2064.722222222222,
+      "min_flow": -2064.7222,
       "length": 20992.3,
       "name": "p_br32",
       "min_pressure": 3.5e6,
       "to_node": 27,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 25,
       "max_pressure": 6.640000000000001e6,
       "fr_node": 26
@@ -2064,12 +2063,12 @@
     "23": {
       "friction_factor": 0.0,
       "diameter": 0.254,
-      "min_flow": -2064.722222222222,
+      "min_flow": -2064.7222,
       "length": 10927.0,
       "name": "p_br30",
       "min_pressure": 3.5e6,
       "to_node": 25,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 23,
       "max_pressure": 6.640000000000001e6,
       "fr_node": 24
@@ -2077,12 +2076,12 @@
     "49": {
       "friction_factor": 0.0,
       "diameter": 0.762,
-      "min_flow": -2064.722222222222,
+      "min_flow": -2064.7222,
       "length": 24664.5,
       "name": "p_br54",
       "min_pressure": 3.5e6,
       "to_node": 51,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 49,
       "max_pressure": 6.640000000000001e6,
       "fr_node": 50
@@ -2090,12 +2089,12 @@
     "59": {
       "friction_factor": 0.0,
       "diameter": 0.762,
-      "min_flow": -2064.722222222222,
+      "min_flow": -2064.7222,
       "length": 11764.6,
       "name": "p_br63",
       "min_pressure": 3.5e6,
       "to_node": 61,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 59,
       "max_pressure": 6.640000000000001e6,
       "fr_node": 59
@@ -2103,12 +2102,12 @@
     "31": {
       "friction_factor": 0.0,
       "diameter": 0.762,
-      "min_flow": -2064.722222222222,
+      "min_flow": -2064.7222,
       "length": 11295.1,
       "name": "p_br38",
       "min_pressure": 4.54e6,
       "to_node": 33,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 31,
       "max_pressure": 6.640000000000001e6,
       "fr_node": 32
@@ -2116,12 +2115,12 @@
     "5": {
       "friction_factor": 0.0,
       "diameter": 0.6095999999999999,
-      "min_flow": -2064.722222222222,
+      "min_flow": -2064.7222,
       "length": 9275.0,
       "name": "p_br13",
       "min_pressure": 3.5e6,
       "to_node": 6,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 5,
       "max_pressure": 6.640000000000001e6,
       "fr_node": 4
@@ -2129,12 +2128,12 @@
     "62": {
       "friction_factor": 0.0,
       "diameter": 0.762,
-      "min_flow": -2064.722222222222,
+      "min_flow": -2064.7222,
       "length": 14379.0,
       "name": "p_br67",
       "min_pressure": 2.76e6,
       "to_node": 65,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 62,
       "max_pressure": 3.7700000000000005e6,
       "fr_node": 64
@@ -2142,12 +2141,12 @@
     "43": {
       "friction_factor": 0.0,
       "diameter": 0.762,
-      "min_flow": -2064.722222222222,
+      "min_flow": -2064.7222,
       "length": 21321.8,
       "name": "p_br49",
       "min_pressure": 3.5e6,
       "to_node": 46,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 43,
       "max_pressure": 6.640000000000001e6,
       "fr_node": 44
@@ -2155,12 +2154,12 @@
     "39": {
       "friction_factor": 0.0,
       "diameter": 0.254,
-      "min_flow": -2064.722222222222,
+      "min_flow": -2064.7222,
       "length": 21347.0,
       "name": "p_br45",
       "min_pressure": 3.5e6,
       "to_node": 41,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 39,
       "max_pressure": 6.640000000000001e6,
       "fr_node": 36
@@ -2168,12 +2167,12 @@
     "34": {
       "friction_factor": 0.0,
       "diameter": 0.762,
-      "min_flow": -2064.722222222222,
+      "min_flow": -2064.7222,
       "length": 16269.5,
       "name": "p_br40",
       "min_pressure": 4.54e6,
       "to_node": 36,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 34,
       "max_pressure": 6.640000000000001e6,
       "fr_node": 35
@@ -2181,12 +2180,12 @@
     "44": {
       "friction_factor": 0.0,
       "diameter": 0.9144,
-      "min_flow": -2064.722222222222,
+      "min_flow": -2064.7222,
       "length": 19750.0,
       "name": "p_br5",
       "min_pressure": 3.5e6,
       "to_node": 56,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 44,
       "max_pressure": 6.640000000000001e6,
       "fr_node": 45
@@ -2194,12 +2193,12 @@
     "55": {
       "friction_factor": 0.0,
       "diameter": 0.6095999999999999,
-      "min_flow": -2064.722222222222,
+      "min_flow": -2064.7222,
       "length": 8434.0,
       "name": "p_br6",
       "min_pressure": 3.5e6,
       "to_node": 67,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 55,
       "max_pressure": 6.640000000000001e6,
       "fr_node": 56
@@ -2207,12 +2206,12 @@
     "86": {
       "friction_factor": 0.0,
       "diameter": 0.6095999999999999,
-      "min_flow": -2064.722222222222,
+      "min_flow": -2064.7222,
       "length": 11167.0,
       "name": "p_br9",
       "min_pressure": 3.5e6,
       "to_node": 2,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 86,
       "max_pressure": 6.640000000000001e6,
       "fr_node": 89
@@ -2220,12 +2219,12 @@
     "17": {
       "friction_factor": 0.0,
       "diameter": 0.9144,
-      "min_flow": -2064.722222222222,
+      "min_flow": -2064.7222,
       "length": 13042.400000000001,
       "name": "p_br24",
       "min_pressure": 3.5e6,
       "to_node": 18,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 17,
       "max_pressure": 6.640000000000001e6,
       "fr_node": 15
@@ -2233,12 +2232,12 @@
     "71": {
       "friction_factor": 0.0,
       "diameter": 0.6096,
-      "min_flow": -2064.722222222222,
+      "min_flow": -2064.7222,
       "length": 3598.0,
       "name": "p_br75",
       "min_pressure": 2.68e6,
       "to_node": 74,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 71,
       "max_pressure": 6.640000000000001e6,
       "fr_node": 73
@@ -2246,12 +2245,12 @@
     "47": {
       "friction_factor": 0.0,
       "diameter": 0.508,
-      "min_flow": -2064.722222222222,
+      "min_flow": -2064.7222,
       "length": 28057.0,
       "name": "p_br52",
       "min_pressure": 3.5e6,
       "to_node": 49,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 47,
       "max_pressure": 6.640000000000001e6,
       "fr_node": 48
@@ -2259,12 +2258,12 @@
     "37": {
       "friction_factor": 0.0,
       "diameter": 0.254,
-      "min_flow": -2064.722222222222,
+      "min_flow": -2064.7222,
       "length": 7853.0,
       "name": "p_br43",
       "min_pressure": 3.5e6,
       "to_node": 39,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 37,
       "max_pressure": 6.640000000000001e6,
       "fr_node": 38
@@ -2272,12 +2271,12 @@
     "9": {
       "friction_factor": 0.0,
       "diameter": 0.6095999999999999,
-      "min_flow": -2064.722222222222,
+      "min_flow": -2064.7222,
       "length": 21565.0,
       "name": "p_br17",
       "min_pressure": 3.5e6,
       "to_node": 10,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 9,
       "max_pressure": 6.640000000000001e6,
       "fr_node": 9
@@ -2285,12 +2284,12 @@
     "73": {
       "friction_factor": 0.0,
       "diameter": 0.762,
-      "min_flow": -2064.722222222222,
+      "min_flow": -2064.7222,
       "length": 9322.2,
       "name": "p_br77",
       "min_pressure": 3.65e6,
       "to_node": 76,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 73,
       "max_pressure": 6.640000000000001e6,
       "fr_node": 61
@@ -2298,12 +2297,12 @@
     "82": {
       "friction_factor": 0.0,
       "diameter": 0.6096,
-      "min_flow": -2064.722222222222,
+      "min_flow": -2064.7222,
       "length": 29467.0,
       "name": "p_br85",
       "min_pressure": 2.5e6,
       "to_node": 85,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 82,
       "max_pressure": 6.640000000000001e6,
       "fr_node": 84
@@ -2311,12 +2310,12 @@
     "12": {
       "friction_factor": 0.0,
       "diameter": 0.9144,
-      "min_flow": -2064.722222222222,
+      "min_flow": -2064.7222,
       "length": 15250.0,
       "name": "p_br2",
       "min_pressure": 3.5e6,
       "to_node": 23,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 12,
       "max_pressure": 6.640000000000001e6,
       "fr_node": 12
@@ -2324,12 +2323,12 @@
     "79": {
       "friction_factor": 0.0,
       "diameter": 0.762,
-      "min_flow": -2064.722222222222,
+      "min_flow": -2064.7222,
       "length": 11570.0,
       "name": "p_br82",
       "min_pressure": 2.5e6,
       "to_node": 82,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 79,
       "max_pressure": 6.640000000000001e6,
       "fr_node": 80
@@ -2337,12 +2336,12 @@
     "20": {
       "friction_factor": 0.0,
       "diameter": 0.254,
-      "min_flow": -2064.722222222222,
+      "min_flow": -2064.7222,
       "length": 2137.9100000000003,
       "name": "p_br27",
       "min_pressure": 3.9e6,
       "to_node": 21,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 20,
       "max_pressure": 5.5e6,
       "fr_node": 19
@@ -2350,12 +2349,12 @@
     "6": {
       "friction_factor": 0.0,
       "diameter": 0.6095999999999999,
-      "min_flow": -2064.722222222222,
+      "min_flow": -2064.7222,
       "length": 18296.0,
       "name": "p_br14",
       "min_pressure": 3.5e6,
       "to_node": 7,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 6,
       "max_pressure": 6.640000000000001e6,
       "fr_node": 6
@@ -2363,12 +2362,12 @@
     "84": {
       "friction_factor": 0.0,
       "diameter": 0.6096,
-      "min_flow": -2064.722222222222,
+      "min_flow": -2064.7222,
       "length": 32844.0,
       "name": "p_br87",
       "min_pressure": 2.5e6,
       "to_node": 87,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 84,
       "max_pressure": 6.640000000000001e6,
       "fr_node": 86
@@ -2376,12 +2375,12 @@
     "80": {
       "friction_factor": 0.0,
       "diameter": 0.6096,
-      "min_flow": -2064.722222222222,
+      "min_flow": -2064.7222,
       "length": 37924.0,
       "name": "p_br83",
       "min_pressure": 2.5e6,
       "to_node": 83,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 80,
       "max_pressure": 6.640000000000001e6,
       "fr_node": 82
@@ -2389,12 +2388,12 @@
     "70": {
       "friction_factor": 0.0,
       "diameter": 0.6096,
-      "min_flow": -2064.722222222222,
+      "min_flow": -2064.7222,
       "length": 8900.0,
       "name": "p_br74",
       "min_pressure": 2.68e6,
       "to_node": 73,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 70,
       "max_pressure": 6.640000000000001e6,
       "fr_node": 72
@@ -2402,12 +2401,12 @@
     "14": {
       "friction_factor": 0.0,
       "diameter": 0.9144,
-      "min_flow": -2064.722222222222,
+      "min_flow": -2064.7222,
       "length": 26693.4,
       "name": "p_br21",
       "min_pressure": 3.5e6,
       "to_node": 15,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 14,
       "max_pressure": 6.640000000000001e6,
       "fr_node": 14
@@ -2415,12 +2414,12 @@
     "7": {
       "friction_factor": 0.0,
       "diameter": 0.6095999999999999,
-      "min_flow": -2064.722222222222,
+      "min_flow": -2064.7222,
       "length": 19510.0,
       "name": "p_br15",
       "min_pressure": 3.5e6,
       "to_node": 8,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 7,
       "max_pressure": 6.640000000000001e6,
       "fr_node": 7
@@ -2428,12 +2427,12 @@
     "57": {
       "friction_factor": 0.0,
       "diameter": 0.762,
-      "min_flow": -2064.722222222222,
+      "min_flow": -2064.7222,
       "length": 18341.2,
       "name": "p_br61",
       "min_pressure": 3.5e6,
       "to_node": 59,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 57,
       "max_pressure": 6.640000000000001e6,
       "fr_node": 57
@@ -2441,12 +2440,12 @@
     "8": {
       "friction_factor": 0.0,
       "diameter": 0.6095999999999999,
-      "min_flow": -2064.722222222222,
+      "min_flow": -2064.7222,
       "length": 26228.0,
       "name": "p_br16",
       "min_pressure": 3.5e6,
       "to_node": 9,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 8,
       "max_pressure": 6.640000000000001e6,
       "fr_node": 8
@@ -2454,12 +2453,12 @@
     "64": {
       "friction_factor": 0.0,
       "diameter": 0.762,
-      "min_flow": -2064.722222222222,
+      "min_flow": -2064.7222,
       "length": 15959.0,
       "name": "p_br69",
       "min_pressure": 2.65e6,
       "to_node": 68,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 64,
       "max_pressure": 3.7700000000000005e6,
       "fr_node": 66
@@ -2467,12 +2466,12 @@
     "19": {
       "friction_factor": 0.0,
       "diameter": 0.254,
-      "min_flow": -2064.722222222222,
+      "min_flow": -2064.7222,
       "length": 2137.9100000000003,
       "name": "p_br26",
       "min_pressure": 3.9e6,
       "to_node": 20,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 19,
       "max_pressure": 5.5e6,
       "fr_node": 19
@@ -2480,12 +2479,12 @@
     "69": {
       "friction_factor": 0.0,
       "diameter": 0.762,
-      "min_flow": -2064.722222222222,
+      "min_flow": -2064.7222,
       "length": 2915.0,
       "name": "p_br73",
       "min_pressure": 3.0e6,
       "to_node": 72,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 69,
       "max_pressure": 6.640000000000001e6,
       "fr_node": 71
@@ -2493,12 +2492,12 @@
     "60": {
       "friction_factor": 0.0,
       "diameter": 0.762,
-      "min_flow": -2064.722222222222,
+      "min_flow": -2064.7222,
       "length": 11717.0,
       "name": "p_br64",
       "min_pressure": 3.21e6,
       "to_node": 62,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 60,
       "max_pressure": 6.640000000000001e6,
       "fr_node": 61
@@ -2506,12 +2505,12 @@
     "4": {
       "friction_factor": 0.0,
       "diameter": 0.30479999999999996,
-      "min_flow": -2064.722222222222,
+      "min_flow": -2064.7222,
       "length": 1615.0,
       "name": "p_br12",
       "min_pressure": 3.3200000000000005e6,
       "to_node": 5,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 4,
       "max_pressure": 6.640000000000001e6,
       "fr_node": 4
@@ -2519,12 +2518,12 @@
     "22": {
       "friction_factor": 0.0,
       "diameter": 0.9144,
-      "min_flow": -2064.722222222222,
+      "min_flow": -2064.7222,
       "length": 5500.0,
       "name": "p_br3",
       "min_pressure": 3.5e6,
       "to_node": 34,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 22,
       "max_pressure": 6.640000000000001e6,
       "fr_node": 23
@@ -2532,12 +2531,12 @@
     "11": {
       "friction_factor": 0.0,
       "diameter": 0.9144,
-      "min_flow": -2064.722222222222,
+      "min_flow": -2064.7222,
       "length": 17869.3,
       "name": "p_br19",
       "min_pressure": 3.5e6,
       "to_node": 11,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 11,
       "max_pressure": 6.640000000000001e6,
       "fr_node": 13
@@ -2545,12 +2544,12 @@
     "35": {
       "friction_factor": 0.0,
       "diameter": 0.254,
-      "min_flow": -2064.722222222222,
+      "min_flow": -2064.7222,
       "length": 8294.0,
       "name": "p_br41",
       "min_pressure": 3.5e6,
       "to_node": 37,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 35,
       "max_pressure": 6.640000000000001e6,
       "fr_node": 36
@@ -2558,12 +2557,12 @@
     "13": {
       "friction_factor": 0.0,
       "diameter": 0.9144,
-      "min_flow": -2064.722222222222,
+      "min_flow": -2064.7222,
       "length": 23153.9,
       "name": "p_br20",
       "min_pressure": 3.5e6,
       "to_node": 14,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 13,
       "max_pressure": 6.640000000000001e6,
       "fr_node": 11
@@ -2571,12 +2570,12 @@
     "67": {
       "friction_factor": 0.0,
       "diameter": 0.762,
-      "min_flow": -2064.722222222222,
+      "min_flow": -2064.7222,
       "length": 12558.5,
       "name": "p_br71",
       "min_pressure": 2.65e6,
       "to_node": 70,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 67,
       "max_pressure": 3.76e6,
       "fr_node": 69
@@ -2584,12 +2583,12 @@
     "61": {
       "friction_factor": 0.0,
       "diameter": 0.762,
-      "min_flow": -2064.722222222222,
+      "min_flow": -2064.7222,
       "length": 29500.0,
       "name": "p_br66",
       "min_pressure": 2.76e6,
       "to_node": 64,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 61,
       "max_pressure": 3.7700000000000005e6,
       "fr_node": 63
@@ -2597,12 +2596,12 @@
     "15": {
       "friction_factor": 0.0,
       "diameter": 0.6095999999999999,
-      "min_flow": -2064.722222222222,
+      "min_flow": -2064.7222,
       "length": 12518.0,
       "name": "p_br22",
       "min_pressure": 3.4200000000000005e6,
       "to_node": 16,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 15,
       "max_pressure": 6.640000000000001e6,
       "fr_node": 15
@@ -2610,12 +2609,12 @@
     "16": {
       "friction_factor": 0.0,
       "diameter": 0.6095999999999999,
-      "min_flow": -2064.722222222222,
+      "min_flow": -2064.7222,
       "length": 12210.0,
       "name": "p_br23",
       "min_pressure": 3.4200000000000005e6,
       "to_node": 17,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 16,
       "max_pressure": 5.5e6,
       "fr_node": 16
@@ -2623,12 +2622,12 @@
     "40": {
       "friction_factor": 0.0,
       "diameter": 0.254,
-      "min_flow": -2064.722222222222,
+      "min_flow": -2064.7222,
       "length": 19518.0,
       "name": "p_br46",
       "min_pressure": 3.5e6,
       "to_node": 42,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 40,
       "max_pressure": 6.640000000000001e6,
       "fr_node": 41
@@ -2636,12 +2635,12 @@
     "46": {
       "friction_factor": 0.0,
       "diameter": 0.762,
-      "min_flow": -2064.722222222222,
+      "min_flow": -2064.7222,
       "length": 16468.5,
       "name": "p_br51",
       "min_pressure": 3.5e6,
       "to_node": 48,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 46,
       "max_pressure": 6.640000000000001e6,
       "fr_node": 47
@@ -2649,12 +2648,12 @@
     "21": {
       "friction_factor": 0.0,
       "diameter": 0.9144,
-      "min_flow": -2064.722222222222,
+      "min_flow": -2064.7222,
       "length": 4962.6,
       "name": "p_br28",
       "min_pressure": 3.5e6,
       "to_node": 22,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 21,
       "max_pressure": 6.640000000000001e6,
       "fr_node": 18
@@ -2662,12 +2661,12 @@
     "72": {
       "friction_factor": 0.0,
       "diameter": 0.3556,
-      "min_flow": -2064.722222222222,
+      "min_flow": -2064.7222,
       "length": 1810.0,
       "name": "p_br76",
       "min_pressure": 3.0e6,
       "to_node": 75,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 72,
       "max_pressure": 6.640000000000001e6,
       "fr_node": 71
@@ -2675,12 +2674,12 @@
     "38": {
       "friction_factor": 0.0,
       "diameter": 0.254,
-      "min_flow": -2064.722222222222,
+      "min_flow": -2064.7222,
       "length": 21813.0,
       "name": "p_br44",
       "min_pressure": 3.5e6,
       "to_node": 40,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 38,
       "max_pressure": 6.640000000000001e6,
       "fr_node": 39
@@ -2688,12 +2687,12 @@
     "83": {
       "friction_factor": 0.0,
       "diameter": 0.6096,
-      "min_flow": -2064.722222222222,
+      "min_flow": -2064.7222,
       "length": 16376.999999999998,
       "name": "p_br86",
       "min_pressure": 2.5e6,
       "to_node": 86,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 83,
       "max_pressure": 6.640000000000001e6,
       "fr_node": 85
@@ -2701,12 +2700,12 @@
     "45": {
       "friction_factor": 0.0,
       "diameter": 0.762,
-      "min_flow": -2064.722222222222,
+      "min_flow": -2064.7222,
       "length": 21536.0,
       "name": "p_br50",
       "min_pressure": 3.5e6,
       "to_node": 47,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 45,
       "max_pressure": 6.640000000000001e6,
       "fr_node": 46
@@ -2714,12 +2713,12 @@
     "68": {
       "friction_factor": 0.0,
       "diameter": 0.762,
-      "min_flow": -2064.722222222222,
+      "min_flow": -2064.7222,
       "length": 9007.0,
       "name": "p_br72",
       "min_pressure": 3.65e6,
       "to_node": 71,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 68,
       "max_pressure": 6.640000000000001e6,
       "fr_node": 61
@@ -2727,12 +2726,12 @@
     "56": {
       "friction_factor": 0.0,
       "diameter": 0.254,
-      "min_flow": -2064.722222222222,
+      "min_flow": -2064.7222,
       "length": 20569.1,
       "name": "p_br60",
       "min_pressure": 3.6299999999999995e6,
       "to_node": 58,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 56,
       "max_pressure": 6.640000000000001e6,
       "fr_node": 57
@@ -2740,12 +2739,12 @@
     "36": {
       "friction_factor": 0.0,
       "diameter": 0.254,
-      "min_flow": -2064.722222222222,
+      "min_flow": -2064.7222,
       "length": 33968.0,
       "name": "p_br42",
       "min_pressure": 3.5e6,
       "to_node": 38,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 36,
       "max_pressure": 6.640000000000001e6,
       "fr_node": 37
@@ -2753,12 +2752,12 @@
     "66": {
       "friction_factor": 0.0,
       "diameter": 0.762,
-      "min_flow": -2064.722222222222,
+      "min_flow": -2064.7222,
       "length": 10678.0,
       "name": "p_br70",
       "min_pressure": 2.65e6,
       "to_node": 69,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 66,
       "max_pressure": 3.76e6,
       "fr_node": 68
@@ -2766,12 +2765,12 @@
     "76": {
       "friction_factor": 0.0,
       "diameter": 0.6095999999999999,
-      "min_flow": -2064.722222222222,
+      "min_flow": -2064.7222,
       "length": 18062.0,
       "name": "p_br8",
       "min_pressure": 3.5e6,
       "to_node": 89,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 76,
       "max_pressure": 6.640000000000001e6,
       "fr_node": 78
@@ -2779,12 +2778,12 @@
     "85": {
       "friction_factor": 0.0,
       "diameter": 0.6096,
-      "min_flow": -2064.722222222222,
+      "min_flow": -2064.7222,
       "length": 16967.0,
       "name": "p_br88",
       "min_pressure": 2.5e6,
       "to_node": 88,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 85,
       "max_pressure": 6.640000000000001e6,
       "fr_node": 87
@@ -2792,12 +2791,12 @@
     "48": {
       "friction_factor": 0.0,
       "diameter": 0.762,
-      "min_flow": -2064.722222222222,
+      "min_flow": -2064.7222,
       "length": 14207.7,
       "name": "p_br53",
       "min_pressure": 3.5e6,
       "to_node": 50,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 48,
       "max_pressure": 6.640000000000001e6,
       "fr_node": 48
@@ -2805,12 +2804,12 @@
     "18": {
       "friction_factor": 0.0,
       "diameter": 0.6095999999999999,
-      "min_flow": -2064.722222222222,
+      "min_flow": -2064.7222,
       "length": 7600.0,
       "name": "p_br25",
       "min_pressure": 3.5e6,
       "to_node": 19,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 18,
       "max_pressure": 6.640000000000001e6,
       "fr_node": 18
@@ -2818,12 +2817,12 @@
     "30": {
       "friction_factor": 0.0,
       "diameter": 0.762,
-      "min_flow": -2064.722222222222,
+      "min_flow": -2064.7222,
       "length": 13000.0,
       "name": "p_br37",
       "min_pressure": 3.5e6,
       "to_node": 32,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 30,
       "max_pressure": 6.640000000000001e6,
       "fr_node": 31
@@ -2831,12 +2830,12 @@
     "3": {
       "friction_factor": 0.0,
       "diameter": 0.6095999999999999,
-      "min_flow": -2064.722222222222,
+      "min_flow": -2064.7222,
       "length": 15652.0,
       "name": "p_br11",
       "min_pressure": 3.5e6,
       "to_node": 4,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 3,
       "max_pressure": 6.640000000000001e6,
       "fr_node": 3
@@ -2849,7 +2848,7 @@
       "min_flow": 0.0,
       "name": "cs",
       "to_node": 24,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "max_c_ratio": 98.69232667160128,
       "id": 1,
       "min_c_ratio": 1.0,
@@ -2863,13 +2862,13 @@
     "1": {
       "name": "controlValve_br65",
       "to_node": 63,
-      "max_flow": 2064.722222222222,
+      "max_flow": 2064.7222,
       "id": 1,
       "min_pressure_differential": 100000.0,
       "max_pressure_differential": 1.2e7,
       "internal_bypass_required": 0,
       "fr_node": 62,
-      "min_flow": -2064.722222222222
+      "min_flow": -2064.7222
     }
   },
   "deliveries": {

@@ -193,7 +193,7 @@ function write_network_data(data, outputfolder, zip_file)
     end
 
     open(output_folder * "/slack_pressures.json", "w") do f 
-        JSON.print(f, bc, 2)
+        JSON.print(f, slack_pressure_data, 2)
     end
 end 
 

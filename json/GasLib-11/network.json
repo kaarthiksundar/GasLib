@@ -34,7 +34,6 @@
       "name": "entry01",
       "x_coord": 0.0,
       "min_pressure": 4.0e6,
-      "slack_pressure": 5000000,
       "id": 6,
       "max_pressure": 7.0e6,
       "elevation": 0.0,
@@ -117,11 +116,11 @@
     "1": {
       "name": "V01_N01_N03",
       "to_node": 3,
-      "max_flow": 239.86111111111111,
+      "max_flow": 239.8611,
       "id": 1,
       "max_pressure_differential": 1.2e7,
       "fr_node": 1,
-      "min_flow": -239.86111111111111
+      "min_flow": -239.8611
     }
   },
   "receipts": {
@@ -140,12 +139,12 @@
     "3": {
       "friction_factor": 0.01372452402130078,
       "diameter": 0.5,
-      "min_flow": -239.86111111111111,
+      "min_flow": -239.8611,
       "length": 55000.0,
       "name": "pipe03_entry02_N03",
       "min_pressure": 4.0e6,
       "to_node": 3,
-      "max_flow": 239.86111111111111,
+      "max_flow": 239.8611,
       "id": 3,
       "max_pressure": 7.0e6,
       "fr_node": 7
@@ -153,12 +152,12 @@
     "4": {
       "friction_factor": 0.01372452402130078,
       "diameter": 0.5,
-      "min_flow": -239.86111111111111,
+      "min_flow": -239.8611,
       "length": 55000.0,
       "name": "pipe04_N02_exit01",
       "min_pressure": 4.0e6,
       "to_node": 9,
-      "max_flow": 239.86111111111111,
+      "max_flow": 239.8611,
       "id": 4,
       "max_pressure": 7.0e6,
       "fr_node": 2
@@ -166,12 +165,12 @@
     "1": {
       "friction_factor": 0.01372452402130078,
       "diameter": 0.5,
-      "min_flow": -239.86111111111111,
+      "min_flow": -239.8611,
       "length": 55000.0,
       "name": "pipe01_entry01_entry03",
       "min_pressure": 4.0e6,
       "to_node": 8,
-      "max_flow": 239.86111111111111,
+      "max_flow": 239.8611,
       "id": 1,
       "max_pressure": 7.0e6,
       "fr_node": 6
@@ -179,12 +178,12 @@
     "5": {
       "friction_factor": 0.01372452402130078,
       "diameter": 0.5,
-      "min_flow": -239.86111111111111,
+      "min_flow": -239.8611,
       "length": 55000.0,
       "name": "pipe05_N02_N04",
       "min_pressure": 4.0e6,
       "to_node": 4,
-      "max_flow": 239.86111111111111,
+      "max_flow": 239.8611,
       "id": 5,
       "max_pressure": 7.0e6,
       "fr_node": 2
@@ -192,12 +191,12 @@
     "2": {
       "friction_factor": 0.01372452402130078,
       "diameter": 0.5,
-      "min_flow": -239.86111111111111,
+      "min_flow": -239.8611,
       "length": 55000.0,
       "name": "pipe02_N01_N02",
       "min_pressure": 4.0e6,
       "to_node": 2,
-      "max_flow": 239.86111111111111,
+      "max_flow": 239.8611,
       "id": 2,
       "max_pressure": 7.0e6,
       "fr_node": 1
@@ -205,12 +204,12 @@
     "6": {
       "friction_factor": 0.01372452402130078,
       "diameter": 0.5,
-      "min_flow": -239.86111111111111,
+      "min_flow": -239.8611,
       "length": 55000.0,
       "name": "pipe06_N03_N04",
       "min_pressure": 4.0e6,
       "to_node": 4,
-      "max_flow": 239.86111111111111,
+      "max_flow": 239.8611,
       "id": 6,
       "max_pressure": 7.0e6,
       "fr_node": 3
@@ -218,12 +217,12 @@
     "7": {
       "friction_factor": 0.01372452402130078,
       "diameter": 0.5,
-      "min_flow": -239.86111111111111,
+      "min_flow": -239.8611,
       "length": 55000.0,
       "name": "pipe07_N05_exit02",
       "min_pressure": 4.0e6,
       "to_node": 10,
-      "max_flow": 239.86111111111111,
+      "max_flow": 239.8611,
       "id": 7,
       "max_pressure": 7.0e6,
       "fr_node": 5
@@ -231,12 +230,12 @@
     "8": {
       "friction_factor": 0.01372452402130078,
       "diameter": 0.5,
-      "min_flow": -239.86111111111111,
+      "min_flow": -239.8611,
       "length": 55000.0,
       "name": "pipe08_N05_exit03",
       "min_pressure": 4.0e6,
       "to_node": 11,
-      "max_flow": 239.86111111111111,
+      "max_flow": 239.8611,
       "id": 8,
       "max_pressure": 7.0e6,
       "fr_node": 5
@@ -249,7 +248,7 @@
       "min_flow": 0.0,
       "name": "CS01_entry03_N01",
       "to_node": 1,
-      "max_flow": 239.86111111111111,
+      "max_flow": 239.8611,
       "max_c_ratio": 1.75,
       "id": 1,
       "min_c_ratio": 1.0,
@@ -262,7 +261,7 @@
       "min_flow": 0.0,
       "name": "CS02_N04_N05",
       "to_node": 5,
-      "max_flow": 239.86111111111111,
+      "max_flow": 239.8611,
       "max_c_ratio": 1.75,
       "id": 2,
       "min_c_ratio": 1.0,
