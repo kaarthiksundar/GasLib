@@ -1,0 +1,206 @@
+{
+  "receipts": {
+    "1": {
+      "max_injection": 3.8572,
+      "cost": 1.0,
+      "min_injection": 3.8572
+    },
+    "2": {
+      "max_injection": 25.8569,
+      "cost": 1.0,
+      "min_injection": 25.8569
+    },
+    "3": {
+      "max_injection": 54.5259,
+      "cost": 1.0,
+      "min_injection": 54.5259
+    }
+  },
+  "deliveries": {
+    "32": {
+      "cost": 1.0,
+      "max_withdrawal": 0.1389,
+      "min_withdrawal": 0.1389
+    },
+    "29": {
+      "cost": 1.0,
+      "max_withdrawal": 0.1835,
+      "min_withdrawal": 0.1835
+    },
+    "1": {
+      "cost": 1.0,
+      "max_withdrawal": 0.0849,
+      "min_withdrawal": 0.0849
+    },
+    "24": {
+      "cost": 1.0,
+      "max_withdrawal": 0.1566,
+      "min_withdrawal": 0.1566
+    },
+    "12": {
+      "cost": 1.0,
+      "max_withdrawal": 0.1551,
+      "min_withdrawal": 0.1551
+    },
+    "20": {
+      "cost": 1.0,
+      "max_withdrawal": 0.1031,
+      "min_withdrawal": 0.1031
+    },
+    "4": {
+      "cost": 1.0,
+      "max_withdrawal": 5.5668,
+      "min_withdrawal": 5.5668
+    },
+    "2": {
+      "cost": 1.0,
+      "max_withdrawal": 1.3821,
+      "min_withdrawal": 1.3821
+    },
+    "25": {
+      "cost": 1.0,
+      "max_withdrawal": 4.7394,
+      "min_withdrawal": 4.7394
+    },
+    "6": {
+      "cost": 1.0,
+      "max_withdrawal": 0.2314,
+      "min_withdrawal": 0.2314
+    },
+    "23": {
+      "cost": 1.0,
+      "max_withdrawal": 13.6543,
+      "min_withdrawal": 13.6543
+    },
+    "22": {
+      "cost": 1.0,
+      "max_withdrawal": 1.2343,
+      "min_withdrawal": 1.2343
+    },
+    "11": {
+      "cost": 1.0,
+      "max_withdrawal": 0.1435,
+      "min_withdrawal": 0.1435
+    },
+    "35": {
+      "cost": 1.0,
+      "max_withdrawal": 0.6557,
+      "min_withdrawal": 0.6557
+    },
+    "13": {
+      "cost": 1.0,
+      "max_withdrawal": 0.0933,
+      "min_withdrawal": 0.0933
+    },
+    "27": {
+      "cost": 1.0,
+      "max_withdrawal": 0.2285,
+      "min_withdrawal": 0.2285
+    },
+    "5": {
+      "cost": 1.0,
+      "max_withdrawal": 4.1462,
+      "min_withdrawal": 4.1462
+    },
+    "31": {
+      "cost": 1.0,
+      "max_withdrawal": 0.1041,
+      "min_withdrawal": 0.1041
+    },
+    "15": {
+      "cost": 1.0,
+      "max_withdrawal": 0.1811,
+      "min_withdrawal": 0.1811
+    },
+    "33": {
+      "cost": 1.0,
+      "max_withdrawal": 14.2283,
+      "min_withdrawal": 14.2283
+    },
+    "28": {
+      "cost": 1.0,
+      "max_withdrawal": 0.2017,
+      "min_withdrawal": 0.2017
+    },
+    "16": {
+      "cost": 1.0,
+      "max_withdrawal": 8.0229,
+      "min_withdrawal": 8.0229
+    },
+    "14": {
+      "cost": 1.0,
+      "max_withdrawal": 1.3551,
+      "min_withdrawal": 1.3551
+    },
+    "21": {
+      "cost": 1.0,
+      "max_withdrawal": 1.9611,
+      "min_withdrawal": 1.9611
+    },
+    "7": {
+      "cost": 1.0,
+      "max_withdrawal": 0.2337,
+      "min_withdrawal": 0.2337
+    },
+    "34": {
+      "cost": 1.0,
+      "max_withdrawal": 3.4807,
+      "min_withdrawal": 3.4807
+    },
+    "8": {
+      "cost": 1.0,
+      "max_withdrawal": 0.1234,
+      "min_withdrawal": 0.1234
+    },
+    "36": {
+      "cost": 1.0,
+      "max_withdrawal": 0.5577,
+      "min_withdrawal": 0.5577
+    },
+    "26": {
+      "cost": 1.0,
+      "max_withdrawal": 1.0156,
+      "min_withdrawal": 1.0156
+    },
+    "17": {
+      "cost": 1.0,
+      "max_withdrawal": 9.8743,
+      "min_withdrawal": 9.8743
+    },
+    "10": {
+      "cost": 1.0,
+      "max_withdrawal": 0.5408,
+      "min_withdrawal": 0.5408
+    },
+    "19": {
+      "cost": 1.0,
+      "max_withdrawal": 5.4671,
+      "min_withdrawal": 5.4671
+    },
+    "37": {
+      "cost": 1.0,
+      "max_withdrawal": 0.5852,
+      "min_withdrawal": 0.5852
+    },
+    "9": {
+      "cost": 1.0,
+      "max_withdrawal": 0.5408,
+      "min_withdrawal": 0.5408
+    },
+    "18": {
+      "cost": 1.0,
+      "max_withdrawal": 1.7743,
+      "min_withdrawal": 1.7743
+    },
+    "30": {
+      "cost": 1.0,
+      "max_withdrawal": 1.0156,
+      "min_withdrawal": 1.0156
+    },
+    "3": {
+      "cost": 1.0,
+      "max_withdrawal": 0.0771,
+      "min_withdrawal": 0.0771
+    }
+  }
+}

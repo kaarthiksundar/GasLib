@@ -1,0 +1,46 @@
+{
+  "receipts": {
+    "1": {
+      "max_injection": 38.7903,
+      "cost": 1.0,
+      "min_injection": 49.4144
+    },
+    "2": {
+      "max_injection": 23.4765,
+      "cost": 1.0,
+      "min_injection": 29.9063
+    },
+    "3": {
+      "max_injection": 30.9071,
+      "cost": 1.0,
+      "min_injection": 39.3721
+    }
+  },
+  "deliveries": {
+    "4": {
+      "cost": 1.0,
+      "max_withdrawal": 26.6381,
+      "min_withdrawal": 26.6381
+    },
+    "1": {
+      "cost": 1.0,
+      "max_withdrawal": 21.8056,
+      "min_withdrawal": 21.8056
+    },
+    "5": {
+      "cost": 1.0,
+      "max_withdrawal": 21.8056,
+      "min_withdrawal": 21.8056
+    },
+    "2": {
+      "cost": 1.0,
+      "max_withdrawal": 21.8056,
+      "min_withdrawal": 21.8056
+    },
+    "3": {
+      "cost": 1.0,
+      "max_withdrawal": 26.6381,
+      "min_withdrawal": 26.6381
+    }
+  }
+}
