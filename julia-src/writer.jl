@@ -85,8 +85,8 @@ function write_network_data(data, outputfolder, zip_file)
             "friction_factor" => pipe["friction_factor"],
             "min_pressure" => pipe["min_pressure"],
             "max_pressure" => pipe["max_pressure"],
-            "min_flow" => pipe["min_flow"],
-            "max_flow" => pipe["max_flow"]
+            "min_flow" => round(pipe["min_flow"], digits=4),
+            "max_flow" => round(pipe["max_flow"], digits=4)
         )
     end 
 
@@ -98,8 +98,8 @@ function write_network_data(data, outputfolder, zip_file)
             "to_node" => compressor["to_node"], 
             "fuel_node" => compressor["fuel_node"],
             "internal_bypass_required" => compressor["internal_bypass_required"],
-            "min_flow" => compressor["min_flow"],
-            "max_flow" => compressor["max_flow"],
+            "min_flow" => round(compressor["min_flow"], digits=4),
+            "max_flow" => round(compressor["max_flow"], digits=4),
             "min_c_ratio" => compressor["c_ratio_min"],
             "max_c_ratio" => compressor["c_ratio_max"],
             "max_power" => compressor["power_max"]
@@ -112,8 +112,8 @@ function write_network_data(data, outputfolder, zip_file)
             "name" => short_pipe["name"], 
             "fr_node" => short_pipe["fr_node"],
             "to_node" => short_pipe["to_node"],
-            "min_flow" => short_pipe["min_flow"], 
-            "max_flow" => short_pipe["max_flow"]
+            "min_flow" => round(short_pipe["min_flow"], digits=4), 
+            "max_flow" => round(short_pipe["max_flow"], digits=4)
         )
     end 
 
@@ -123,8 +123,8 @@ function write_network_data(data, outputfolder, zip_file)
             "name" => valve["name"], 
             "fr_node" => valve["fr_node"],
             "to_node" => valve["to_node"],
-            "min_flow" => valve["min_flow"], 
-            "max_flow" => valve["max_flow"], 
+            "min_flow" => round(valve["min_flow"], digits=4), 
+            "max_flow" => round(valve["max_flow"], digits=4), 
             "max_pressure_differential" => valve["max_pressure_differential"]
         )
     end 
@@ -135,8 +135,8 @@ function write_network_data(data, outputfolder, zip_file)
             "name" => control_valve["name"], 
             "fr_node" => control_valve["fr_node"],
             "to_node" => control_valve["to_node"],
-            "min_flow" => control_valve["min_flow"], 
-            "max_flow" => control_valve["max_flow"], 
+            "min_flow" => round(control_valve["min_flow"], digits=4), 
+            "max_flow" => round(control_valve["max_flow"], digits=4), 
             "internal_bypass_required" => control_valve["internal_bypass_required"],
             "min_pressure_differential" => control_valve["min_pressure_differential"],
             "max_pressure_differential" => control_valve["max_pressure_differential"]
@@ -149,8 +149,8 @@ function write_network_data(data, outputfolder, zip_file)
             "name" => resistor["name"], 
             "fr_node" => resistor["fr_node"],
             "to_node" => resistor["to_node"],
-            "min_flow" => resistor["min_flow"],
-            "max_flow" => resistor["max_flow"],
+            "min_flow" => round(resistor["min_flow"], digits=4),
+            "max_flow" => round(resistor["max_flow"], digits=4),
             "drag" => resistor["drag"],
             "diameter" => resistor["diameter"]
         )
@@ -162,8 +162,8 @@ function write_network_data(data, outputfolder, zip_file)
             "name" => resistor["name"], 
             "fr_node" => resistor["fr_node"],
             "to_node" => resistor["to_node"],
-            "min_flow" => resistor["min_flow"],
-            "max_flow" => resistor["max_flow"],
+            "min_flow" => round(resistor["min_flow"], digits=4),
+            "max_flow" => round(resistor["max_flow"], digits=4),
             "pressure_loss" => resistor["pressure_loss"]
         )
     end 
@@ -211,15 +211,17 @@ function write_nomination_data(data, outputfolder, zip_file)
 
     for (i, receipt) in get(data, "receipts", []) 
         nomination_data["receipts"][i] = Dict{String,Any}(
-            "max_injection" => receipt["max_injection"],
-            "min_injection" => receipt["min_injection"]
+            "cost" => 1.0,
+            "max_injection" => round(receipt["max_injection"], digits=4),
+            "min_injection" => round(receipt["min_injection"], digits=4)
         )
     end 
 
     for (i, delivery) in get(data, "deliveries", []) 
         nomination_data["deliveries"][i] = Dict{String,Any}(
-            "max_withdrawal" => delivery["max_withdrawal"],
-            "min_withdrawal" => delivery["min_withdrawal"]
+            "cost" => 1.0, 
+            "max_withdrawal" => round(delivery["max_withdrawal"], digits=4),
+            "min_withdrawal" => round(delivery["min_withdrawal"], digits=4)
         )
     end 
 
