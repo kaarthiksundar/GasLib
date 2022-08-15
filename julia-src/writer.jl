@@ -34,6 +34,10 @@ function write_network_data(data, outputfolder, zip_file)
         "deliveries" => Dict{String,Any}()
     )
 
+    slack_pressure_data = Dict{String,Any}(
+        "slack_pressures" => Dict{String,Any}()
+    )
+
     withdrawal = Dict{String,Any}()
 
     for (i, _) in data["nodes"]
@@ -68,7 +72,7 @@ function write_network_data(data, outputfolder, zip_file)
         
         if i == string(slack_node)
             network_data["nodes"][i]["slack_bool"] = 1
-            network_data["nodes"][i]["slack_pressure"] = 5000000
+            slack_pressure_data["slack_pressures"][i] = 5000000
         else 
             network_data["nodes"][i]["slack_bool"] = 0
         end
@@ -186,6 +190,10 @@ function write_network_data(data, outputfolder, zip_file)
 
     open(output_folder * "/network.json", "w") do f 
         JSON.print(f, network_data, 2)
+    end
+
+    open(output_folder * "/slack_pressures.json", "w") do f 
+        JSON.print(f, bc, 2)
     end
 end 
 
