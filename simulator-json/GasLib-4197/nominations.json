@@ -1,192 +1,5 @@
 {
-  "receipts": {
-    "32": {
-      "max_injection": 33.3923,
-      "cost": 1.0,
-      "min_injection": 33.3923
-    },
-    "29": {
-      "max_injection": 1.1534,
-      "cost": 1.0,
-      "min_injection": 1.1534
-    },
-    "1": {
-      "max_injection": 85.7774,
-      "cost": 1.0,
-      "min_injection": 85.7774
-    },
-    "24": {
-      "max_injection": 34.4772,
-      "cost": 1.0,
-      "min_injection": 34.4772
-    },
-    "12": {
-      "max_injection": 28.3964,
-      "cost": 1.0,
-      "min_injection": 28.3964
-    },
-    "20": {
-      "max_injection": 2.7669,
-      "cost": 1.0,
-      "min_injection": 2.7669
-    },
-    "4": {
-      "max_injection": 5.4395,
-      "cost": 1.0,
-      "min_injection": 5.4395
-    },
-    "2": {
-      "max_injection": 3.8822,
-      "cost": 1.0,
-      "min_injection": 3.8822
-    },
-    "25": {
-      "max_injection": 7.4733,
-      "cost": 1.0,
-      "min_injection": 7.4733
-    },
-    "6": {
-      "max_injection": 1.5142,
-      "cost": 1.0,
-      "min_injection": 1.5142
-    },
-    "23": {
-      "max_injection": 97.2583,
-      "cost": 1.0,
-      "min_injection": 97.2583
-    },
-    "22": {
-      "max_injection": 0.7408,
-      "cost": 1.0,
-      "min_injection": 0.7408
-    },
-    "11": {
-      "max_injection": 0.5588,
-      "cost": 1.0,
-      "min_injection": 0.5588
-    },
-    "35": {
-      "max_injection": 32.5745,
-      "cost": 1.0,
-      "min_injection": 32.5745
-    },
-    "13": {
-      "max_injection": 4.7206,
-      "cost": 1.0,
-      "min_injection": 4.7206
-    },
-    "27": {
-      "max_injection": 0.1381,
-      "cost": 1.0,
-      "min_injection": 0.1381
-    },
-    "5": {
-      "max_injection": 25.3964,
-      "cost": 1.0,
-      "min_injection": 25.3964
-    },
-    "31": {
-      "max_injection": 6.3224,
-      "cost": 1.0,
-      "min_injection": 6.3224
-    },
-    "15": {
-      "max_injection": 0.1918,
-      "cost": 1.0,
-      "min_injection": 0.1918
-    },
-    "33": {
-      "max_injection": 238.5205,
-      "cost": 1.0,
-      "min_injection": 238.5205
-    },
-    "28": {
-      "max_injection": 0.36,
-      "cost": 1.0,
-      "min_injection": 0.36
-    },
-    "16": {
-      "max_injection": 4.8501,
-      "cost": 1.0,
-      "min_injection": 4.8501
-    },
-    "14": {
-      "max_injection": 1.9,
-      "cost": 1.0,
-      "min_injection": 1.9
-    },
-    "21": {
-      "max_injection": 0.5358,
-      "cost": 1.0,
-      "min_injection": 0.5358
-    },
-    "7": {
-      "max_injection": 3.502,
-      "cost": 1.0,
-      "min_injection": 3.502
-    },
-    "34": {
-      "max_injection": 72.4761,
-      "cost": 1.0,
-      "min_injection": 72.4761
-    },
-    "8": {
-      "max_injection": 6.7285,
-      "cost": 1.0,
-      "min_injection": 6.7285
-    },
-    "36": {
-      "max_injection": 10.7187,
-      "cost": 1.0,
-      "min_injection": 10.7187
-    },
-    "26": {
-      "max_injection": 8.1534,
-      "cost": 1.0,
-      "min_injection": 8.1534
-    },
-    "17": {
-      "max_injection": 1.3424,
-      "cost": 1.0,
-      "min_injection": 1.3424
-    },
-    "10": {
-      "max_injection": 8.1534,
-      "cost": 1.0,
-      "min_injection": 8.1534
-    },
-    "19": {
-      "max_injection": 2.7061,
-      "cost": 1.0,
-      "min_injection": 2.7061
-    },
-    "37": {
-      "max_injection": 3.108,
-      "cost": 1.0,
-      "min_injection": 3.108
-    },
-    "9": {
-      "max_injection": 2.2597,
-      "cost": 1.0,
-      "min_injection": 2.2597
-    },
-    "18": {
-      "max_injection": 0.4127,
-      "cost": 1.0,
-      "min_injection": 0.4127
-    },
-    "30": {
-      "max_injection": 7.3031,
-      "cost": 1.0,
-      "min_injection": 7.3031
-    },
-    "3": {
-      "max_injection": 1.025,
-      "cost": 1.0,
-      "min_injection": 1.025
-    }
-  },
-  "deliveries": {
+  "delivery_nominations": {
     "1": {
       "cost": 1.0,
       "max_withdrawal": 0.1121,
@@ -3846,6 +3659,193 @@
       "cost": 1.0,
       "max_withdrawal": 0.0232,
       "min_withdrawal": 0.0232
+    }
+  },
+  "receipt_nominations": {
+    "32": {
+      "max_injection": 33.3923,
+      "cost": 1.0,
+      "min_injection": 33.3923
+    },
+    "29": {
+      "max_injection": 1.1534,
+      "cost": 1.0,
+      "min_injection": 1.1534
+    },
+    "1": {
+      "max_injection": 85.7774,
+      "cost": 1.0,
+      "min_injection": 85.7774
+    },
+    "24": {
+      "max_injection": 34.4772,
+      "cost": 1.0,
+      "min_injection": 34.4772
+    },
+    "12": {
+      "max_injection": 28.3964,
+      "cost": 1.0,
+      "min_injection": 28.3964
+    },
+    "20": {
+      "max_injection": 2.7669,
+      "cost": 1.0,
+      "min_injection": 2.7669
+    },
+    "4": {
+      "max_injection": 5.4395,
+      "cost": 1.0,
+      "min_injection": 5.4395
+    },
+    "2": {
+      "max_injection": 3.8822,
+      "cost": 1.0,
+      "min_injection": 3.8822
+    },
+    "25": {
+      "max_injection": 7.4733,
+      "cost": 1.0,
+      "min_injection": 7.4733
+    },
+    "6": {
+      "max_injection": 1.5142,
+      "cost": 1.0,
+      "min_injection": 1.5142
+    },
+    "23": {
+      "max_injection": 97.2583,
+      "cost": 1.0,
+      "min_injection": 97.2583
+    },
+    "22": {
+      "max_injection": 0.7408,
+      "cost": 1.0,
+      "min_injection": 0.7408
+    },
+    "11": {
+      "max_injection": 0.5588,
+      "cost": 1.0,
+      "min_injection": 0.5588
+    },
+    "35": {
+      "max_injection": 32.5745,
+      "cost": 1.0,
+      "min_injection": 32.5745
+    },
+    "13": {
+      "max_injection": 4.7206,
+      "cost": 1.0,
+      "min_injection": 4.7206
+    },
+    "27": {
+      "max_injection": 0.1381,
+      "cost": 1.0,
+      "min_injection": 0.1381
+    },
+    "5": {
+      "max_injection": 25.3964,
+      "cost": 1.0,
+      "min_injection": 25.3964
+    },
+    "31": {
+      "max_injection": 6.3224,
+      "cost": 1.0,
+      "min_injection": 6.3224
+    },
+    "15": {
+      "max_injection": 0.1918,
+      "cost": 1.0,
+      "min_injection": 0.1918
+    },
+    "33": {
+      "max_injection": 238.5205,
+      "cost": 1.0,
+      "min_injection": 238.5205
+    },
+    "28": {
+      "max_injection": 0.36,
+      "cost": 1.0,
+      "min_injection": 0.36
+    },
+    "16": {
+      "max_injection": 4.8501,
+      "cost": 1.0,
+      "min_injection": 4.8501
+    },
+    "14": {
+      "max_injection": 1.9,
+      "cost": 1.0,
+      "min_injection": 1.9
+    },
+    "21": {
+      "max_injection": 0.5358,
+      "cost": 1.0,
+      "min_injection": 0.5358
+    },
+    "7": {
+      "max_injection": 3.502,
+      "cost": 1.0,
+      "min_injection": 3.502
+    },
+    "34": {
+      "max_injection": 72.4761,
+      "cost": 1.0,
+      "min_injection": 72.4761
+    },
+    "8": {
+      "max_injection": 6.7285,
+      "cost": 1.0,
+      "min_injection": 6.7285
+    },
+    "36": {
+      "max_injection": 10.7187,
+      "cost": 1.0,
+      "min_injection": 10.7187
+    },
+    "26": {
+      "max_injection": 8.1534,
+      "cost": 1.0,
+      "min_injection": 8.1534
+    },
+    "17": {
+      "max_injection": 1.3424,
+      "cost": 1.0,
+      "min_injection": 1.3424
+    },
+    "10": {
+      "max_injection": 8.1534,
+      "cost": 1.0,
+      "min_injection": 8.1534
+    },
+    "19": {
+      "max_injection": 2.7061,
+      "cost": 1.0,
+      "min_injection": 2.7061
+    },
+    "37": {
+      "max_injection": 3.108,
+      "cost": 1.0,
+      "min_injection": 3.108
+    },
+    "9": {
+      "max_injection": 2.2597,
+      "cost": 1.0,
+      "min_injection": 2.2597
+    },
+    "18": {
+      "max_injection": 0.4127,
+      "cost": 1.0,
+      "min_injection": 0.4127
+    },
+    "30": {
+      "max_injection": 7.3031,
+      "cost": 1.0,
+      "min_injection": 7.3031
+    },
+    "3": {
+      "max_injection": 1.025,
+      "cost": 1.0,
+      "min_injection": 1.025
     }
   }
 }

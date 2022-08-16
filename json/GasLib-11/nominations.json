@@ -1,17 +1,5 @@
 {
-  "receipts": {
-    "1": {
-      "max_injection": 27.3878,
-      "cost": 1.0,
-      "min_injection": 34.8889
-    },
-    "2": {
-      "max_injection": 23.9643,
-      "cost": 1.0,
-      "min_injection": 30.5278
-    }
-  },
-  "deliveries": {
+  "delivery_nominations": {
     "1": {
       "cost": 1.0,
       "max_withdrawal": 21.8056,
@@ -26,6 +14,18 @@
       "cost": 1.0,
       "max_withdrawal": 17.4444,
       "min_withdrawal": 17.4444
+    }
+  },
+  "receipt_nominations": {
+    "1": {
+      "max_injection": 27.3878,
+      "cost": 1.0,
+      "min_injection": 34.8889
+    },
+    "2": {
+      "max_injection": 23.9643,
+      "cost": 1.0,
+      "min_injection": 30.5278
     }
   }
 }

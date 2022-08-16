@@ -1,62 +1,5 @@
 {
-  "receipts": {
-    "4": {
-      "max_injection": 65.5431,
-      "cost": 1.0,
-      "min_injection": 65.5431
-    },
-    "1": {
-      "max_injection": 3.4144,
-      "cost": 1.0,
-      "min_injection": 3.4144
-    },
-    "2": {
-      "max_injection": 0.3068,
-      "cost": 1.0,
-      "min_injection": 0.3068
-    },
-    "6": {
-      "max_injection": 393.2811,
-      "cost": 1.0,
-      "min_injection": 393.2811
-    },
-    "11": {
-      "max_injection": 28.4062,
-      "cost": 1.0,
-      "min_injection": 28.4062
-    },
-    "5": {
-      "max_injection": 431.32,
-      "cost": 1.0,
-      "min_injection": 431.32
-    },
-    "7": {
-      "max_injection": 205.2255,
-      "cost": 1.0,
-      "min_injection": 205.2255
-    },
-    "8": {
-      "max_injection": 107.656,
-      "cost": 1.0,
-      "min_injection": 107.656
-    },
-    "10": {
-      "max_injection": 276.3856,
-      "cost": 1.0,
-      "min_injection": 276.3856
-    },
-    "9": {
-      "max_injection": 31.4333,
-      "cost": 1.0,
-      "min_injection": 31.4333
-    },
-    "3": {
-      "max_injection": 0.7472,
-      "cost": 1.0,
-      "min_injection": 0.7472
-    }
-  },
-  "deliveries": {
+  "delivery_nominations": {
     "32": {
       "cost": 1.0,
       "max_withdrawal": 0.3534,
@@ -306,6 +249,63 @@
       "cost": 1.0,
       "max_withdrawal": 3.2784,
       "min_withdrawal": 3.2784
+    }
+  },
+  "receipt_nominations": {
+    "4": {
+      "max_injection": 65.5431,
+      "cost": 1.0,
+      "min_injection": 65.5431
+    },
+    "1": {
+      "max_injection": 3.4144,
+      "cost": 1.0,
+      "min_injection": 3.4144
+    },
+    "2": {
+      "max_injection": 0.3068,
+      "cost": 1.0,
+      "min_injection": 0.3068
+    },
+    "6": {
+      "max_injection": 393.2811,
+      "cost": 1.0,
+      "min_injection": 393.2811
+    },
+    "11": {
+      "max_injection": 28.4062,
+      "cost": 1.0,
+      "min_injection": 28.4062
+    },
+    "5": {
+      "max_injection": 431.32,
+      "cost": 1.0,
+      "min_injection": 431.32
+    },
+    "7": {
+      "max_injection": 205.2255,
+      "cost": 1.0,
+      "min_injection": 205.2255
+    },
+    "8": {
+      "max_injection": 107.656,
+      "cost": 1.0,
+      "min_injection": 107.656
+    },
+    "10": {
+      "max_injection": 276.3856,
+      "cost": 1.0,
+      "min_injection": 276.3856
+    },
+    "9": {
+      "max_injection": 31.4333,
+      "cost": 1.0,
+      "min_injection": 31.4333
+    },
+    "3": {
+      "max_injection": 0.7472,
+      "cost": 1.0,
+      "min_injection": 0.7472
     }
   }
 }

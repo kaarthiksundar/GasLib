@@ -242,12 +242,12 @@ function write_nomination_data(data, outputfolder, zip_file)
     (!isdir(output_folder)) && (mkdir(output_folder)) 
 
     nomination_data = Dict{String,Any}(
-        "deliveries" => Dict{String,Any}(), 
-        "receipts" => Dict{String,Any}()
+        "delivery_nominations" => Dict{String,Any}(), 
+        "receipt_nominations" => Dict{String,Any}()
     )
 
     for (i, receipt) in get(data, "receipts", []) 
-        nomination_data["receipts"][i] = Dict{String,Any}(
+        nomination_data["receipt_nominations"][i] = Dict{String,Any}(
             "cost" => 1.0,
             "max_injection" => round(receipt["max_injection"], digits=4),
             "min_injection" => round(receipt["min_injection"], digits=4)
@@ -255,7 +255,7 @@ function write_nomination_data(data, outputfolder, zip_file)
     end 
 
     for (i, delivery) in get(data, "deliveries", []) 
-        nomination_data["deliveries"][i] = Dict{String,Any}(
+        nomination_data["delivery_nominations"][i] = Dict{String,Any}(
             "cost" => 1.0, 
             "max_withdrawal" => round(delivery["max_withdrawal"], digits=4),
             "min_withdrawal" => round(delivery["min_withdrawal"], digits=4)
