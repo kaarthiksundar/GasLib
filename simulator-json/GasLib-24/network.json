@@ -271,7 +271,7 @@
   },
   "pipes": {
     "4": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.008195053331140456,
       "diameter": 0.9,
       "min_flow": 0.0,
       "length": 30000.0,
@@ -284,7 +284,7 @@
       "fr_node": 4
     },
     "1": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.007942431709265526,
       "diameter": 1.1,
       "min_flow": 0.0,
       "length": 50000.0,
@@ -297,7 +297,7 @@
       "fr_node": 17
     },
     "12": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.007942431709265526,
       "diameter": 1.1,
       "min_flow": 0.0,
       "length": 50000.0,
@@ -310,7 +310,7 @@
       "fr_node": 7
     },
     "2": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.007203268946995266,
       "diameter": 2.1,
       "min_flow": 0.0,
       "length": 10.0,
@@ -323,7 +323,7 @@
       "fr_node": 1
     },
     "6": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.008195053331140456,
       "diameter": 0.9,
       "min_flow": 0.0,
       "length": 30000.0,
@@ -336,7 +336,7 @@
       "fr_node": 6
     },
     "11": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.007942431709265526,
       "diameter": 1.1,
       "min_flow": 0.0,
       "length": 50000.0,
@@ -349,7 +349,7 @@
       "fr_node": 19
     },
     "13": {
-      "friction_factor": 0.008435173135683755,
+      "friction_factor": 0.008435173135683757,
       "diameter": 0.9,
       "min_flow": 0.0,
       "length": 100000.0,
@@ -362,7 +362,7 @@
       "fr_node": 10
     },
     "5": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.008195053331140456,
       "diameter": 0.9,
       "min_flow": 0.0,
       "length": 30000.0,
@@ -375,7 +375,7 @@
       "fr_node": 4
     },
     "15": {
-      "friction_factor": 0.008512627129038731,
+      "friction_factor": 0.00851262712903873,
       "diameter": 0.85,
       "min_flow": 0.0,
       "length": 100000.0,
@@ -388,7 +388,7 @@
       "fr_node": 10
     },
     "16": {
-      "friction_factor": 0.008512627129038731,
+      "friction_factor": 0.00851262712903873,
       "diameter": 0.85,
       "min_flow": 0.0,
       "length": 50000.0,
@@ -401,7 +401,7 @@
       "fr_node": 13
     },
     "14": {
-      "friction_factor": 0.008435173135683755,
+      "friction_factor": 0.008435173135683757,
       "diameter": 0.9,
       "min_flow": 0.0,
       "length": 50000.0,
@@ -414,7 +414,7 @@
       "fr_node": 11
     },
     "7": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.008195053331140456,
       "diameter": 0.9,
       "min_flow": 0.0,
       "length": 30000.0,
@@ -427,7 +427,7 @@
       "fr_node": 7
     },
     "8": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.008195053331140456,
       "diameter": 0.9,
       "min_flow": 0.0,
       "length": 30000.0,
@@ -440,7 +440,7 @@
       "fr_node": 5
     },
     "17": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.009008519475807528,
       "diameter": 0.5,
       "min_flow": 0.0,
       "length": 30000.0,
@@ -453,7 +453,7 @@
       "fr_node": 14
     },
     "10": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.008195053331140456,
       "diameter": 0.9,
       "min_flow": 0.0,
       "length": 30000.0,
@@ -466,7 +466,7 @@
       "fr_node": 8
     },
     "19": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.007942431709265526,
       "diameter": 1.1,
       "min_flow": 0.0,
       "length": 50000.0,
@@ -479,7 +479,7 @@
       "fr_node": 16
     },
     "9": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.008195053331140456,
       "diameter": 0.9,
       "min_flow": 0.0,
       "length": 30000.0,
@@ -492,7 +492,7 @@
       "fr_node": 8
     },
     "18": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.007942431709265526,
       "diameter": 1.1,
       "min_flow": 0.0,
       "length": 50000.0,
@@ -505,7 +505,7 @@
       "fr_node": 16
     },
     "3": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.008195053331140456,
       "diameter": 0.9,
       "min_flow": 0.0,
       "length": 30000.0,

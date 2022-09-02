@@ -8270,7 +8270,7 @@
   },
   "pipes": {
     "1": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.007740933822089924,
       "diameter": 1.3,
       "min_flow": -2277.7778,
       "length": 39747.4810299,
@@ -8296,7 +8296,7 @@
       "fr_node": 152
     },
     "101": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.011103269214161002,
       "diameter": 0.15,
       "min_flow": -2277.7778,
       "length": 1117.0576107200002,
@@ -8309,7 +8309,7 @@
       "fr_node": 378
     },
     "41": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.009008519475807528,
       "diameter": 0.5,
       "min_flow": -2277.7778,
       "length": 4465.61468501,
@@ -8322,7 +8322,7 @@
       "fr_node": 136
     },
     "65": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.009008519475807528,
       "diameter": 0.5,
       "min_flow": -2277.7778,
       "length": 7401.35960637,
@@ -8348,7 +8348,7 @@
       "fr_node": 27
     },
     "159": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.009008519475807528,
       "diameter": 0.5,
       "min_flow": -2277.7778,
       "length": 2270.31776168,
@@ -8452,7 +8452,7 @@
       "fr_node": 122
     },
     "250": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.009008519475807528,
       "diameter": 0.5,
       "min_flow": -2277.7778,
       "length": 7176.13367473,
@@ -8491,7 +8491,7 @@
       "fr_node": 16
     },
     "24": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.008060937852716412,
       "diameter": 1.0,
       "min_flow": -2277.7778,
       "length": 1886.01940593,
@@ -8504,7 +8504,7 @@
       "fr_node": 364
     },
     "258": {
-      "friction_factor": 0.026942980370371555,
+      "friction_factor": 0.02694298037037155,
       "diameter": 0.3,
       "min_flow": -2277.7778,
       "length": 9797.83548589,
@@ -8517,7 +8517,7 @@
       "fr_node": 104
     },
     "204": {
-      "friction_factor": 0.026942980370371555,
+      "friction_factor": 0.02694298037037155,
       "diameter": 0.15,
       "min_flow": -2277.7778,
       "length": 1930.31644304,
@@ -8530,7 +8530,7 @@
       "fr_node": 400
     },
     "23": {
-      "friction_factor": 0.026942980370371555,
+      "friction_factor": 0.02694298037037155,
       "diameter": 0.3,
       "min_flow": -2277.7778,
       "length": 4690.09961568,
@@ -8543,7 +8543,7 @@
       "fr_node": 116
     },
     "160": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.009008519475807528,
       "diameter": 0.5,
       "min_flow": -2277.7778,
       "length": 11851.9877536,
@@ -8556,7 +8556,7 @@
       "fr_node": 318
     },
     "149": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.008435173135683757,
       "diameter": 0.75,
       "min_flow": -2277.7778,
       "length": 13808.146263699999,
@@ -8569,7 +8569,7 @@
       "fr_node": 281
     },
     "184": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.008060937852716412,
       "diameter": 1.0,
       "min_flow": -2277.7778,
       "length": 19840.3149199,
@@ -8595,7 +8595,7 @@
       "fr_node": 532
     },
     "43": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.009008519475807528,
       "diameter": 0.5,
       "min_flow": -2277.7778,
       "length": 2745.4290285399998,
@@ -8608,7 +8608,7 @@
       "fr_node": 159
     },
     "122": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.008435173135683757,
       "diameter": 0.75,
       "min_flow": -2277.7778,
       "length": 2476.0122485800002,
@@ -8634,7 +8634,7 @@
       "fr_node": 52
     },
     "175": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.009008519475807528,
       "diameter": 0.5,
       "min_flow": -2277.7778,
       "length": 2103.22389218,
@@ -8647,7 +8647,7 @@
       "fr_node": 367
     },
     "39": {
-      "friction_factor": 0.017824411459213815,
+      "friction_factor": 0.01782441145921381,
       "diameter": 0.15,
       "min_flow": -2277.7778,
       "length": 3868.52889356,
@@ -8660,7 +8660,7 @@
       "fr_node": 257
     },
     "143": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.008435173135683757,
       "diameter": 0.75,
       "min_flow": -2277.7778,
       "length": 4608.972087069999,
@@ -8673,7 +8673,7 @@
       "fr_node": 271
     },
     "112": {
-      "friction_factor": 0.026942980370371555,
+      "friction_factor": 0.02694298037037155,
       "diameter": 0.3,
       "min_flow": -2277.7778,
       "length": 3902.24491935,
@@ -8686,7 +8686,7 @@
       "fr_node": 79
     },
     "34": {
-      "friction_factor": 0.017824411459213815,
+      "friction_factor": 0.01782441145921381,
       "diameter": 0.15,
       "min_flow": -2277.7778,
       "length": 3774.40520819,
@@ -8699,7 +8699,7 @@
       "fr_node": 520
     },
     "137": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.00981803654882783,
       "diameter": 0.3,
       "min_flow": -2277.7778,
       "length": 1574.04423143,
@@ -8712,7 +8712,7 @@
       "fr_node": 264
     },
     "55": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.009008519475807528,
       "diameter": 0.5,
       "min_flow": -2277.7778,
       "length": 2350.7264912200003,
@@ -8725,7 +8725,7 @@
       "fr_node": 156
     },
     "17": {
-      "friction_factor": 0.026942980370371555,
+      "friction_factor": 0.02694298037037155,
       "diameter": 0.15,
       "min_flow": -2277.7778,
       "length": 1946.83119473,
@@ -8738,7 +8738,7 @@
       "fr_node": 100
     },
     "243": {
-      "friction_factor": 0.026942980370371555,
+      "friction_factor": 0.02694298037037155,
       "diameter": 0.3,
       "min_flow": -2277.7778,
       "length": 2204.96722939,
@@ -8764,7 +8764,7 @@
       "fr_node": 102
     },
     "172": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.008060937852716412,
       "diameter": 1.0,
       "min_flow": -2277.7778,
       "length": 14583.644623099999,
@@ -8790,7 +8790,7 @@
       "fr_node": 97
     },
     "192": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.008060937852716412,
       "diameter": 1.0,
       "min_flow": -2277.7778,
       "length": 2177.5223134899998,
@@ -8803,7 +8803,7 @@
       "fr_node": 352
     },
     "20": {
-      "friction_factor": 0.026942980370371555,
+      "friction_factor": 0.02694298037037155,
       "diameter": 0.3,
       "min_flow": -2277.7778,
       "length": 4807.35495643,
@@ -8816,7 +8816,7 @@
       "fr_node": 109
     },
     "252": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.009008519475807528,
       "diameter": 0.5,
       "min_flow": -2277.7778,
       "length": 2520.66249558,
@@ -8829,7 +8829,7 @@
       "fr_node": 50
     },
     "14": {
-      "friction_factor": 0.026942980370371555,
+      "friction_factor": 0.02694298037037155,
       "diameter": 0.15,
       "min_flow": -2277.7778,
       "length": 2173.68486449,
@@ -8842,7 +8842,7 @@
       "fr_node": 96
     },
     "167": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.008060937852716412,
       "diameter": 1.0,
       "min_flow": -2277.7778,
       "length": 4584.349859649999,
@@ -8855,7 +8855,7 @@
       "fr_node": 328
     },
     "127": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.008435173135683757,
       "diameter": 0.75,
       "min_flow": -2277.7778,
       "length": 4424.52885956,
@@ -8868,7 +8868,7 @@
       "fr_node": 252
     },
     "123": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.00981803654882783,
       "diameter": 0.3,
       "min_flow": -2277.7778,
       "length": 1826.86022405,
@@ -8894,7 +8894,7 @@
       "fr_node": 286
     },
     "177": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.008060937852716412,
       "diameter": 1.0,
       "min_flow": -2277.7778,
       "length": 17974.039300200002,
@@ -8920,7 +8920,7 @@
       "fr_node": 53
     },
     "257": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.009008519475807528,
       "diameter": 0.5,
       "min_flow": -2277.7778,
       "length": 3950.78620363,
@@ -8933,7 +8933,7 @@
       "fr_node": 548
     },
     "19": {
-      "friction_factor": 0.017824411459213815,
+      "friction_factor": 0.01782441145921381,
       "diameter": 0.15,
       "min_flow": -2277.7778,
       "length": 1833.14918446,
@@ -8998,7 +8998,7 @@
       "fr_node": 26
     },
     "35": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.008060937852716412,
       "diameter": 1.0,
       "min_flow": -2277.7778,
       "length": 9656.60727941,
@@ -9011,7 +9011,7 @@
       "fr_node": 366
     },
     "197": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.007740933822089924,
       "diameter": 1.3,
       "min_flow": -2277.7778,
       "length": 28400.7605901,
@@ -9024,7 +9024,7 @@
       "fr_node": 572
     },
     "131": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.009008519475807528,
       "diameter": 0.5,
       "min_flow": -2277.7778,
       "length": 11114.0091338,
@@ -9063,7 +9063,7 @@
       "fr_node": 108
     },
     "263": {
-      "friction_factor": 0.017824411459213815,
+      "friction_factor": 0.01782441145921381,
       "diameter": 0.15,
       "min_flow": -2277.7778,
       "length": 1843.03744346,
@@ -9076,7 +9076,7 @@
       "fr_node": 61
     },
     "83": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.00981803654882783,
       "diameter": 0.3,
       "min_flow": -2277.7778,
       "length": 3951.6671904299997,
@@ -9089,7 +9089,7 @@
       "fr_node": 191
     },
     "244": {
-      "friction_factor": 0.026942980370371555,
+      "friction_factor": 0.02694298037037155,
       "diameter": 0.3,
       "min_flow": -2277.7778,
       "length": 2340.3957618599998,
@@ -9115,7 +9115,7 @@
       "fr_node": 279
     },
     "139": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.008435173135683757,
       "diameter": 0.75,
       "min_flow": -2277.7778,
       "length": 2428.03076376,
@@ -9128,7 +9128,7 @@
       "fr_node": 267
     },
     "181": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.008060937852716412,
       "diameter": 1.0,
       "min_flow": -2277.7778,
       "length": 4396.205280890001,
@@ -9180,7 +9180,7 @@
       "fr_node": 86
     },
     "30": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.00981803654882783,
       "diameter": 0.3,
       "min_flow": -2277.7778,
       "length": 2344.07038982,
@@ -9245,7 +9245,7 @@
       "fr_node": 164
     },
     "162": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.008060937852716412,
       "diameter": 1.0,
       "min_flow": -2277.7778,
       "length": 3529.1958699,
@@ -9310,7 +9310,7 @@
       "fr_node": 4
     },
     "120": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.008435173135683757,
       "diameter": 0.75,
       "min_flow": -2277.7778,
       "length": 2328.5188728900002,
@@ -9323,7 +9323,7 @@
       "fr_node": 254
     },
     "224": {
-      "friction_factor": 0.017824411459213815,
+      "friction_factor": 0.01782441145921381,
       "diameter": 0.75,
       "min_flow": -2277.7778,
       "length": 2926.16549393,
@@ -9375,7 +9375,7 @@
       "fr_node": 54
     },
     "178": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.008060937852716412,
       "diameter": 1.0,
       "min_flow": -2277.7778,
       "length": 2142.8295860099997,
@@ -9401,7 +9401,7 @@
       "fr_node": 83
     },
     "89": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.008435173135683757,
       "diameter": 0.75,
       "min_flow": -2277.7778,
       "length": 4490.09074534,
@@ -9414,7 +9414,7 @@
       "fr_node": 193
     },
     "176": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.008060937852716412,
       "diameter": 1.0,
       "min_flow": -2277.7778,
       "length": 4591.32159328,
@@ -9427,7 +9427,7 @@
       "fr_node": 338
     },
     "182": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.008060937852716412,
       "diameter": 1.0,
       "min_flow": -2277.7778,
       "length": 2133.29108264,
@@ -9440,7 +9440,7 @@
       "fr_node": 349
     },
     "225": {
-      "friction_factor": 0.026942980370371555,
+      "friction_factor": 0.02694298037037155,
       "diameter": 0.15,
       "min_flow": -2277.7778,
       "length": 2022.6765644700001,
@@ -9453,7 +9453,7 @@
       "fr_node": 9
     },
     "195": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.008060937852716412,
       "diameter": 1.0,
       "min_flow": -2277.7778,
       "length": 7035.01236622,
@@ -9479,7 +9479,7 @@
       "fr_node": 45
     },
     "161": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.008060937852716412,
       "diameter": 1.0,
       "min_flow": -2277.7778,
       "length": 2203.79097704,
@@ -9492,7 +9492,7 @@
       "fr_node": 439
     },
     "202": {
-      "friction_factor": 0.026942980370371555,
+      "friction_factor": 0.02694298037037155,
       "diameter": 0.3,
       "min_flow": -2277.7778,
       "length": 2049.10116813,
@@ -9505,7 +9505,7 @@
       "fr_node": 486
     },
     "146": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.00981803654882783,
       "diameter": 0.3,
       "min_flow": -2277.7778,
       "length": 20398.1537301,
@@ -9518,7 +9518,7 @@
       "fr_node": 359
     },
     "142": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.008435173135683757,
       "diameter": 0.75,
       "min_flow": -2277.7778,
       "length": 6802.42075156,
@@ -9570,7 +9570,7 @@
       "fr_node": 399
     },
     "80": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.00981803654882783,
       "diameter": 0.3,
       "min_flow": -2277.7778,
       "length": 6765.55820452,
@@ -9583,7 +9583,7 @@
       "fr_node": 264
     },
     "113": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.008435173135683757,
       "diameter": 0.75,
       "min_flow": -2277.7778,
       "length": 2475.19925199,
@@ -9648,7 +9648,7 @@
       "fr_node": 16
     },
     "165": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.007740933822089924,
       "diameter": 1.3,
       "min_flow": -2277.7778,
       "length": 25405.5833795,
@@ -9661,7 +9661,7 @@
       "fr_node": 565
     },
     "57": {
-      "friction_factor": 0.026942980370371555,
+      "friction_factor": 0.02694298037037155,
       "diameter": 0.3,
       "min_flow": -2277.7778,
       "length": 5192.33000197,
@@ -9674,7 +9674,7 @@
       "fr_node": 375
     },
     "173": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.008060937852716412,
       "diameter": 1.0,
       "min_flow": -2277.7778,
       "length": 2066.15364107,
@@ -9726,7 +9726,7 @@
       "fr_node": 21
     },
     "130": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.00981803654882783,
       "diameter": 0.3,
       "min_flow": -2277.7778,
       "length": 4530.78498414,
@@ -9765,7 +9765,7 @@
       "fr_node": 97
     },
     "67": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.009008519475807528,
       "diameter": 0.5,
       "min_flow": -2277.7778,
       "length": 2385.2802954199997,
@@ -9830,7 +9830,7 @@
       "fr_node": 204
     },
     "46": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.009008519475807528,
       "diameter": 0.5,
       "min_flow": -2277.7778,
       "length": 7727.7018966900005,
@@ -9843,7 +9843,7 @@
       "fr_node": 369
     },
     "251": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.009008519475807528,
       "diameter": 0.5,
       "min_flow": -2277.7778,
       "length": 2449.61647571,
@@ -9856,7 +9856,7 @@
       "fr_node": 49
     },
     "170": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.008060937852716412,
       "diameter": 1.0,
       "min_flow": -2277.7778,
       "length": 10343.662654599999,
@@ -9908,7 +9908,7 @@
       "fr_node": 376
     },
     "56": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.009008519475807528,
       "diameter": 0.5,
       "min_flow": -2277.7778,
       "length": 1679.39839007,
@@ -9921,7 +9921,7 @@
       "fr_node": 162
     },
     "147": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.00981803654882783,
       "diameter": 0.3,
       "min_flow": -2277.7778,
       "length": 1895.07045827,
@@ -9947,7 +9947,7 @@
       "fr_node": 182
     },
     "186": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.008060937852716412,
       "diameter": 1.0,
       "min_flow": -2277.7778,
       "length": 14291.501787899999,
@@ -9960,7 +9960,7 @@
       "fr_node": 343
     },
     "180": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.008060937852716412,
       "diameter": 1.0,
       "min_flow": -2277.7778,
       "length": 10776.968501700001,
@@ -9973,7 +9973,7 @@
       "fr_node": 450
     },
     "135": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.008060937852716412,
       "diameter": 1.0,
       "min_flow": -2277.7778,
       "length": 8895.602520280001,
@@ -9999,7 +9999,7 @@
       "fr_node": 61
     },
     "48": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.009008519475807528,
       "diameter": 0.5,
       "min_flow": -2277.7778,
       "length": 2573.2079583699997,
@@ -10051,7 +10051,7 @@
       "fr_node": 63
     },
     "32": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.009008519475807528,
       "diameter": 0.5,
       "min_flow": -2277.7778,
       "length": 4029.3599376499997,
@@ -10064,7 +10064,7 @@
       "fr_node": 170
     },
     "217": {
-      "friction_factor": 0.012658432618099444,
+      "friction_factor": 0.012658432618099446,
       "diameter": 0.75,
       "min_flow": -2277.7778,
       "length": 2213.37889549,
@@ -10077,7 +10077,7 @@
       "fr_node": 413
     },
     "2": {
-      "friction_factor": 0.017824411459213815,
+      "friction_factor": 0.01782441145921381,
       "diameter": 0.15,
       "min_flow": -2277.7778,
       "length": 2108.89069068,
@@ -10090,7 +10090,7 @@
       "fr_node": 290
     },
     "183": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.008060937852716412,
       "diameter": 1.0,
       "min_flow": -2277.7778,
       "length": 19175.0475692,
@@ -10168,7 +10168,7 @@
       "fr_node": 225
     },
     "141": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.008435173135683757,
       "diameter": 0.75,
       "min_flow": -2277.7778,
       "length": 2506.85835994,
@@ -10181,7 +10181,7 @@
       "fr_node": 425
     },
     "93": {
-      "friction_factor": 0.017824411459213815,
+      "friction_factor": 0.01782441145921381,
       "diameter": 0.15,
       "min_flow": -2277.7778,
       "length": 2064.0824843,
@@ -10207,7 +10207,7 @@
       "fr_node": 113
     },
     "278": {
-      "friction_factor": 0.026942980370371555,
+      "friction_factor": 0.02694298037037155,
       "diameter": 0.3,
       "min_flow": -2277.7778,
       "length": 2014.7161640800002,
@@ -10246,7 +10246,7 @@
       "fr_node": 64
     },
     "215": {
-      "friction_factor": 0.026942980370371555,
+      "friction_factor": 0.02694298037037155,
       "diameter": 0.15,
       "min_flow": -2277.7778,
       "length": 2070.8955251400002,
@@ -10324,7 +10324,7 @@
       "fr_node": 167
     },
     "196": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.007740933822089924,
       "diameter": 1.3,
       "min_flow": 0.0,
       "length": 54287.7840706,
@@ -10337,7 +10337,7 @@
       "fr_node": 340
     },
     "90": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.008435173135683757,
       "diameter": 0.75,
       "min_flow": -2277.7778,
       "length": 2026.18923094,
@@ -10402,7 +10402,7 @@
       "fr_node": 417
     },
     "164": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.008060937852716412,
       "diameter": 1.0,
       "min_flow": -2277.7778,
       "length": 15853.1307021,
@@ -10428,7 +10428,7 @@
       "fr_node": 230
     },
     "126": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.008435173135683757,
       "diameter": 0.75,
       "min_flow": -2277.7778,
       "length": 2703.84163811,
@@ -10454,7 +10454,7 @@
       "fr_node": 285
     },
     "71": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.008435173135683757,
       "diameter": 0.75,
       "min_flow": -2277.7778,
       "length": 6994.98967757,
@@ -10506,7 +10506,7 @@
       "fr_node": 37
     },
     "266": {
-      "friction_factor": 0.026942980370371555,
+      "friction_factor": 0.02694298037037155,
       "diameter": 0.15,
       "min_flow": -2277.7778,
       "length": 2074.69678308,
@@ -10519,7 +10519,7 @@
       "fr_node": 64
     },
     "268": {
-      "friction_factor": 0.017824411459213815,
+      "friction_factor": 0.01782441145921381,
       "diameter": 0.15,
       "min_flow": -2277.7778,
       "length": 4072.0815602,
@@ -10532,7 +10532,7 @@
       "fr_node": 279
     },
     "6": {
-      "friction_factor": 0.026942980370371555,
+      "friction_factor": 0.02694298037037155,
       "diameter": 0.3,
       "min_flow": -2277.7778,
       "length": 2220.94967409,
@@ -10545,7 +10545,7 @@
       "fr_node": 87
     },
     "125": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.008435173135683757,
       "diameter": 0.75,
       "min_flow": -2277.7778,
       "length": 1799.8002213299999,
@@ -10571,7 +10571,7 @@
       "fr_node": 202
     },
     "272": {
-      "friction_factor": 0.026942980370371555,
+      "friction_factor": 0.02694298037037155,
       "diameter": 0.15,
       "min_flow": -2277.7778,
       "length": 2114.24910293,
@@ -10584,7 +10584,7 @@
       "fr_node": 75
     },
     "174": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.008060937852716412,
       "diameter": 1.0,
       "min_flow": -2277.7778,
       "length": 25148.020677200002,
@@ -10636,7 +10636,7 @@
       "fr_node": 60
     },
     "194": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.007740933822089924,
       "diameter": 1.3,
       "min_flow": 0.0,
       "length": 26590.3313985,
@@ -10649,7 +10649,7 @@
       "fr_node": 354
     },
     "140": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.008435173135683757,
       "diameter": 0.75,
       "min_flow": -2277.7778,
       "length": 4523.42236547,
@@ -10688,7 +10688,7 @@
       "fr_node": 208
     },
     "69": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.009008519475807528,
       "diameter": 0.5,
       "min_flow": -2277.7778,
       "length": 2392.34236768,
@@ -10740,7 +10740,7 @@
       "fr_node": 17
     },
     "235": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.009008519475807528,
       "diameter": 0.5,
       "min_flow": -2277.7778,
       "length": 6708.15031469,
@@ -10766,7 +10766,7 @@
       "fr_node": 5
     },
     "210": {
-      "friction_factor": 0.017824411459213815,
+      "friction_factor": 0.01782441145921381,
       "diameter": 0.75,
       "min_flow": -2277.7778,
       "length": 4565.12320415,
@@ -10779,7 +10779,7 @@
       "fr_node": 405
     },
     "13": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.009008519475807528,
       "diameter": 0.5,
       "min_flow": -2277.7778,
       "length": 6973.95433015,
@@ -10792,7 +10792,7 @@
       "fr_node": 362
     },
     "136": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.00981803654882783,
       "diameter": 0.3,
       "min_flow": -2277.7778,
       "length": 2161.0684015300003,
@@ -10818,7 +10818,7 @@
       "fr_node": 406
     },
     "134": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.008435173135683757,
       "diameter": 0.75,
       "min_flow": -2277.7778,
       "length": 5165.56660294,
@@ -10831,7 +10831,7 @@
       "fr_node": 261
     },
     "148": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.008435173135683757,
       "diameter": 0.75,
       "min_flow": -2277.7778,
       "length": 6648.59591076,
@@ -10857,7 +10857,7 @@
       "fr_node": 28
     },
     "133": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.008435173135683757,
       "diameter": 0.75,
       "min_flow": -2277.7778,
       "length": 9171.87769838,
@@ -10870,7 +10870,7 @@
       "fr_node": 549
     },
     "193": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.008060937852716412,
       "diameter": 1.0,
       "min_flow": -2277.7778,
       "length": 6937.88003632,
@@ -10883,7 +10883,7 @@
       "fr_node": 350
     },
     "118": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.009008519475807528,
       "diameter": 0.5,
       "min_flow": -2277.7778,
       "length": 4561.029752259999,
@@ -10896,7 +10896,7 @@
       "fr_node": 248
     },
     "246": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.011103269214161002,
       "diameter": 0.15,
       "min_flow": -2277.7778,
       "length": 6090.7456676500005,
@@ -10922,7 +10922,7 @@
       "fr_node": 306
     },
     "188": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.008060937852716412,
       "diameter": 1.0,
       "min_flow": -2277.7778,
       "length": 12667.6985678,
@@ -10935,7 +10935,7 @@
       "fr_node": 347
     },
     "199": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.007740933822089924,
       "diameter": 1.3,
       "min_flow": 0.0,
       "length": 47429.4990367,
@@ -10961,7 +10961,7 @@
       "fr_node": 237
     },
     "66": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.008435173135683757,
       "diameter": 0.75,
       "min_flow": -2277.7778,
       "length": 4631.43268575,
@@ -10987,7 +10987,7 @@
       "fr_node": 495
     },
     "18": {
-      "friction_factor": 0.026942980370371555,
+      "friction_factor": 0.02694298037037155,
       "diameter": 0.3,
       "min_flow": -2277.7778,
       "length": 2514.3341548599997,
@@ -11000,7 +11000,7 @@
       "fr_node": 106
     },
     "132": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.008435173135683757,
       "diameter": 0.75,
       "min_flow": -2277.7778,
       "length": 2417.81705858,
@@ -11013,7 +11013,7 @@
       "fr_node": 259
     },
     "29": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.011103269214161002,
       "diameter": 0.15,
       "min_flow": -2277.7778,
       "length": 1129.6266581700002,
@@ -11039,7 +11039,7 @@
       "fr_node": 187
     },
     "74": {
-      "friction_factor": 0.017824411459213815,
+      "friction_factor": 0.01782441145921381,
       "diameter": 0.15,
       "min_flow": -2277.7778,
       "length": 2077.31024108,
@@ -11052,7 +11052,7 @@
       "fr_node": 178
     },
     "119": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.00981803654882783,
       "diameter": 0.3,
       "min_flow": -2277.7778,
       "length": 2157.57178142,
@@ -11078,7 +11078,7 @@
       "fr_node": 29
     },
     "42": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.009008519475807528,
       "diameter": 0.5,
       "min_flow": -2277.7778,
       "length": 6718.15803655,
@@ -11104,7 +11104,7 @@
       "fr_node": 130
     },
     "28": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.011103269214161002,
       "diameter": 0.15,
       "min_flow": -2277.7778,
       "length": 1594.54762583,
@@ -11130,7 +11130,7 @@
       "fr_node": 150
     },
     "121": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.008435173135683757,
       "diameter": 0.75,
       "min_flow": -2277.7778,
       "length": 2157.57571969,
@@ -11156,7 +11156,7 @@
       "fr_node": 234
     },
     "163": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.009008519475807528,
       "diameter": 0.5,
       "min_flow": -2277.7778,
       "length": 14071.988296000001,
@@ -11169,7 +11169,7 @@
       "fr_node": 445
     },
     "58": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.009008519475807528,
       "diameter": 0.5,
       "min_flow": -2277.7778,
       "length": 8387.93382117,
@@ -11208,7 +11208,7 @@
       "fr_node": 232
     },
     "166": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.007740933822089924,
       "diameter": 1.3,
       "min_flow": -2277.7778,
       "length": 22870.0689342,
@@ -11221,7 +11221,7 @@
       "fr_node": 566
     },
     "31": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.00981803654882783,
       "diameter": 0.3,
       "min_flow": -2277.7778,
       "length": 2046.15897267,
@@ -11247,7 +11247,7 @@
       "fr_node": 77
     },
     "206": {
-      "friction_factor": 0.026942980370371555,
+      "friction_factor": 0.02694298037037155,
       "diameter": 0.15,
       "min_flow": -2277.7778,
       "length": 4543.7028011,
@@ -11260,7 +11260,7 @@
       "fr_node": 403
     },
     "44": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.009008519475807528,
       "diameter": 0.5,
       "min_flow": -2277.7778,
       "length": 5188.73663538,
@@ -11273,7 +11273,7 @@
       "fr_node": 143
     },
     "169": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.008060937852716412,
       "diameter": 1.0,
       "min_flow": -2277.7778,
       "length": 4576.488463289999,
@@ -11286,7 +11286,7 @@
       "fr_node": 330
     },
     "129": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.008435173135683757,
       "diameter": 0.75,
       "min_flow": -2277.7778,
       "length": 6752.87818541,
@@ -11299,7 +11299,7 @@
       "fr_node": 258
     },
     "189": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.008060937852716412,
       "diameter": 1.0,
       "min_flow": -2277.7778,
       "length": 1020.24409289,
@@ -11325,7 +11325,7 @@
       "fr_node": 282
     },
     "259": {
-      "friction_factor": 0.026942980370371555,
+      "friction_factor": 0.02694298037037155,
       "diameter": 0.3,
       "min_flow": -2277.7778,
       "length": 8781.02620444,
@@ -11364,7 +11364,7 @@
       "fr_node": 203
     },
     "207": {
-      "friction_factor": 0.026942980370371555,
+      "friction_factor": 0.02694298037037155,
       "diameter": 0.15,
       "min_flow": -2277.7778,
       "length": 2644.42196573,
@@ -11390,7 +11390,7 @@
       "fr_node": 140
     },
     "73": {
-      "friction_factor": 0.017824411459213815,
+      "friction_factor": 0.01782441145921381,
       "diameter": 0.15,
       "min_flow": -2277.7778,
       "length": 1968.5681661800002,
@@ -11403,7 +11403,7 @@
       "fr_node": 176
     },
     "82": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.00981803654882783,
       "diameter": 0.3,
       "min_flow": -2277.7778,
       "length": 5880.90574955,
@@ -11416,7 +11416,7 @@
       "fr_node": 189
     },
     "79": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.008435173135683757,
       "diameter": 0.75,
       "min_flow": -2277.7778,
       "length": 3967.00943251,
@@ -11429,7 +11429,7 @@
       "fr_node": 469
     },
     "216": {
-      "friction_factor": 0.017824411459213815,
+      "friction_factor": 0.01782441145921381,
       "diameter": 0.75,
       "min_flow": -2277.7778,
       "length": 4653.52943096,
@@ -11468,7 +11468,7 @@
       "fr_node": 218
     },
     "124": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.008435173135683757,
       "diameter": 0.75,
       "min_flow": -2277.7778,
       "length": 4911.12795445,
@@ -11520,7 +11520,7 @@
       "fr_node": 66
     },
     "185": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.008060937852716412,
       "diameter": 1.0,
       "min_flow": -2277.7778,
       "length": 4650.43844731,
@@ -11533,7 +11533,7 @@
       "fr_node": 452
     },
     "70": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.009008519475807528,
       "diameter": 0.5,
       "min_flow": -2277.7778,
       "length": 4438.019684190001,
@@ -11546,7 +11546,7 @@
       "fr_node": 548
     },
     "191": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.007740933822089924,
       "diameter": 1.3,
       "min_flow": -2277.7778,
       "length": 1997.85875897,
@@ -11559,7 +11559,7 @@
       "fr_node": 571
     },
     "8": {
-      "friction_factor": 0.026942980370371555,
+      "friction_factor": 0.02694298037037155,
       "diameter": 0.15,
       "min_flow": -2277.7778,
       "length": 1941.04683031,
@@ -11572,7 +11572,7 @@
       "fr_node": 88
     },
     "198": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.008060937852716412,
       "diameter": 1.0,
       "min_flow": -2277.7778,
       "length": 37571.2040211,
@@ -11585,7 +11585,7 @@
       "fr_node": 447
     },
     "64": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.008435173135683757,
       "diameter": 0.75,
       "min_flow": -2277.7778,
       "length": 2209.7102547,
@@ -11676,7 +11676,7 @@
       "fr_node": 295
     },
     "144": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.008435173135683757,
       "diameter": 0.75,
       "min_flow": -2277.7778,
       "length": 7189.052225840001,
@@ -11689,7 +11689,7 @@
       "fr_node": 275
     },
     "220": {
-      "friction_factor": 0.026942980370371555,
+      "friction_factor": 0.02694298037037155,
       "diameter": 0.15,
       "min_flow": -2277.7778,
       "length": 5882.593245,
@@ -11715,7 +11715,7 @@
       "fr_node": 109
     },
     "11": {
-      "friction_factor": 0.026942980370371555,
+      "friction_factor": 0.02694298037037155,
       "diameter": 0.15,
       "min_flow": -2277.7778,
       "length": 1933.55353485,
@@ -11754,7 +11754,7 @@
       "fr_node": 82
     },
     "16": {
-      "friction_factor": 0.026942980370371555,
+      "friction_factor": 0.02694298037037155,
       "diameter": 0.3,
       "min_flow": -2277.7778,
       "length": 2308.22329426,
@@ -11780,7 +11780,7 @@
       "fr_node": 145
     },
     "72": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.008435173135683757,
       "diameter": 0.75,
       "min_flow": -2277.7778,
       "length": 2214.66451566,
@@ -11793,7 +11793,7 @@
       "fr_node": 175
     },
     "128": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.008435173135683757,
       "diameter": 0.75,
       "min_flow": -2277.7778,
       "length": 2483.82402868,
@@ -11806,7 +11806,7 @@
       "fr_node": 253
     },
     "145": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.008435173135683757,
       "diameter": 0.75,
       "min_flow": -2277.7778,
       "length": 2167.09026974,
@@ -11832,7 +11832,7 @@
       "fr_node": 149
     },
     "138": {
-      "friction_factor": 0.0,
+      "friction_factor": 0.00981803654882783,
       "diameter": 0.3,
       "min_flow": -2277.7778,
       "length": 4382.80559985,

@@ -12,7 +12,7 @@ function parse_cli_args(args)
         "--file"
             help="GasLib zipped directory" 
             arg_type = String
-            default="GasLib-582.zip"
+            default="GasLib-24.zip"
         "--outputfolder"
             arg_type = String
             default = "./json/"

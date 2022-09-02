@@ -382,7 +382,7 @@ end
 
 
 function _parse_gaslib_length(entry)
-    if isapprox(parse(Float64, entry[:value]), 0.0, atol = 1e-2)
+    if isapprox(parse(Float64, entry[:value]), 0.0, atol = 1e-6)
         return 0.0
     elseif entry[:unit] == "m"
         return parse(Float64, entry[:value])
@@ -394,7 +394,7 @@ function _parse_gaslib_length(entry)
 end
 
 function _parse_gaslib_pressure(entry)
-    if isapprox(parse(Float64, entry[:value]), 0.0, atol = 1e-2)
+    if isapprox(parse(Float64, entry[:value]), 0.0, atol = 1e-6)
         return 0.0
     elseif entry[:unit] == "bar" 
         return parse(Float64, entry[:value]) * 1e5
