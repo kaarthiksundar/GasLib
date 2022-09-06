@@ -80,8 +80,8 @@ function write_network_data(data, outputfolder, zip_file; bc_flag::Bool=false)
         
         if i == string(slack_node)
             network_data["nodes"][i]["slack_bool"] = 1
-            slack_pressure_data["slack_pressures"][i] = 5000000
-            bc["boundary_pslack"][i] = 5000000
+            slack_pressure_data["slack_pressures"][i] = network_data["nodes"][i]["max_pressure"]
+            bc["boundary_pslack"][i] = network_data["nodes"][i]["max_pressure"]
         else 
             network_data["nodes"][i]["slack_bool"] = 0
             if !(withdrawal[i] == 0)
@@ -249,16 +249,16 @@ function write_nomination_data(data, outputfolder, zip_file)
     for (i, receipt) in get(data, "receipts", []) 
         nomination_data["receipt_nominations"][i] = Dict{String,Any}(
             "cost" => 1.0,
-            "max_injection" => round(receipt["max_injection"], digits=4),
-            "min_injection" => round(receipt["min_injection"], digits=4)
+            "max_injection" => receipt["max_injection"],
+            "min_injection" => receipt["min_injection"]
         )
     end 
 
     for (i, delivery) in get(data, "deliveries", []) 
         nomination_data["delivery_nominations"][i] = Dict{String,Any}(
             "cost" => 1.0, 
-            "max_withdrawal" => round(delivery["max_withdrawal"], digits=4),
-            "min_withdrawal" => round(delivery["min_withdrawal"], digits=4)
+            "max_withdrawal" => delivery["max_withdrawal"],
+            "min_withdrawal" => delivery["min_withdrawal"]
         )
     end 
 

@@ -4,7 +4,7 @@
     "on": []
   },
   "boundary_pslack": {
-    "17": 5000000
+    "17": 7.0e6
   },
   "boundary_compressor": {
     "1": {

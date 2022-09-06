@@ -6,7 +6,7 @@
     ]
   },
   "boundary_pslack": {
-    "6": 5000000
+    "6": 7.0e6
   },
   "boundary_compressor": {
     "1": {
