@@ -10,9 +10,13 @@ function parse_cli_args(args)
             default = "./data/"
             help = "folder where GasLib data is available"
         "--file"
-            help="GasLib zipped directory" 
+            help = "GasLib zipped directory" 
             arg_type = String
-            default="GasLib-4197.zip"
+            default = "GasLib-4197.zip"
+        "--nominationfile" 
+            help = "name of nomination file with folder"
+            arg_type = String 
+            default = ""
         "--outputfolder"
             arg_type = String
             default = "./json/"
