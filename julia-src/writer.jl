@@ -17,7 +17,7 @@ function write_params_data(data, outputfolder, zip_file)
     end
 end 
 
-function write_network_data(data, outputfolder, zip_file; bc_flag::Bool=false) 
+function write_network_data(data, outputfolder, zip_file) 
     output_folder = outputfolder * split(zip_file, ".")[1]
     (!isdir(output_folder)) && (mkdir(output_folder)) 
 
@@ -35,37 +35,7 @@ function write_network_data(data, outputfolder, zip_file; bc_flag::Bool=false)
         "deliveries" => Dict{String,Any}()
     )
 
-    slack_pressure_data = Dict{String,Any}(
-        "slack_pressures" => Dict{String,Any}()
-    )
-
-    bc = Dict{String,Any}(
-        "boundary_compressor" => Dict{String,Any}(),
-        "boundary_nonslack_flow" => Dict{String,Any}(),
-        "boundary_pslack" => Dict{String,Any}()
-
-    )
-
-    withdrawal = Dict{String,Any}()
-
-    for (i, _) in data["nodes"]
-        withdrawal[i] = 0.0
-    end 
-
-    for (_, receipt) in data["receipts"]
-        node = string(receipt["node_id"])
-        withdrawal[node] -= receipt["nominal_injection"]
-    end 
-
-    for (_, delivery) in data["deliveries"]
-        node = string(delivery["node_id"])
-        withdrawal[node] += delivery["nominal_withdrawal"] 
-    end 
-
-    withdrawal_values = [v for (_, v) in withdrawal]
-    max_injection = minimum(withdrawal_values)
-    nodes_with_max_injection = sort([k for (k,v) in withdrawal if v == max_injection])
-    slack_node = nodes_with_max_injection[1]
+    slack_node_data = get_slack_nodes(data)
 
     for (i, node) in data["nodes"]
         network_data["nodes"][i] = Dict{String,Any}(
@@ -78,16 +48,16 @@ function write_network_data(data, outputfolder, zip_file; bc_flag::Bool=false)
             "max_pressure" => node["max_pressure"]
         )
         
-        if i == string(slack_node)
-            network_data["nodes"][i]["slack_bool"] = 1
-            slack_pressure_data["slack_pressures"][i] = network_data["nodes"][i]["max_pressure"]
-            bc["boundary_pslack"][i] = network_data["nodes"][i]["max_pressure"]
-        else 
-            network_data["nodes"][i]["slack_bool"] = 0
-            if !(withdrawal[i] == 0)
-                bc["boundary_nonslack_flow"][i] = withdrawal[i]
-            end
-        end
+        # if i == string(slack_node)
+        #     # network_data["nodes"][i]["slack_bool"] = 1
+        #     slack_pressure_data["slack_pressures"][i] = network_data["nodes"][i]["max_pressure"]
+        #     bc["boundary_pslack"][i] = network_data["nodes"][i]["max_pressure"]
+        # else 
+        #     # network_data["nodes"][i]["slack_bool"] = 0
+        #     if !(withdrawal[i] == 0)
+        #         bc["boundary_nonslack_flow"][i] = withdrawal[i]
+        #     end
+        # end
     end
 
     for (i, pipe) in data["pipes"]
@@ -120,9 +90,6 @@ function write_network_data(data, outputfolder, zip_file; bc_flag::Bool=false)
             "max_c_ratio" => compressor["c_ratio_max"],
             "max_power" => compressor["power_max"]
         )
-        bc["boundary_compressor"][i] = Dict{String,Any}(
-            "control_type" => 0, "value" => 1.5
-        )
     end
 
     for (i, short_pipe) in get(data, "short_pipes", [])
@@ -136,7 +103,7 @@ function write_network_data(data, outputfolder, zip_file; bc_flag::Bool=false)
         )
     end 
 
-    bc["boundary_valve"] = Dict{String,Any}("on" => [], "off" => [])
+    
     for (i, valve) in get(data, "valves", []) 
         network_data["valves"][i] = Dict{String,Any}(
             "id" => parse(Int, i),
@@ -147,10 +114,8 @@ function write_network_data(data, outputfolder, zip_file; bc_flag::Bool=false)
             "max_flow" => round(valve["max_flow"], digits=4), 
             "max_pressure_differential" => valve["max_pressure_differential"]
         )
-        push!(bc["boundary_valve"]["on"], parse(Int, i))
     end 
 
-    bc["boundary_control_valve"] = Dict{String,Any}("on" => [], "off" => [])
     for (i, control_valve) in get(data, "control_valves", []) 
         network_data["control_valves"][i] = Dict{String,Any}(
             "id" => parse(Int, i),
@@ -162,10 +127,6 @@ function write_network_data(data, outputfolder, zip_file; bc_flag::Bool=false)
             "internal_bypass_required" => control_valve["internal_bypass_required"],
             "min_pressure_differential" => control_valve["min_pressure_differential"],
             "max_pressure_differential" => control_valve["max_pressure_differential"]
-        )
-        push!(bc["boundary_control_valve"]["on"], parse(Int, i))
-        bc["boundary_control_valve"][i] = Dict{String,Any}(
-            "control_type" => 0, "value" => 1.0
         )
     end 
 
@@ -194,20 +155,28 @@ function write_network_data(data, outputfolder, zip_file; bc_flag::Bool=false)
         )
     end 
 
-    for (i, receipt) in get(data, "receipts", []) 
-        network_data["receipts"][i] = Dict{String,Any}(
-            "id" => parse(Int, i), 
-            "node_id" => receipt["node_id"], 
-            "name" => receipt["name"]
-        )
-    end 
+    all_receipts = get(data, "receipts", []) 
+    if !isempty(all_receipts)
+        receipts = all_receipts |> first |> last
+        for (i, receipt) in receipts
+            network_data["receipts"][i] = Dict{String,Any}(
+                "id" => parse(Int, i), 
+                "node_id" => receipt["node_id"], 
+                "name" => receipt["name"]
+            )
+        end 
+    end
 
-    for (i, delivery) in get(data, "deliveries", []) 
-        network_data["deliveries"][i] = Dict{String,Any}(
-            "id" => parse(Int, i), 
-            "node_id" => delivery["node_id"],
-            "name" => delivery["name"]
-        )
+    all_deliveries = get(data, "deliveries", []) 
+    if !isempty(all_deliveries)
+        deliveries = all_deliveries |> first |> last
+        for (i, delivery) in deliveries 
+            network_data["deliveries"][i] = Dict{String,Any}(
+                "id" => parse(Int, i), 
+                "node_id" => delivery["node_id"],
+                "name" => delivery["name"]
+            )
+        end 
     end 
 
     open(output_folder * "/network.json", "w") do f 
@@ -215,15 +184,40 @@ function write_network_data(data, outputfolder, zip_file; bc_flag::Bool=false)
     end
 
 
-    open(output_folder * "/slack_pressures.json", "w") do f 
-        JSON.print(f, slack_pressure_data, 2)
+    open(output_folder * "/slack_nodes.json", "w") do f 
+        JSON.print(f, slack_node_data, 2)
     end
 
-    if bc_flag
-        open(output_folder * "/bc.json", "w") do f 
-            JSON.print(f, bc, 2)
-        end
-    end
+end 
+
+function get_slack_nodes(data::Dict)
+
+    withdrawal = Dict{String,Any}( 
+        k => Dict{String,Any}(
+            i => 0.0 for (i, _) in data["nodes"]
+        ) for k in data["receipts"] |> keys)
+    
+    slack_node = Dict{String,Any}()
+    
+    for p in data["receipts"] |> keys 
+        k = split(p, ['/', '.'])[end-1]
+        for (_, receipt) in data["receipts"][p]
+            node = string(receipt["node_id"])
+            withdrawal[p][node] -= receipt["nominal_injection"]
+        end 
+    
+        for (_, delivery) in data["deliveries"][p]
+            node = string(delivery["node_id"])
+            withdrawal[p][node] += delivery["nominal_withdrawal"] 
+        end 
+
+        withdrawal_values = [v for (_, v) in withdrawal[p]]
+        max_injection = minimum(withdrawal_values)
+        nodes_with_max_injection = sort([k for (k,v) in withdrawal[p] if v == max_injection])
+        slack_node[k] = nodes_with_max_injection |> first
+    end 
+
+    return slack_node
 end 
 
 function write_decision_group_data(data, outputfolder, zip_file) 
@@ -242,24 +236,35 @@ function write_nomination_data(data, outputfolder, zip_file)
     (!isdir(output_folder)) && (mkdir(output_folder)) 
 
     nomination_data = Dict{String,Any}(
-        "delivery_nominations" => Dict{String,Any}(), 
-        "receipt_nominations" => Dict{String,Any}()
+        split(p, ['/', '.'])[end-1] => 
+        Dict{String,Any}() 
+        for p in keys(data["receipts"])
     )
 
-    for (i, receipt) in get(data, "receipts", []) 
-        nomination_data["receipt_nominations"][i] = Dict{String,Any}(
-            "cost" => 1.0,
-            "max_injection" => receipt["max_injection"],
-            "min_injection" => receipt["min_injection"]
+    for (p, receipts) in get(data, "receipts", [])
+        k = split(p, ['/', '.'])[end-1]
+        nomination_data[k] = Dict{String,Any}(
+            "receipt_nominations" => Dict{String,Any}(), 
+            "delivery_nominations" => Dict{String,Any}()
         )
+        for (i, receipt) in receipts
+            nomination_data[k]["receipt_nominations"][i] = Dict{String,Any}(
+                "cost" => 1.0,
+                "max_injection" => receipt["max_injection"],
+                "min_injection" => receipt["min_injection"]
+            )
+        end 
     end 
 
-    for (i, delivery) in get(data, "deliveries", []) 
-        nomination_data["delivery_nominations"][i] = Dict{String,Any}(
-            "cost" => 1.0, 
-            "max_withdrawal" => delivery["max_withdrawal"],
-            "min_withdrawal" => delivery["min_withdrawal"]
-        )
+    for (p, deliveries) in get(data, "deliveries", [])
+        k = split(p, ['/', '.'])[end-1]
+        for (i, delivery) in deliveries 
+            nomination_data[k]["delivery_nominations"][i] = Dict{String,Any}(
+                "cost" => 1.0, 
+                "max_withdrawal" => delivery["max_withdrawal"],
+                "min_withdrawal" => delivery["min_withdrawal"]
+            )
+        end
     end 
 
     open(output_folder * "/nominations.json", "w") do f 

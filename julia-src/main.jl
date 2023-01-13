@@ -13,26 +13,18 @@ function parse_cli_args(args)
             help = "GasLib zipped directory" 
             arg_type = String
             default = "GasLib-4197.zip"
-        "--nominationfile" 
-            help = "name of nomination file with folder"
-            arg_type = String 
-            default = ""
         "--outputfolder"
             arg_type = String
             default = "./json/"
             help = "folder to save the output json"
-        "--writebc"
-            arg_type = Int 
-            default = 0
-            help = "0/1 to write boundary condition files for steady state simulation"
     end
     return parse_args(s) # the result is a Dict{String,Any}
 end
 
 function main(ARGS)
     args = parse_cli_args(ARGS)
-    data = parse_gaslib(args["datafolder"] * args["file"])
-    write_network_data(data, args["outputfolder"], args["file"]; bc_flag=Bool(args["writebc"]))
+    data = parse_gaslib(args["datafolder"] * args["file"]) #, args["nominationjson"])
+    write_network_data(data, args["outputfolder"], args["file"])
     write_params_data(data, args["outputfolder"], args["file"])
     write_decision_group_data(data, args["outputfolder"], args["file"])
     write_nomination_data(data, args["outputfolder"], args["file"])

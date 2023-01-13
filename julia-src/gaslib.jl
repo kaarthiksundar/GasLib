@@ -21,25 +21,7 @@ function parse_gaslib(zip_path::Union{IO,String})
     cd_xml = fid !== nothing ? _parse_xml_file(zip_reader, fid) : Dict()
 
     # Parse the nomination XML file(s).
-    fids = findall(x -> occursin(".scn", x), file_paths)
-
-    # TODO: If length(fids) > 1, treat the input as a multinetwork.
-    if length(fids) > 1 # If multiple scenarios are defined.
-        # Parse and use the last nominations file when sorted by name.
-        nomination_path = sort(file_paths[fids])[end]
-        fid = findfirst(x -> occursin(nomination_path, x), file_paths)
-        nomination_xml = _parse_xml_file(zip_reader, fid)
-
-        # Print a warning message stating that the above file is being used.
-        @warn "Multiple nomination file paths found " *
-            "in GasLib data. Selecting last nomination file " *
-            "(i.e., \"$(file_paths[fid])\") " *
-            "after sorting by name."
-    
-    else # If only one nominations scenario is defined...
-        # Parse and use the only nominations file available.
-        nomination_xml = _parse_xml_file(zip_reader, fids[end])
-    end
+    nomination_xml_dict = _parse_all_nomination_data(file_paths, zip_reader)
 
     # Compute bulk data from averages of network data.
     density = round(_compute_gaslib_density(topology_xml); digits=4)
@@ -71,8 +53,8 @@ function parse_gaslib(zip_path::Union{IO,String})
         isentropic_exponent,
         density,
     )
-    deliveries = _read_gaslib_deliveries(topology_xml, nomination_xml, density)
-    receipts = _read_gaslib_receipts(topology_xml, nomination_xml, density)
+    deliveries = _read_gaslib_deliveries(topology_xml, nomination_xml_dict, density)
+    receipts = _read_gaslib_receipts(topology_xml, nomination_xml_dict, density)
 
     decision_groups = !isempty(cd_xml) ? _read_gaslib_cd(cd_xml) : Dict{String,Any}()
 
@@ -111,6 +93,19 @@ function parse_gaslib(zip_path::Union{IO,String})
     return data
 end
 
+function _parse_all_nomination_data(file_paths, zip_reader)
+    nomination_data = Dict{String,XMLDict.XMLDictElement}()
+    fids = findall(x -> occursin(".scn", x), file_paths)
+    for fid in fids 
+        nomination_xml = _parse_xml_file(zip_reader, fid)
+        nomination_path = file_paths[fid]
+        nomination_data[nomination_path] = nomination_xml
+    end 
+    return nomination_data
+end 
+
+_get_report(nomination_info::Vector{Any}) = 
+    filter(x -> x["type"] == "report", nomination_info)
 
 function _parse_xml_file(zip_reader, path_index)
     xml_str = ZipFile.read(zip_reader.files[path_index], String)
@@ -131,17 +126,19 @@ function _correct_ids(data::Dict{String,<:Any})
     end
 
     for node_type in ["deliveries", "receipts"]
-        node_names = sort(collect(keys(data[node_type])))
-        node_mapping = Dict(k => i for (i, k) in enumerate(node_names))
+        for p in keys(data[node_type])
+            node_names = sort(collect(keys(data[node_type][p])))
+            node_mapping = Dict(k => i for (i, k) in enumerate(node_names))
 
-        for (node_name, _) in data[node_type]
-            i = node_mapping[node_name]
-            new_data[node_type][string(i)] = data[node_type][node_name]
-            new_data[node_type][string(i)]["id"] = i
-            new_data[node_type][string(i)]["node_id"] = junction_mapping[node_name]
-            new_data[node_type][string(i)]["name"] = node_name
-            delete!(new_data[node_type], node_name)
-        end
+            for (node_name, _) in data[node_type][p]
+                i = node_mapping[node_name]
+                new_data[node_type][p][string(i)] = data[node_type][p][node_name]
+                new_data[node_type][p][string(i)]["id"] = i
+                new_data[node_type][p][string(i)]["node_id"] = junction_mapping[node_name]
+                new_data[node_type][p][string(i)]["name"] = node_name
+                delete!(new_data[node_type][p], node_name)
+            end
+        end 
     end
 
     compressor_mapping = Dict()
@@ -692,31 +689,35 @@ end
 
 function _read_gaslib_deliveries(
     topology::XMLDict.XMLDictElement,
-    nominations::XMLDict.XMLDictElement,
+    nomination_dict::Dict{String,XMLDict.XMLDictElement},
     density::Float64,
-)
-    node_xml = _get_component_dict(get(nominations["scenario"], "node", []))
+)   
+    deliveries = Dict{String,Any}() 
+    for (p, nominations) in nomination_dict
+        node_xml = _get_component_dict(get(nominations["scenario"], "node", []))
 
-    # Collect source nodes with negative injections.
-    source_ids = [x[:id] for x in get(topology["nodes"], "source", [])]
-    source_xml = filter(x -> x.second[:id] in source_ids, node_xml)
-    source_data = Dict{String,Any}(i => _get_delivery_entry(x, density) for (i, x) in source_xml)
-    source_data = filter(x -> x.second["max_withdrawal"] < 0.0, source_data)
+        # Collect source nodes with negative injections.
+        source_ids = [x[:id] for x in get(topology["nodes"], "source", [])]
+        source_xml = filter(x -> x.second[:id] in source_ids, node_xml)
+        source_data = Dict{String,Any}(i => _get_delivery_entry(x, density) for (i, x) in source_xml)
+        source_data = filter(x -> x.second["max_withdrawal"] < 0.0, source_data)
 
-    # Collect sink nodes with positive withdrawals.
-    sink_ids = [x[:id] for x in get(topology["nodes"], "sink", [])]
-    sink_xml = filter(x -> x.second[:id] in sink_ids, node_xml)
-    sink_data = Dict{String,Any}(i => _get_delivery_entry(x, density) for (i, x) in sink_xml)
-    sink_data = filter(x -> x.second["min_withdrawal"] > 0.0, sink_data)
+        # Collect sink nodes with positive withdrawals.
+        sink_ids = [x[:id] for x in get(topology["nodes"], "sink", [])]
+        sink_xml = filter(x -> x.second[:id] in sink_ids, node_xml)
+        sink_data = Dict{String,Any}(i => _get_delivery_entry(x, density) for (i, x) in sink_xml)
+        sink_data = filter(x -> x.second["min_withdrawal"] > 0.0, sink_data)
 
-    # For sink nodes with negative injections, negate the values.
-    for (i, source) in source_data
-        source["max_withdrawal"] *= -1.0
-        source["max_withdrawal"] *= -1.0
-        source["nominal_withdrawal"] *= -1.0
-    end
+        # For sink nodes with negative injections, negate the values.
+        for (i, source) in source_data
+            source["max_withdrawal"] *= -1.0
+            source["max_withdrawal"] *= -1.0
+            source["nominal_withdrawal"] *= -1.0
+        end
 
-    return merge(source_data, sink_data)
+        deliveries[p] = merge(source_data, sink_data)
+    end 
+    return deliveries
 end
 
 
@@ -750,31 +751,35 @@ end
 
 function _read_gaslib_receipts(
     topology::XMLDict.XMLDictElement,
-    nominations::XMLDict.XMLDictElement,
+    nominations_dict::Dict{String,XMLDict.XMLDictElement},
     density::Float64,
-)
-    node_xml = _get_component_dict(get(nominations["scenario"], "node", []))
+)   
+    receipts = Dict{String,Any}()
+    for (p, nominations) in nominations_dict
+        node_xml = _get_component_dict(get(nominations["scenario"], "node", []))
 
-    # Collect source nodes with positive injections.
-    source_ids = [x[:id] for x in get(topology["nodes"], "source", [])]
-    source_xml = filter(x -> x.second[:id] in source_ids, node_xml)
-    source_data = Dict{String,Any}(i => _get_receipt_entry(x, density) for (i, x) in source_xml)
-    source_data = filter(x -> x.second["min_injection"] > 0.0, source_data)
+        # Collect source nodes with positive injections.
+        source_ids = [x[:id] for x in get(topology["nodes"], "source", [])]
+        source_xml = filter(x -> x.second[:id] in source_ids, node_xml)
+        source_data = Dict{String,Any}(i => _get_receipt_entry(x, density) for (i, x) in source_xml)
+        source_data = filter(x -> x.second["min_injection"] > 0.0, source_data)
 
-    # Collect sink nodes with negative withdrawals.
-    sink_ids = [x[:id] for x in get(topology["nodes"], "sink", [])]
-    sink_xml = filter(x -> x.second[:id] in sink_ids, node_xml)
-    sink_data = Dict{String,Any}(i => _get_receipt_entry(x, density) for (i, x) in sink_xml)
-    sink_data = filter(x -> x.second["max_injection"] < 0.0, sink_data)
+        # Collect sink nodes with negative withdrawals.
+        sink_ids = [x[:id] for x in get(topology["nodes"], "sink", [])]
+        sink_xml = filter(x -> x.second[:id] in sink_ids, node_xml)
+        sink_data = Dict{String,Any}(i => _get_receipt_entry(x, density) for (i, x) in sink_xml)
+        sink_data = filter(x -> x.second["max_injection"] < 0.0, sink_data)
 
-    # For sink nodes with negative withdrawals, negate the values.
-    for (_, sink) in sink_data
-        sink["min_injection"] *= -1.0
-        sink["max_injection"] *= -1.0
-        sink["nominal_injection"] *= -1.0
-    end
+        # For sink nodes with negative withdrawals, negate the values.
+        for (_, sink) in sink_data
+            sink["min_injection"] *= -1.0
+            sink["max_injection"] *= -1.0
+            sink["nominal_injection"] *= -1.0
+        end
 
-    return merge(source_data, sink_data)
+        receipts[p] = merge(source_data, sink_data)
+    end 
+    return receipts
 end
 
 function _read_gaslib_control_valves(topology::XMLDict.XMLDictElement, density::Float64)
