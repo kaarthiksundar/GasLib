@@ -165,5 +165,6 @@ Manifest.toml
 
 *.DS_Store
 !*/.gitkeep
+!json/*.zip
 json/* 
 simulator-json/*
