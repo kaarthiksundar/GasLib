@@ -164,3 +164,6 @@ Manifest.toml
 #.idea/
 
 *.DS_Store
+!*/.gitkeep
+json/* 
+simulator-json/*
