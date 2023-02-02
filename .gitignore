@@ -167,4 +167,5 @@ Manifest.toml
 !*/.gitkeep
 json/* 
 !json/*.zip
+!json/*.sh
 simulator-json/*
