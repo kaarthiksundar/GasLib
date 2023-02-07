@@ -696,26 +696,11 @@ function _read_gaslib_deliveries(
     for (p, nominations) in nomination_dict
         node_xml = _get_component_dict(get(nominations["scenario"], "node", []))
 
-        # Collect source nodes with negative injections.
-        source_ids = [x[:id] for x in get(topology["nodes"], "source", [])]
-        source_xml = filter(x -> x.second[:id] in source_ids, node_xml)
-        source_data = Dict{String,Any}(i => _get_delivery_entry(x, density) for (i, x) in source_xml)
-        source_data = filter(x -> x.second["max_withdrawal"] < 0.0, source_data)
-
-        # Collect sink nodes with positive withdrawals.
         sink_ids = [x[:id] for x in get(topology["nodes"], "sink", [])]
         sink_xml = filter(x -> x.second[:id] in sink_ids, node_xml)
         sink_data = Dict{String,Any}(i => _get_delivery_entry(x, density) for (i, x) in sink_xml)
-        sink_data = filter(x -> x.second["min_withdrawal"] > 0.0, sink_data)
 
-        # For sink nodes with negative injections, negate the values.
-        for (i, source) in source_data
-            source["max_withdrawal"] *= -1.0
-            source["max_withdrawal"] *= -1.0
-            source["nominal_withdrawal"] *= -1.0
-        end
-
-        deliveries[p] = merge(source_data, sink_data)
+        deliveries[p] = sink_data
     end 
     return deliveries
 end
@@ -762,22 +747,8 @@ function _read_gaslib_receipts(
         source_ids = [x[:id] for x in get(topology["nodes"], "source", [])]
         source_xml = filter(x -> x.second[:id] in source_ids, node_xml)
         source_data = Dict{String,Any}(i => _get_receipt_entry(x, density) for (i, x) in source_xml)
-        source_data = filter(x -> x.second["min_injection"] > 0.0, source_data)
-
-        # Collect sink nodes with negative withdrawals.
-        sink_ids = [x[:id] for x in get(topology["nodes"], "sink", [])]
-        sink_xml = filter(x -> x.second[:id] in sink_ids, node_xml)
-        sink_data = Dict{String,Any}(i => _get_receipt_entry(x, density) for (i, x) in sink_xml)
-        sink_data = filter(x -> x.second["max_injection"] < 0.0, sink_data)
-
-        # For sink nodes with negative withdrawals, negate the values.
-        for (_, sink) in sink_data
-            sink["min_injection"] *= -1.0
-            sink["max_injection"] *= -1.0
-            sink["nominal_injection"] *= -1.0
-        end
-
-        receipts[p] = merge(source_data, sink_data)
+    
+        receipts[p] = source_data
     end 
     return receipts
 end

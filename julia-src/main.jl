@@ -23,7 +23,7 @@ end
 
 function main(ARGS)
     args = parse_cli_args(ARGS)
-    data = parse_gaslib(args["datafolder"] * args["file"]) #, args["nominationjson"])
+    data = parse_gaslib(args["datafolder"] * args["file"])
     write_network_data(data, args["outputfolder"], args["file"])
     write_params_data(data, args["outputfolder"], args["file"])
     write_decision_group_data(data, args["outputfolder"], args["file"])
