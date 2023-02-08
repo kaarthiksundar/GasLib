@@ -31,8 +31,8 @@ function write_network_data(data, outputfolder, zip_file)
         "valves" => Dict{String,Any}(), 
         "resistors" => Dict{String,Any}(), 
         "loss_resistors" => Dict{String,Any}(), 
-        "receipts" => Dict{String,Any}(), 
-        "deliveries" => Dict{String,Any}()
+        "entries" => Dict{String,Any}(), 
+        "exits" => Dict{String,Any}()
     )
 
     slack_node_data = get_slack_nodes(data)
@@ -47,17 +47,6 @@ function write_network_data(data, outputfolder, zip_file)
             "min_pressure" => node["min_pressure"],
             "max_pressure" => node["max_pressure"]
         )
-        
-        # if i == string(slack_node)
-        #     # network_data["nodes"][i]["slack_bool"] = 1
-        #     slack_pressure_data["slack_pressures"][i] = network_data["nodes"][i]["max_pressure"]
-        #     bc["boundary_pslack"][i] = network_data["nodes"][i]["max_pressure"]
-        # else 
-        #     # network_data["nodes"][i]["slack_bool"] = 0
-        #     if !(withdrawal[i] == 0)
-        #         bc["boundary_nonslack_flow"][i] = withdrawal[i]
-        #     end
-        # end
     end
 
     for (i, pipe) in data["pipes"]
@@ -155,26 +144,26 @@ function write_network_data(data, outputfolder, zip_file)
         )
     end 
 
-    all_receipts = get(data, "receipts", []) 
-    if !isempty(all_receipts)
-        receipts = all_receipts |> first |> last
-        for (i, receipt) in receipts
-            network_data["receipts"][i] = Dict{String,Any}(
+    all_entries = get(data, "entries", []) 
+    if !isempty(all_entries)
+        entries = all_entries |> first |> last
+        for (i, entry) in entries
+            network_data["entries"][i] = Dict{String,Any}(
                 "id" => parse(Int, i), 
-                "node_id" => receipt["node_id"], 
-                "name" => receipt["name"]
+                "node_id" => entry["node_id"], 
+                "name" => entry["name"]
             )
         end 
     end
 
-    all_deliveries = get(data, "deliveries", []) 
-    if !isempty(all_deliveries)
-        deliveries = all_deliveries |> first |> last
-        for (i, delivery) in deliveries 
-            network_data["deliveries"][i] = Dict{String,Any}(
+    all_exits = get(data, "exits", []) 
+    if !isempty(all_exits)
+        exits = all_exits |> first |> last
+        for (i, exit) in exits 
+            network_data["exits"][i] = Dict{String,Any}(
                 "id" => parse(Int, i), 
-                "node_id" => delivery["node_id"],
-                "name" => delivery["name"]
+                "node_id" => exit["node_id"],
+                "name" => exit["name"]
             )
         end 
     end 
@@ -195,20 +184,20 @@ function get_slack_nodes(data::Dict)
     withdrawal = Dict{String,Any}( 
         k => Dict{String,Any}(
             i => 0.0 for (i, _) in data["nodes"]
-        ) for k in data["receipts"] |> keys)
+        ) for k in data["entries"] |> keys)
     
     slack_node = Dict{String,Any}()
     
-    for p in data["receipts"] |> keys 
+    for p in data["entries"] |> keys 
         k = split(p, ['/', '.'])[end-1]
-        for (_, receipt) in data["receipts"][p]
-            node = string(receipt["node_id"])
-            withdrawal[p][node] -= receipt["nominal_injection"]
+        for (_, entry) in data["entries"][p]
+            node = string(entry["node_id"])
+            withdrawal[p][node] -= entry["max_injection"]
         end 
     
-        for (_, delivery) in data["deliveries"][p]
-            node = string(delivery["node_id"])
-            withdrawal[p][node] += delivery["nominal_withdrawal"] 
+        for (_, exit) in data["exits"][p]
+            node = string(exit["node_id"])
+            withdrawal[p][node] += exit["max_withdrawal"] 
         end 
 
         withdrawal_values = [v for (_, v) in withdrawal[p]]
@@ -238,31 +227,31 @@ function write_nomination_data(data, outputfolder, zip_file)
     nomination_data = Dict{String,Any}(
         split(p, ['/', '.'])[end-1] => 
         Dict{String,Any}() 
-        for p in keys(data["receipts"])
+        for p in keys(data["entries"])
     )
 
-    for (p, receipts) in get(data, "receipts", [])
+    for (p, entries) in get(data, "entries", [])
         k = split(p, ['/', '.'])[end-1]
         nomination_data[k] = Dict{String,Any}(
-            "receipt_nominations" => Dict{String,Any}(), 
-            "delivery_nominations" => Dict{String,Any}()
+            "entry_nominations" => Dict{String,Any}(), 
+            "exit_nominations" => Dict{String,Any}()
         )
-        for (i, receipt) in receipts
-            nomination_data[k]["receipt_nominations"][i] = Dict{String,Any}(
+        for (i, entry) in entries
+            nomination_data[k]["entry_nominations"][i] = Dict{String,Any}(
                 "cost" => 1.0,
-                "max_injection" => receipt["max_injection"],
-                "min_injection" => receipt["min_injection"]
+                "max_injection" => entry["max_injection"],
+                "min_injection" => entry["min_injection"]
             )
         end 
     end 
 
-    for (p, deliveries) in get(data, "deliveries", [])
+    for (p, exits) in get(data, "exits", [])
         k = split(p, ['/', '.'])[end-1]
-        for (i, delivery) in deliveries 
-            nomination_data[k]["delivery_nominations"][i] = Dict{String,Any}(
+        for (i, exit) in exits 
+            nomination_data[k]["exit_nominations"][i] = Dict{String,Any}(
                 "cost" => 1.0, 
-                "max_withdrawal" => delivery["max_withdrawal"],
-                "min_withdrawal" => delivery["min_withdrawal"]
+                "max_withdrawal" => exit["max_withdrawal"],
+                "min_withdrawal" => exit["min_withdrawal"]
             )
         end
     end 
