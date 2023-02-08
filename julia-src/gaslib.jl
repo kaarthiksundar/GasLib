@@ -453,7 +453,7 @@ end
 function _get_loss_resistor_entry(loss_resistor, density::Float64)
     fr_junction, to_junction = loss_resistor[:from], loss_resistor[:to]
     flow_min = density * _parse_gaslib_flow(loss_resistor["flowMin"])
-    flow_max = density * _parse_gaslib_flow(loss_resistor["flowMin"])
+    flow_max = density * _parse_gaslib_flow(loss_resistor["flowMax"])
     p_loss = _parse_gaslib_pressure(loss_resistor["pressureLoss"])
 
     return Dict{String,Any}(
