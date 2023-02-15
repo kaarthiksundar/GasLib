@@ -1,3 +1,5 @@
+#!/bin/zsh
+
 julia --project=. julia-src/main.jl --file GasLib-11.zip
 julia --project=. julia-src/main.jl --file GasLib-24.zip
 julia --project=. julia-src/main.jl --file GasLib-40.zip
