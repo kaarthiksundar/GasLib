@@ -115,7 +115,9 @@ function write_network_data(data, outputfolder, zip_file)
             "max_flow" => round(control_valve["max_flow"], digits=4), 
             "internal_bypass_required" => control_valve["internal_bypass_required"],
             "min_pressure_differential" => control_valve["min_pressure_differential"],
-            "max_pressure_differential" => control_valve["max_pressure_differential"]
+            "max_pressure_differential" => control_valve["max_pressure_differential"],
+            "min_inlet_pressure" => control_valve["min_pressure_in"],
+            "max_outlet_pressure" => control_valve["max_pressure_out"]
         )
     end 
 
