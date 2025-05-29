@@ -168,4 +168,5 @@ Manifest.toml
 json/* 
 !json/*.zip
 !json/*.sh
+data/*
 simulator-json/*
